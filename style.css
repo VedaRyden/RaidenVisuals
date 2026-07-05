@@ -32,7 +32,7 @@ body, p, .desc-text-light, .desc-list li, .file-name, .file-size {
 /* Mengatur kotak pembungkus video YouTube */
 .video-container {
     width: 100%;
-    max-width: 700px;
+    max-width: 750px;
     height: auto;             /* Mengubah tinggi kaku menjadi otomatis */
     aspect-ratio: 16 / 9;     /* Mengunci aspek rasio asli YouTube */
     border-radius: 12px;
