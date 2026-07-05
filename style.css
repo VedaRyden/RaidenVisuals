@@ -4,6 +4,12 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+/* Mengatur ukuran dan bentuk icon gambar PNG */
+.file-icon-img {
+    width: 32px;         /* Lebar gambar */
+    height: 32px;        /* Tinggi gambar */
+    object-fit: contain; /* Memastikan gambar tidak gepeng/terdistorsi */
+}
 
 body {
     background-color: #f4f7f6;
