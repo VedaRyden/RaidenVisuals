@@ -4,6 +4,31 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+/* 1. Daftarkan Font Tebal (OTF) */
+@font-face {
+    font-family: 'MinecraftTen';
+    src: url('MinecraftTen.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 2. Daftarkan Font Tipis (TTF) */
+@font-face {
+    font-family: 'MinecraftSeven';
+    src: url('MinecraftSevenv4.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+/* Terapkan font TEBAL ke Judul dan Sub-judul */
+h1, h2, .desc-title-bold {
+    font-family: 'MinecraftTen', sans-serif !important;
+}
+
+/* Terapkan font TIPIS ke isi teks, deskripsi, dan list */
+body, p, .desc-text-light, .desc-list li, .file-name, .file-size {
+    font-family: 'MinecraftSeven', sans-serif !important;
+}
+
 /* Mengatur kotak pembungkus video YouTube */
 .video-container {
     width: 100%;
