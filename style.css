@@ -24,8 +24,6 @@
     object-fit: cover;        /* Memastikan video memenuhi kotak tanpa memotong bagian penting */
 }
 
-
-
 /* Mengatur kotak hitam panjang untuk media sosial */
 /* Mengatur kotak hitam sosmed agar selalu menempel mati di bawah layar */
 .social-media-container {
@@ -199,7 +197,6 @@ h1 {
     word-break: break-word; /* Otomatis membuat baris baru jika teks terlalu panjang */
     line-height: 1.4;
 }
-
 /* Mengatur warna ukuran file menjadi abu-abu terang */
 .file-size {
     font-size: 11px;
@@ -228,4 +225,3 @@ h1 {
 .download-btn:hover {
     background-color: #cc1111; /* Merah agak gelap saat disentuh kursor */
 }
-
