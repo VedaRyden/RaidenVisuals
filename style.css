@@ -15,7 +15,7 @@
     align-items: center;
     gap: 20px;                 
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    border: 1px solid #333333; /* Menambahkan garis tepi tipis agar kotak terlihat tegas */
+    border: 1px solid #ff0000; /* Menambahkan garis tepi tipis agar kotak terlihat tegas */
 
     /* KODE UTAMA UNTUK MENEMPEL DI LAYAR */
     position: fixed;           /* Mengunci posisi elemen dari gulungan scroll */
@@ -164,7 +164,7 @@ h1 {
 
 .download-card {
     background: #222222; /* Mengubah warna kartu menjadi abu-abu gelap */
-    border: 1px solid #333333; /* Garis tepi yang tipis dan gelap */
+    border: 1px solid #ff0000; /* Garis tepi yang tipis dan gelap */
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 15px;
