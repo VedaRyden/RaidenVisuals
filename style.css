@@ -7,14 +7,14 @@
 /* Mengatur kotak pembungkus video YouTube */
 .video-container {
     width: 100%;
-    max-width: 500px;         /* Lebar maksimal disamakan dengan container kanan */
-    align-self: stretch;      /* KODE UTAMA: Memaksa tinggi video mengikuti tinggi kotak kanan */
-    border-radius: 12px;      
-    overflow: hidden;         
+    max-width: 650px; /* Diperbesar dari 500px */
+    aspect-ratio: 16 / 9; /* Mengunci rasio video besar standar YouTube */
+    border-radius: 12px;
+    overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     border: 1px solid #333333;
-    display: flex;
 }
+
 
 /* Memastikan frame video di dalamnya mengisi penuh ruang pembungkus */
 .video-container iframe {
@@ -134,14 +134,15 @@ body {
 /* Mengatur tata letak video (kiri) dan download card (kanan) */
 .main-content-row {
     display: flex;
-    flex-direction: row;        /* Memposisikan konten berjejer ke samping */
-    justify-content: center;    /* Memposisikan kedua kotak pas di tengah layar */
-    align-items: flex-start;    /* Menyejajarkan bagian atas kedua kotak agar rata */
-    gap: 40px;                  /* Memberikan jarak renggang yang pas antara video dan kotak download */
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
     width: 100%;
-    max-width: 1100px;          /* Lebar maksimal gabungan kedua kotak */
+    max-width: 1400px; /* Diperbesar dari 1100px agar layout bisa melebar maksimal */
     margin-top: 10px;
 }
+
 
 /* Responsif: Jika dibuka di HP yang layarnya sempit, otomatis otomatis menumpuk ke bawah lagi */
 @media (max-width: 900px) {
@@ -153,14 +154,15 @@ body {
 }
 .container {
     background: #181818;
-    padding: 30px;
+    padding: 35px; /* Ditambah sedikit agar ruang dalam kotak hitam lebih lega */
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     border: 1px solid #333333;
     width: 100%;
-    max-width: 500px;
-    height: auto; /* Memastikan tinggi kotak otomatis melar ke bawah */
+    max-width: 650px; /* Diperbesar dari 500px agar sejajar dengan video baru */
+    height: auto;
 }
+
 
 h1 {
     color: #ffffff; /* Mengubah teks judul menjadi putih bersih */
