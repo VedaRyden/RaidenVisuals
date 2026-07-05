@@ -4,6 +4,33 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+/* Mengatur kotak hitam panjang untuk media sosial */
+.social-media-container {
+    background-color: #181818; /* Warna hitam gelap yang senada dengan container atas */
+    padding: 15px 25px;
+    border-radius: 12px;
+    margin-top: 25px;          /* Jarak space antara kotak download dengan kotak sosmed */
+    display: flex;
+    justify-content: center;   /* Membuat ikon berjejer rapi tepat di tengah */
+    align-items: center;
+    gap: 20px;                 /* Memberikan jarak renggang yang pas antar setiap ikon */
+    width: 100%;
+    max-width: 500px;          /* Lebar maksimal disamakan dengan container atas agar sejajar simetris */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Mengatur ukuran gambar ikon sosial media */
+.social-link img {
+    width: 32px;               /* Lebar ukuran ikon */
+    height: 32px;              /* Tinggi ukuran ikon */
+    object-fit: contain;
+    transition: transform 0.2s ease; /* Menambahkan efek animasi halus saat disentuh */
+}
+
+/* Efek animasi interaktif saat kursor diarahkan ke ikon */
+.social-link img:hover {
+    transform: scale(1.15);    /* Ikon akan sedikit membesar/menonjol saat disentuh kursor */
+}
 
 /* Mengatur pembungkus logo agar berada di tengah halaman */
 .top-banner-wrapper {
