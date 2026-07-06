@@ -213,7 +213,7 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     border: 1px solid #ff0000;
     width: 100%;
-    max-width: 500px; /* Diperbesar dari 500px agar sejajar dengan video baru */
+    max-width: 600px; /* Diperbesar dari 500px agar sejajar dengan video baru */
     height: auto;
 }
 h1 {
@@ -224,7 +224,7 @@ h1 {
 }
 .subtitle {
     color: #bbb; /* Mengubah deskripsi menjadi abu-abu terang agar tidak silau */
-    font-size: 14px;
+    font-size: 10px;
     margin-bottom: 25px;
     text-align: center;
 }
