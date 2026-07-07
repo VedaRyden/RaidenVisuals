@@ -74,15 +74,16 @@
     object-fit: contain;
     margin-bottom: 8px;     /* Jarak antara logo dengan teks di bawahnya */
 }
-/* Membuat logo OS dan teks H2 berjejer ke samping (horizontal) */
+/* 2. Kurangi juga jarak atas pada pembungkus judul OS */
 .os-title-wrapper {
     display: flex;
-    flex-direction: row;     /* Mengatur arah ke samping */
-    align-items: center;     /* Menyejajarkan posisi tengah antara logo dan teks */
-    gap: 12px;               /* Jarak renggang antara gambar logo dan tulisan judul */
-    margin-top: 15px;
-    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px !important;    /* DIUBAH: Dikurangi dari 25px menjadi 10px agar lebih menempel ke atas */
+    margin-bottom: 12px !important;
 }
+
 
 /* Memastikan ukuran logo OS tetap konsisten dan rapi */
 .os-title-wrapper .os-icon {
@@ -108,11 +109,19 @@ body, p, .desc-text-light, .desc-list li, .file-name, .file-size {
     font-family: 'MinecraftSeven', sans-serif !important;
 }
 /* Mengatur sub-judul di kotak deskripsi bawah */
+/* Cari kode .desc-title-bold di bagian bawah file style.css Anda */
 .desc-title-bold {
-    font-size: 32px !important;    /* Diperbesar dari 24px */
     font-family: 'MinecraftTen', sans-serif !important;
-    color: #ff0000; /* Mengubah teks judul menjadi putih bersih */
+    font-weight: 700 !important;
+    color: #ff0000;
+    font-size: 32px !important;
+    
+    /* UBAH BAGIAN INI: Tambahkan jarak atas agar tidak menempel */
+    margin-top: 30px !important;    /* Diubah dari 25px menjadi 45px agar teks turun */
+    margin-bottom: 15px !important; /* Jarak bawah ke arah teks Android */
+    letter-spacing: 0.5px;
 }
+
 /* 2. Mengatur ISI TEKS (Font Tipis) agar LEBIH BESAR dan mudah dibaca */
 .desc-text-light, .desc-list li {
     font-family: 'MinecraftSeven', sans-serif !important;
