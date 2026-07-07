@@ -18,6 +18,31 @@
     font-weight: 300;
     font-style: normal;
 }
+/* Mengatur pembungkus blok panduan OS */
+.os-guide-block {
+    display: flex;
+    flex-direction: column; /* Membuat logo berada tepat di ATAS teks */
+    align-items: flex-start;
+    margin-top: 20px;       /* Jarak space antar blok panduan */
+    margin-bottom: 10px;
+}
+
+/* Mengatur ukuran logo Android dan Windows */
+.os-icon {
+    width: 35px;            /* Lebar ikon */
+    height: 35px;           /* Tinggi ikon */
+    object-fit: contain;
+    margin-bottom: 8px;     /* Jarak antara logo dengan teks di bawahnya */
+}
+
+/* Memastikan teks list di bawah logo tidak tergeser tanda strip (-) bawaan kemarin */
+.os-guide-block li {
+    padding-left: 0;
+}
+.os-guide-block li::before {
+    display: none;          /* Menghilangkan tanda strip khusus untuk baris yang ada logonya */
+}
+
 /* Terapkan font TEBAL ke Judul dan Sub-judul */
 h1, h2, .desc-title-bold {
     font-size: 32px !important;    /* Diperbesar dari 24px */
