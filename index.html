@@ -15,7 +15,29 @@
     <meta property="og:description" content="Raiden Visuals 2.0 adalah Custom Deferred Configuration yang dapat mengoptimalkan performa Vibrant Visuals pada Minecraft Bedrockmu dan kompatibel dengan sistem operasi Android & Windows.">
 </head>
 <body>
-<div class="top-banner-wrapper">
+<header class="site-header">
+    <div class="header-inner">
+        <a href="#top" class="header-brand">
+            <img src="img/R.png" alt="Raiden Visuals" class="header-logo">
+            <span class="header-wordmark">RAIDEN<span class="header-wordmark-accent">VISUALS</span></span>
+        </a>
+        <nav class="header-nav" id="headerNav">
+            <a href="#top" class="header-link">Beranda</a>
+            <a href="#download-section" class="header-link">Download</a>
+            <a href="#panduan-instalasi" class="header-link">Panduan</a>
+            <a href="#cek-gpu" class="header-link">Cek GPU</a>
+            <a href="#roadmap" class="header-link">Roadmap</a>
+            <a href="https://discord.gg/U2SUvJKQkk" target="_blank" class="header-link header-link-discord">Discord</a>
+        </nav>
+        <div class="header-actions">
+            <a href="#download-section" class="scroll-to-download-btn launcher-btn header-cta">DOWNLOAD</a>
+            <button type="button" class="header-toggle" id="headerToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="headerNav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+<div class="top-banner-wrapper" id="top">
     <img src="img/title.webp" alt="Minecraft With Raiden Visuals" class="minecraft-title-logo">
 </div>
 <div class="main-content-row">
@@ -65,7 +87,7 @@
     <p>Mengoptimalkan Kabut Volumetrik Pada Vibrant Visuals.</p>
     <p>Memperluas Opsi Jarak Render (Menjadi 1-50 Chunks).</p>
 <p class="desc-list">
-<div class="os-guide-block">
+<div class="os-guide-block" id="panduan-instalasi">
     <h2 class="desc-title-bold">Panduan Instalasi</h2>
     <div class="os-title-wrapper">
         <img src="img/android.png" alt="Android Logo" class="os-icon">
@@ -140,7 +162,7 @@
 
 </ul>
 <div class="os-guide-block"></div>
-<h2>Pengecekan GPU untuk android</h2>
+<h2 id="cek-gpu">Pengecekan GPU untuk android</h2>
 <div class="gpu-checker-box">
     <h4 class="gpu-box-title">Cek Kompatibilitas GPU HP-Mu:</h4>
     <div class="gpu-input-row">
@@ -156,7 +178,7 @@
 <p>Tier 5 Adalah spek GPU tertinggi, sedangkan Tier 1 adalah spek GPU terendah.</p><br>
 <p>Tier 1 Sama Tier 2 lebih kasihan sih. Akan sangat lama untuk dapat menggunakan Vibrant Visuals, mungkin tahun depan? Itupun dengan hasil visual dan performa yang lebih rendah.</p>
 <div class="os-guide-block"></div>
-<h2>website masih dalam pengembangan terus pantau...</h2>
+<h2 id="roadmap">website masih dalam pengembangan terus pantau...</h2>
 <p>📝 To Do List</p>
 <p>- Perbandingan Performa Vibrant Visuals Bawaan Vs Raiden Visuals</p>
 <p>- Perbandingan Bayangan, Block Light, Refleksi, & Kabut volumetrik dari Vibrant Visuals bawaan vs Raiden Visuals</p>

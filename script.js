@@ -1,3 +1,33 @@
+// ===================== HEADER / NAVIGASI =====================
+const siteHeader = document.querySelector('.site-header');
+const headerToggle = document.getElementById('headerToggle');
+const headerNav = document.getElementById('headerNav');
+
+if (siteHeader && headerToggle && headerNav) {
+    // Buka/tutup menu mobile saat tombol hamburger diklik
+    headerToggle.addEventListener('click', function () {
+        const sedangTerbuka = siteHeader.classList.toggle('nav-open');
+        headerToggle.setAttribute('aria-expanded', sedangTerbuka ? 'true' : 'false');
+    });
+
+    // Tutup menu mobile otomatis begitu salah satu link navigasi diklik
+    headerNav.querySelectorAll('.header-link').forEach(function (link) {
+        link.addEventListener('click', function () {
+            siteHeader.classList.remove('nav-open');
+            headerToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Beri bayangan lebih tegas pada header setelah halaman digulir sedikit
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 10) {
+            siteHeader.classList.add('header-scrolled');
+        } else {
+            siteHeader.classList.remove('header-scrolled');
+        }
+    }, { passive: true });
+}
+
 // Ambil elemen audio dari HTML
 const soundClick = document.getElementById('soundClick');
 // Ambil semua tombol link launcher yang memiliki class 'launcher-btn'

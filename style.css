@@ -748,3 +748,236 @@ h1 {
         justify-content: center !important;
     }
 }
+
+/* =====================================================
+   SITE HEADER / NAVIGASI UTAMA
+   Mengikuti bahasa desain situs: latar gelap, aksen merah
+   khas Raiden, tombol bevel ala Mojang, font MinecraftTen
+   untuk elemen judul/merek.
+   ===================================================== */
+
+/* Memberi jarak lompatan anchor agar tidak tertutup header sticky */
+#top,
+#download-section,
+#panduan-instalasi,
+#cek-gpu,
+#roadmap {
+    scroll-margin-top: 96px;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    width: 100vw;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: -20px;
+    margin-bottom: 25px;
+    background-color: #121212;
+    border-bottom: 1px solid #ff0000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+    transition: box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.site-header.header-scrolled {
+    background-color: #0d0d0d;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.8);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 12px 30px;
+    box-sizing: border-box;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.header-logo {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+}
+
+.header-wordmark {
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: 16px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.header-wordmark-accent {
+    font-family: 'MinecraftTen', sans-serif !important;
+    color: #ff2222;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.header-link {
+    position: relative;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #cccccc;
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+}
+
+.header-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff2222;
+    transition: width 0.2s ease;
+}
+
+.header-link:hover,
+.header-link:focus-visible {
+    color: #ffffff;
+}
+
+.header-link:hover::after,
+.header-link:focus-visible::after {
+    width: 100%;
+}
+
+.header-link-discord {
+    color: #ff2222;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+.header-cta {
+    white-space: nowrap;
+}
+
+.header-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.header-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+}
+
+.header-toggle:hover span {
+    background-color: #ff2222;
+}
+
+.site-header.nav-open .header-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.site-header.nav-open .header-toggle span:nth-child(2) {
+    opacity: 0;
+}
+.site-header.nav-open .header-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+    .header-nav {
+        gap: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        margin-left: -12px;
+        margin-right: -12px;
+        margin-top: 0;
+    }
+
+    .header-inner {
+        padding: 10px 16px;
+    }
+
+    .header-cta {
+        display: none;
+    }
+
+    .header-toggle {
+        display: flex;
+    }
+
+    .header-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background-color: #121212;
+        border-bottom: 1px solid #ff0000;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.2s ease;
+    }
+
+    .site-header.nav-open .header-nav {
+        max-height: 400px;
+        opacity: 1;
+    }
+
+    .header-link {
+        width: 100%;
+        padding: 14px 20px;
+        border-bottom: 1px solid #1f1f1f;
+    }
+
+    .header-link::after {
+        display: none;
+    }
+
+    .header-link:hover,
+    .header-link:focus-visible {
+        background-color: #1a1a1a;
+        color: #ff2222;
+    }
+}
