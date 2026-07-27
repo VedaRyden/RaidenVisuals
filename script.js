@@ -40,16 +40,65 @@ launcherButtons.forEach(button => {
         soundClick.play();
     });
 });
-// 2. FITUR POP-UP NOTIFIKASI SAAT KLIK DOWNLOAD
+// 2. FITUR OVERLAY KONFIRMASI SAAT KLIK DOWNLOAD (pengganti alert())
 const downloadButtons = document.querySelectorAll('.download-btn');
-downloadButtons.forEach(button => {
-    button.addEventListener('click', function(event) {
-        const fileName = this.parentElement.querySelector('.file-name').textContent;
-        soundRelease.play(); // KODE BARU: Putar suara salah ketik
-        // Menampilkan pesan sukses kecil di browser
-        alert(`Anda akan memasuki Link Vertise untuk mengunduh "${fileName},"  harap berhati-hati dengan iklannya. Jika ingin melewati semua iklan, anda bisa donate Rp1000 per bulan di trakteer.id`);
+const downloadOverlay = document.getElementById('downloadOverlay');
+const downloadModalText = document.getElementById('downloadModalText');
+const downloadModalConfirm = document.getElementById('downloadModalConfirm');
+const downloadModalCancel = document.getElementById('downloadModalCancel');
+const downloadModalClose = document.getElementById('downloadModalClose');
+
+function bukaOverlayDownload(fileName, linkAsli) {
+    downloadModalText.innerHTML = `Kamu akan memasuki Link Vertise untuk mengunduh <strong>"${fileName}"</strong>. Harap berhati-hati dengan iklannya.`;
+    downloadModalConfirm.setAttribute('href', linkAsli);
+    downloadOverlay.classList.add('is-open');
+    downloadOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function tutupOverlayDownload() {
+    downloadOverlay.classList.remove('is-open');
+    downloadOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+if (downloadOverlay) {
+    downloadButtons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // Cegah pindah tab dulu, tampilkan overlay konfirmasi
+            const fileName = this.parentElement.querySelector('.file-name').textContent;
+            const linkAsli = this.getAttribute('href');
+            soundRelease.currentTime = 0;
+            soundRelease.play();
+            bukaOverlayDownload(fileName, linkAsli);
+        });
     });
-});
+
+    // Tombol "Lanjutkan" -> lanjut ke link asli (target="_blank") lalu tutup overlay
+    downloadModalConfirm.addEventListener('click', function () {
+        soundClick.currentTime = 0;
+        soundClick.play();
+        tutupOverlayDownload();
+    });
+
+    // Tombol "Batal" dan tombol silang (X) -> tutup overlay tanpa mengunduh
+    downloadModalCancel.addEventListener('click', tutupOverlayDownload);
+    downloadModalClose.addEventListener('click', tutupOverlayDownload);
+
+    // Klik di area gelap luar kotak modal -> tutup overlay
+    downloadOverlay.addEventListener('click', function (event) {
+        if (event.target === downloadOverlay) {
+            tutupOverlayDownload();
+        }
+    });
+
+    // Tekan tombol Escape -> tutup overlay
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && downloadOverlay.classList.contains('is-open')) {
+            tutupOverlayDownload();
+        }
+    });
+}
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];

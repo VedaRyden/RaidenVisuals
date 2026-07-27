@@ -981,3 +981,157 @@ h1 {
         color: #ff2222;
     }
 }
+
+/* =====================================================
+   OVERLAY KONFIRMASI DOWNLOAD (pengganti alert() bawaan)
+   ===================================================== */
+.download-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    box-sizing: border-box;
+}
+
+.download-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.download-modal {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    background-color: #181818;
+    border: 1px solid #ff2222;
+    border-radius: 16px;
+    padding: 34px 28px 28px 28px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.25), 0 20px 50px rgba(0, 0, 0, 0.7);
+    transform: scale(0.9) translateY(10px);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    box-sizing: border-box;
+}
+
+.download-overlay.is-open .download-modal {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.download-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    color: #999999;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.download-modal-close:hover {
+    color: #ff2222;
+}
+
+.download-modal-icon {
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+    margin: 0 auto 14px auto;
+    display: block;
+    filter: drop-shadow(0 0 14px rgba(255, 0, 0, 0.35));
+}
+
+.download-modal-title {
+    font-family: 'MinecraftTen', sans-serif !important;
+    color: #ff2222;
+    font-size: 19px;
+    margin: 0 0 12px 0;
+    letter-spacing: 0.5px;
+}
+
+.download-modal-text {
+    font-family: 'NotoSans', sans-serif !important;
+    color: #e6e6e6;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+}
+
+.download-modal-text strong {
+    color: #ffffff;
+}
+
+.download-modal-note {
+    font-family: 'NotoSans', sans-serif !important;
+    color: #999999;
+    font-size: 12.5px;
+    line-height: 1.5;
+    margin: 0 0 22px 0;
+}
+
+.download-modal-note strong {
+    color: #ff8888;
+}
+
+.download-modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.download-modal-cancel {
+    font-family: 'NotoSans', sans-serif !important;
+    background-color: transparent;
+    color: #bbbbbb;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.download-modal-cancel:hover {
+    border-color: #ff2222;
+    color: #ffffff;
+    background-color: #1f1f1f;
+}
+
+.download-modal-confirm {
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .download-modal {
+        padding: 30px 20px 22px 20px;
+    }
+
+    .download-modal-actions {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .download-modal-cancel,
+    .download-modal-confirm {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
