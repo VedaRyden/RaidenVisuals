@@ -1097,9 +1097,7 @@ h1 {
 .download-modal-cancel {
     font-family: 'NotoSans', sans-serif !important;
     background-color: transparent;
-    color: #bbbbbb;
-    border: 1px solid #3a3a3a;
-    border-radius: 8px;
+    color: #ffffff;
     padding: 10px 20px;
     font-size: 13px;
     font-weight: 600;
@@ -1134,4 +1132,17 @@ h1 {
         width: 100%;
         box-sizing: border-box;
     }
+}
+/* Mengatur tampilan link Trakteer di dalam pop-up modal */
+.trakteer-link {
+    color: #ff2222 !important; /* Warna merah khas Raiden */
+    text-decoration: none;     /* Menghilangkan garis bawah bawaan */
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+/* Efek saat kursor diarahkan ke link Trakteer */
+.trakteer-link:hover {
+    color: #ff0000 !important; /* Berubah menjadi putih bersih saat disorot */
+    text-decoration: underline; /* Memberikan garis bawah interaktif */
 }
