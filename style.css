@@ -1000,6 +1000,19 @@ h1 {
     transition: opacity 0.25s ease, visibility 0.25s ease;
     box-sizing: border-box;
 }
+/* Mengatur tampilan link Trakteer di dalam pop-up modal */
+.download-modal-note .trakteer-link {
+    color: #ff2222 !important;     /* Mengunci warna merah khas Raiden */
+    text-decoration: none;         /* Menghilangkan garis bawah bawaan agar rapi */
+    font-weight: bold;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+/* Efek interaktif saat kursor diarahkan ke link Trakteer */
+.download-modal-note .trakteer-link:hover {
+    color: #ffffff !important;     /* Berubah menjadi putih bersih saat disorot */
+    text-decoration: underline !important; /* Memunculkan garis bawah halus */
+}
 
 .download-overlay.is-open {
     opacity: 1;
