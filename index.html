@@ -23,15 +23,21 @@
             <img src="img/R.png" alt="Raiden Visuals" class="header-logo">
         </a>
         <nav class="header-nav" id="headerNav">
-            <a href="#top" class="header-link">Beranda</a>
-            <a href="#download-section" class="header-link">Download</a>
-            <a href="#panduan-instalasi" class="header-link">Panduan</a>
-            <a href="#cek-gpu" class="header-link">Cek GPU</a>
-            <a href="#roadmap" class="header-link">Roadmap</a>
+            <a href="#top" class="header-link" data-i18n="nav.home">Beranda</a>
+            <a href="#download-section" class="header-link" data-i18n="nav.download">Download</a>
+            <a href="#panduan-instalasi" class="header-link" data-i18n="nav.guide">Panduan</a>
+            <a href="#cek-gpu" class="header-link" data-i18n="nav.gpu">Cek GPU</a>
+            <a href="#roadmap" class="header-link" data-i18n="nav.roadmap">Roadmap</a>
             <a href="https://discord.gg/U2SUvJKQkk" target="_blank" class="header-link header-link-discord">Discord</a>
         </nav>
         <div class="header-actions">
-            <a href="#download-section" class="scroll-to-download-btn launcher-btn header-cta">DOWNLOAD</a>
+            <a href="#download-section" class="scroll-to-download-btn launcher-btn header-cta" data-i18n="cta.download">DOWNLOAD</a>
+            <button type="button" class="lang-switch" id="langToggle" data-lang="id" role="switch" aria-checked="false" aria-label="Switch language / Ganti bahasa" title="Switch to English">
+                <span class="lang-switch-text" id="langSwitchText">ID</span>
+                <span class="lang-switch-knob">
+                    <img src="img/ind.png" alt="" id="langSwitchFlag" class="lang-switch-flag">
+                </span>
+            </button>
             <button type="button" class="header-toggle" id="headerToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="headerNav">
                 <span></span><span></span><span></span>
             </button>
@@ -53,8 +59,8 @@
         <div class="main-icon-wrapper">
             <img src="img/pack_icon.webp" alt="Logo" class="main-page-icon">
         </div>
-        <h1>Raiden Visuals Free Download</h1>
-        <p class="subtitle">Pilih salah satu untuk versi stable dan beta. Harap panduan instalasinya dibaca, ya.</p>
+        <h1 data-i18n="hero.title">Raiden Visuals Free Download</h1>
+        <p class="subtitle" data-i18n="hero.subtitle">Pilih salah satu untuk versi stable dan beta. Harap panduan instalasinya dibaca, ya.</p>
         <!-- KARTU DOWNLOAD HARUS MASUK DI SINI (SEBELUM CONTAINER DI-TUTUP) -->
         <div class="download-card">
             <div class="file-info">
@@ -64,7 +70,7 @@
                     <div class="file-size">Last Updated : 2026-04-11 14:28:15</div>
                 </div>
             </div>
-            <a href="https://link-hub.net/459609/JO6mNLCZn24y" target="_blank" class="download-btn">DOWNLOAD</a>
+            <a href="https://link-hub.net/459609/JO6mNLCZn24y" target="_blank" class="download-btn" data-i18n="cta.download">DOWNLOAD</a>
         </div>
         <div class="download-card">
             <div class="file-info">
@@ -74,27 +80,27 @@
                     <div class="file-size">Last Updated : 2026-08-15 02:24:38</div>
                 </div>
             </div>
-            <a href="https://link-hub.net/459609/1NCAvysKHDxe" target="_blank" class="download-btn">DOWNLOAD</a>
+            <a href="https://link-hub.net/459609/1NCAvysKHDxe" target="_blank" class="download-btn" data-i18n="cta.download">DOWNLOAD</a>
         </div>
     </div> <!-- AKHIR DARI CONTAINER (Pastikan ini menutup setelah semua kartu download) -->
 <div class="description-full-container">
-    <h2>Apa itu Raiden Visuals?</h2>
-    <p>Raiden Visuals Adalah Custom Deferred Configuration Yang Dapat Mengoptimalkan Performa Vibrant Visuals Pada Minecraft Bedrock.</p>
+    <h2 data-i18n="about.title">Apa itu Raiden Visuals?</h2>
+    <p data-i18n="about.desc">Raiden Visuals Adalah Custom Deferred Configuration Yang Dapat Mengoptimalkan Performa Vibrant Visuals Pada Minecraft Bedrock.</p>
     <div class="os-guide-block"></div>
-    <h2>Keunggulan</h2>
-    <p>Mengoptimalkan Bayangan Pada Vibrant Visuals.</p>
-    <p>Mengoptimalkan Refleksi Ruang Layar Pada Vibrant Visuals.</p>
-    <p>Mengoptimalkan Point Light Beserta Bayangan Pada Vibrant Visuals.</p>
-    <p>Mengoptimalkan Kabut Volumetrik Pada Vibrant Visuals.</p>
-    <p>Memperluas Opsi Jarak Render (Menjadi 1-50 Chunks).</p>
+    <h2 data-i18n="features.title">Keunggulan</h2>
+    <p data-i18n="features.item1">Mengoptimalkan Bayangan Pada Vibrant Visuals.</p>
+    <p data-i18n="features.item2">Mengoptimalkan Refleksi Ruang Layar Pada Vibrant Visuals.</p>
+    <p data-i18n="features.item3">Mengoptimalkan Point Light Beserta Bayangan Pada Vibrant Visuals.</p>
+    <p data-i18n="features.item4">Mengoptimalkan Kabut Volumetrik Pada Vibrant Visuals.</p>
+    <p data-i18n="features.item5">Memperluas Opsi Jarak Render (Menjadi 1-50 Chunks).</p>
 <p class="desc-list">
 <div class="os-guide-block" id="panduan-instalasi">
-    <h2 class="desc-title-bold">Panduan Instalasi</h2>
+    <h2 class="desc-title-bold" data-i18n="guide.title">Panduan Instalasi</h2>
     <div class="os-title-wrapper">
         <img src="img/android.png" alt="Android Logo" class="os-icon">
-        <h2 class="desc-title-bold">ANDROID</h2>
+        <h2 class="desc-title-bold" data-i18n="guide.android">ANDROID</h2>
     </div>
-    <p>Untuk sistem operasi Android, diperlukan aplikasi pihak ketiga seperti MB Loader, Levi Launcher, Ambient For MCPE, atau Flarial Client agar Raiden Visual dapat berfungsi.</p>
+    <p data-i18n="guide.androidIntro">Untuk sistem operasi Android, diperlukan aplikasi pihak ketiga seperti MB Loader, Levi Launcher, Ambient For MCPE, atau Flarial Client agar Raiden Visual dapat berfungsi.</p>
 <ul class="app-launcher-list">
     <!-- 1. MB Loader (Tetap seperti biasa) -->
     <li>
@@ -103,7 +109,7 @@
     <a href="https://play.google.com/store/apps/details?id=io.github.bambosan.mbloader&pcampaignid=web_share" target="_blank" class="app-name-link">
             <span class="app-name">MB Loader</span>
         </a>
-            <p class="app-subtext">Untuk MB Loader, cukup memasang file mcpack yang diberikan, lalu launch dengan shader loader MBL2 atau Fuse(Beta).</p>
+            <p class="app-subtext" data-i18n="guide.mbloader">Untuk MB Loader, cukup memasang file mcpack yang diberikan, lalu launch dengan shader loader MBL2 atau Fuse(Beta).</p>
         </div>
         <a href="https://play.google.com/store/apps/details?id=io.github.bambosan.mbloader&pcampaignid=web_share" target="_blank" class="launcher-btn">
             <img src="img/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="badge-img">
@@ -117,7 +123,7 @@
     <a href="https://github.com/LiteLDev/LeviLaunchroid/releases" target="_blank" class="app-name-link">
             <span class="app-name">Levi Launcher</span>
         </a>
-            <p class="app-subtext">Untuk Levi Launcher, perlu memasang MaterialBinLoader 2 agar Raiden Visuals dapat berfungsi.</p>
+            <p class="app-subtext" data-i18n="guide.levi">Untuk Levi Launcher, perlu memasang MaterialBinLoader 2 agar Raiden Visuals dapat berfungsi.</p>
         </div>
         <a href="https://github.com/LiteLDev/LeviLaunchroid/releases" target="_blank" class="launcher-btn">
             <img src="img/get-it-on-github.webp" alt="Get it on GitHub" class="badge-img github-badge">
@@ -131,7 +137,7 @@
     <a href="https://play.google.com/store/apps/details?id=io.kitsuri.mayape" target="_blank" class="app-name-link">
             <span class="app-name">Ambient For MCPE</span>
         </a>
-            <p class="app-subtext">Untuk Ambient For MCPE, harus mengaktifkan fitur Shader Loader di dalam pengaturan launcher agar Raiden Visuals dapat berfungsi.</p>
+            <p class="app-subtext" data-i18n="guide.ambient">Untuk Ambient For MCPE, harus mengaktifkan fitur Shader Loader di dalam pengaturan launcher agar Raiden Visuals dapat berfungsi.</p>
         </div>
         <a href="https://play.google.com/store/apps/details?id=io.kitsuri.mayape" target="_blank" class="launcher-btn">
             <img src="img/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="badge-img">
@@ -145,7 +151,7 @@
     <a href="https://play.google.com/store/apps/details?id=com.flarialmc.flarial_launcher" target="_blank" class="app-name-link">
             <span class="app-name">Flarial Client</span>
         </a>
-            <p class="app-subtext">Untuk Flarial Client, harus mengaktifkan fitur Shader Loader melalui Flarial shortcut (tombol mengambang dengan logo Flarial). Setelah mengaktifkan Shader Loader di Flarial Client, wajib restart Flarial Client agar Raiden Visuals dapat berfungsi.</p>
+            <p class="app-subtext" data-i18n="guide.flarial">Untuk Flarial Client, harus mengaktifkan fitur Shader Loader melalui Flarial shortcut (tombol mengambang dengan logo Flarial). Setelah mengaktifkan Shader Loader di Flarial Client, wajib restart Flarial Client agar Raiden Visuals dapat berfungsi.</p>
         </div>
         <a href="https://play.google.com/store/apps/details?id=com.flarialmc.flarial_launcher" target="_blank" class="launcher-btn">
             <img src="img/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="badge-img">
@@ -154,42 +160,42 @@
 </ul>
     <div class="os-title-wrapper">
         <img src="img/windows.png" alt="Windows Logo" class="os-icon">
-        <h2 class="desc-title-bold">WINDOWS</h2>
+        <h2 class="desc-title-bold" data-i18n="guide.windows">WINDOWS</h2>
     </div>
-    <p>Untuk sistem operasi Windows atau Linux, cukup memindahkan folder "renderer" di dalam file mcpack yang diberikan, lalu tempelkan di lokasi.</p><br>
+    <p data-i18n="guide.windowsIntro">Untuk sistem operasi Windows atau Linux, cukup memindahkan folder "renderer" di dalam file mcpack yang diberikan, lalu tempelkan di lokasi.</p><br>
 </div>
-    <p>Untuk Minecraft Bedrock versi stable, buka isi folder "subpacks\OfficialFix" lalu pindahkan folder "renderer" nya ke <code class="copyable-path" onclick="copyPath(this)">C:\XboxGames\Minecraft for Windows\Content\data</code></p><br>
-    <p>Untuk Minecraft Bedrock versi preview, tidak perlu memindahkan renderer didalam folder subpacks, langsung pindahkan folder "renderer" nya ke <code class="copyable-path" onclick="copyPath(this)">C:\XboxGames\Minecraft Preview for Windows\Content\data</code></p><br>
+    <p data-i18n-html="guide.stablePath">Untuk Minecraft Bedrock versi stable, buka isi folder "subpacks\OfficialFix" lalu pindahkan folder "renderer" nya ke <code class="copyable-path" onclick="copyPath(this)">C:\XboxGames\Minecraft for Windows\Content\data</code></p><br>
+    <p data-i18n-html="guide.previewPath">Untuk Minecraft Bedrock versi preview, tidak perlu memindahkan renderer didalam folder subpacks, langsung pindahkan folder "renderer" nya ke <code class="copyable-path" onclick="copyPath(this)">C:\XboxGames\Minecraft Preview for Windows\Content\data</code></p><br>
 
 </ul>
 <div class="os-guide-block"></div>
-<h2 id="cek-gpu">Pengecekan GPU untuk android</h2>
+<h2 id="cek-gpu" data-i18n="gpu.title">Pengecekan GPU untuk android</h2>
 <div class="gpu-checker-box">
-    <h4 class="gpu-box-title">Cek Kompatibilitas GPU HP-Mu:</h4>
+    <h4 class="gpu-box-title" data-i18n="gpu.boxTitle">Cek Kompatibilitas GPU HP-Mu:</h4>
     <div class="gpu-input-row">
-        <input type="text" id="gpuInput" placeholder="Contoh: Adreno 610 atau Mali-G52...">
-        <button id="gpuCheckBtn">Cek</button>
+        <input type="text" id="gpuInput" placeholder="Contoh: Adreno 610 atau Mali-G52..." data-i18n-placeholder="gpu.placeholder">
+        <button id="gpuCheckBtn" data-i18n="gpu.checkBtn">Cek</button>
     </div>
     <div id="gpuResult" class="gpu-result-msg"></div>
 </div>
-<p>Cek nama dan seri GPU HP-mu menggunakan aplikasi DevCheck, AIDA64, CPU-Z, atau Debug Text di Minecraft versi Beta.</p><br>
-<p>Tier 1 dan Tier 2 tidak kompatibel, Tier 3 belum kompatibel untuk saat ini, Tier 4 sudah kompatibel, Tier 5 pasti kompatibel.</p><br>
-<p>Jika GPU Anda masuk di Tier 3 tapi Vibrant Visuals tidak dapat digunakan maka sebentar lagi akan kompatibel di update minecraft selanjutnya.</p><br>
-<p>Jika GPU Anda tidak terdaftar, maka kemungkinan besar tidak akan pernah kompatibel, solusi beli hp baru.</p><br>
-<p>Tier 5 Adalah spek GPU tertinggi, sedangkan Tier 1 adalah spek GPU terendah.</p><br>
-<p>Tier 1 Sama Tier 2 lebih kasihan sih. Akan sangat lama untuk dapat menggunakan Vibrant Visuals, mungkin tahun depan? Itupun dengan hasil visual dan performa yang lebih rendah.</p>
+<p data-i18n="gpu.howToCheck">Cek nama dan seri GPU HP-mu menggunakan aplikasi DevCheck, AIDA64, CPU-Z, atau Debug Text di Minecraft versi Beta.</p><br>
+<p data-i18n="gpu.tierInfo1">Tier 1 dan Tier 2 tidak kompatibel, Tier 3 belum kompatibel untuk saat ini, Tier 4 sudah kompatibel, Tier 5 pasti kompatibel.</p><br>
+<p data-i18n="gpu.tierInfo2">Jika GPU Anda masuk di Tier 3 tapi Vibrant Visuals tidak dapat digunakan maka sebentar lagi akan kompatibel di update minecraft selanjutnya.</p><br>
+<p data-i18n="gpu.tierInfo3">Jika GPU Anda tidak terdaftar, maka kemungkinan besar tidak akan pernah kompatibel, solusi beli hp baru.</p><br>
+<p data-i18n="gpu.tierInfo4">Tier 5 Adalah spek GPU tertinggi, sedangkan Tier 1 adalah spek GPU terendah.</p><br>
+<p data-i18n="gpu.tierInfo5">Tier 1 Sama Tier 2 lebih kasihan sih. Akan sangat lama untuk dapat menggunakan Vibrant Visuals, mungkin tahun depan? Itupun dengan hasil visual dan performa yang lebih rendah.</p>
 <div class="os-guide-block"></div>
-<h2 id="roadmap">website masih dalam pengembangan terus pantau...</h2>
-<p>📝 To Do List</p>
-<p>- Perbandingan Performa Vibrant Visuals Bawaan Vs Raiden Visuals</p>
-<p>- Perbandingan Bayangan, Block Light, Refleksi, & Kabut volumetrik dari Vibrant Visuals bawaan vs Raiden Visuals</p>
-<p>- Tutorial Pemasangan untuk Android pada masing-masing Launcher mengunakan Screenhots Step By Step</p>
-<p>- Rekomendasi GPU untuk menggunakan Vibrant Visuals</p>
-<p>- Rekomendasi setingan opsi grafis Vibrant Visuals untuk performa dan kualitas</p>
-<p>- Rekomendasi Vibrant Visuals Pack Agar lebih indah dan Immersive</p>
-<p>- Join DIscord Untuk Info Update Terbaru Dan Berkomunikasi Mengenai Vibrant Visuals</p>
-<p>- Rayuan Donasi Melalui Trakteer.Id dan menunjukan kelebihannya untuk download Raiden Visuals langsung ke mediafire tanpa melewati banyak iklan</p>
-<p>- Pertanyaan dan jawaban Q&A</p>
+<h2 id="roadmap" data-i18n="roadmap.title">website masih dalam pengembangan terus pantau...</h2>
+<p data-i18n="roadmap.listTitle">📝 To Do List</p>
+<p data-i18n="roadmap.item1">- Perbandingan Performa Vibrant Visuals Bawaan Vs Raiden Visuals</p>
+<p data-i18n="roadmap.item2">- Perbandingan Bayangan, Block Light, Refleksi, & Kabut volumetrik dari Vibrant Visuals bawaan vs Raiden Visuals</p>
+<p data-i18n="roadmap.item3">- Tutorial Pemasangan untuk Android pada masing-masing Launcher mengunakan Screenhots Step By Step</p>
+<p data-i18n="roadmap.item4">- Rekomendasi GPU untuk menggunakan Vibrant Visuals</p>
+<p data-i18n="roadmap.item5">- Rekomendasi setingan opsi grafis Vibrant Visuals untuk performa dan kualitas</p>
+<p data-i18n="roadmap.item6">- Rekomendasi Vibrant Visuals Pack Agar lebih indah dan Immersive</p>
+<p data-i18n="roadmap.item7">- Join DIscord Untuk Info Update Terbaru Dan Berkomunikasi Mengenai Vibrant Visuals</p>
+<p data-i18n="roadmap.item8">- Rayuan Donasi Melalui Trakteer.Id dan menunjukan kelebihannya untuk download Raiden Visuals langsung ke mediafire tanpa melewati banyak iklan</p>
+<p data-i18n="roadmap.item9">- Pertanyaan dan jawaban Q&A</p>
 </div> <!-- AKHIR DARI MAIN CONTENT ROW -->
 <div class="social-media-container">
     <a href="https://www.youtube.com/@vedaraiden" target="_blank" class="social-link">
@@ -226,7 +232,7 @@
                 <img src="img/R.png" alt="Raiden Visuals Logo" class="footer-logo">
                 <div class="footer-brand-text">
                     <h3>Raiden Visuals</h3>
-                    <p class="footer-desc">Custom Deferred Configuration terbaik untuk mengoptimalkan performa Vibrant Visuals di Minecraft Bedrock.</p>
+                    <p class="footer-desc" data-i18n="footer.desc">Custom Deferred Configuration terbaik untuk mengoptimalkan performa Vibrant Visuals di Minecraft Bedrock.</p>
                 </div>
             </div>
             <div class="footer-disclaimer">
@@ -235,7 +241,7 @@
         </div>
         <!-- SISI KANAN: Tombol Pintasan Kembali ke Atas / Tempat Download -->
         <div class="footer-right">
-            <a href="#download-section" class="scroll-to-download-btn launcher-btn">GO TO DOWNLOADS</a>
+            <a href="#download-section" class="scroll-to-download-btn launcher-btn" data-i18n="footer.cta">GO TO DOWNLOADS</a>
         </div>
     </div>
     <div class="footer-bottom-copyright">
@@ -247,12 +253,12 @@
     <div class="download-modal" role="dialog" aria-modal="true" aria-labelledby="downloadModalTitle">
         <button type="button" class="download-modal-close" id="downloadModalClose" aria-label="Tutup">&times;</button>
         <img src="img/crab.gif" alt="" class="download-modal-icon">
-        <h3 class="download-modal-title" id="downloadModalTitle">Konfirmasi Unduhan</h3>
+        <h3 class="download-modal-title" id="downloadModalTitle" data-i18n="modal.title">Konfirmasi Unduhan</h3>
         <p class="download-modal-text" id="downloadModalText"></p>
-        <p class="download-modal-note">*jika ingin melewati semua iklan, kamu bisa donasi Rp1000/bulan di <a href="https://trakteer.id/veda_raiden/reward/raiden-visuals-20-skip-ads-yKsXv" target="_blank" class="trakteer-link"><strong>trakteer.id</strong></a>.</p>
+        <p class="download-modal-note" data-i18n-html="modal.note">*jika ingin melewati semua iklan, kamu bisa donasi Rp1000/bulan di <a href="https://trakteer.id/veda_raiden/reward/raiden-visuals-20-skip-ads-yKsXv" target="_blank" class="trakteer-link"><strong>trakteer.id</strong></a>.</p>
         <div class="download-modal-actions">
-            <button type="button" class="download-modal-cancel" id="downloadModalCancel">Batal</button>
-            <a href="#" target="_blank" class="download-modal-confirm scroll-to-download-btn" id="downloadModalConfirm">Lanjutkan</a>
+            <button type="button" class="download-modal-cancel" id="downloadModalCancel" data-i18n="modal.cancel">Batal</button>
+            <a href="#" target="_blank" class="download-modal-confirm scroll-to-download-btn" id="downloadModalConfirm" data-i18n="modal.confirm">Lanjutkan</a>
         </div>
     </div>
 </div>
