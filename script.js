@@ -164,11 +164,11 @@ function applyLanguage(lang) {
         langToggleBtn.setAttribute('data-lang', currentLang);
         langToggleBtn.setAttribute('aria-checked', currentLang === 'en' ? 'true' : 'false');
         if (currentLang === 'en') {
-            if (flagEl) flagEl.src = 'img/eng.png';
+            if (flagEl) flagEl.src = 'img/eng.webp';
             if (textEl) textEl.textContent = 'EN';
             langToggleBtn.setAttribute('title', 'Ganti ke Bahasa Indonesia');
         } else {
-            if (flagEl) flagEl.src = 'img/ind.png';
+            if (flagEl) flagEl.src = 'img/ind.webp';
             if (textEl) textEl.textContent = 'ID';
             langToggleBtn.setAttribute('title', 'Switch to English');
         }
