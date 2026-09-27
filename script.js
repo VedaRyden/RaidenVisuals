@@ -10,8 +10,9 @@ const translations = {
         "nav.roadmap": "Roadmap",
         "nav.more": "Lainnya",
         "cta.download": "DOWNLOAD",
-        "hero.title": "Raiden Visuals Free Download",
-        "hero.subtitle": "Pilih salah satu untuk versi stable dan beta. Harap panduan instalasinya dibaca, ya.",
+        "cta.purchase": "PURCHASE",
+        "hero.title": "Raiden Visuals Download",
+        "hero.subtitle": "Pilih salah satu versi FREE atau PAID. Harap panduan instalasinya dibaca, ya.",
         "about.title": "Apa itu Raiden Visuals?",
         "about.desc": "Raiden Visuals Adalah Custom Deferred Configuration Yang Dapat Mengoptimalkan Performa Vibrant Visuals Pada Minecraft Bedrock.",
         "features.title": "Keunggulan",
@@ -67,6 +68,8 @@ const translations = {
         "gpu.msgNotFound": '😐 GPU apa ini woy? tolong ketikan nya diperhatikan yah. Pastikan penulisan nama tipe GPU nya sudah benar (Contoh: Adreno 610).<br><img src="img/woylahcik.webp" class="result-sticker">',
         "gpu.msgFetchError": 'Terjadi gangguan sistem saat membaca database.<br><img src="img/waduh.webp" class="result-sticker">',
         "modal.textTemplate": 'Kamu akan memasuki Link Vertise untuk mengunduh <strong>"{fileName}"</strong>. Harap berhati-hati dengan iklannya.',
+        "modal.purchaseTitle": "Terima Kasih!",
+        "modal.purchaseTextTemplate": 'Terima kasih banyak sudah mendukung pengembangan Raiden Visuals dengan membeli <strong>"{fileName}"</strong>! Kamu akan diarahkan ke halaman Trakteer untuk menyelesaikan pembelian. Sampai jumpa di dalam game!',
         "pricing.title": "Dukung Raiden Visuals",
         "pricing.subtitle": "Raiden Visuals selalu gratis untuk semua orang. Kalau mau dapat bonus tambahan dan mempercepat pengembangan, kamu bisa jadi Supporter.",
         "pricing.standardTitle": "Standard",
@@ -103,8 +106,9 @@ const translations = {
         "nav.roadmap": "Roadmap",
         "nav.more": "More",
         "cta.download": "DOWNLOAD",
-        "hero.title": "Raiden Visuals Free Download",
-        "hero.subtitle": "Choose either the stable or beta version. Please make sure to read the installation guide.",
+        "cta.purchase": "PURCHASE",
+        "hero.title": "Raiden Visuals Download",
+        "hero.subtitle": "Choose either the FREE or PAID version. Please make sure to read the installation guide.",
         "about.title": "What is Raiden Visuals?",
         "about.desc": "Raiden Visuals is a Custom Deferred Configuration that optimizes Vibrant Visuals performance on Minecraft Bedrock.",
         "features.title": "Features",
@@ -160,6 +164,8 @@ const translations = {
         "gpu.msgNotFound": "😐 What GPU is this? Please double-check your typing. Make sure the GPU name is spelled correctly (e.g., Adreno 610).<br><img src=\"img/woylahcik.webp\" class=\"result-sticker\">",
         "gpu.msgFetchError": 'A system error occurred while reading the database.<br><img src="img/waduh.webp" class="result-sticker">',
         "modal.textTemplate": 'You\'re about to go to a Vertise link to download <strong>"{fileName}"</strong>. Please be careful with the ads.',
+        "modal.purchaseTitle": "Thank You! 🎉",
+        "modal.purchaseTextTemplate": 'Thank you so much for supporting Raiden Visuals\' development by purchasing <strong>"{fileName}"</strong>! You\'ll be redirected to the Trakteer page to complete your purchase. See you in-game! 🚀',
         "pricing.title": "Support Raiden Visuals",
         "pricing.subtitle": "Raiden Visuals is always free for everyone. If you want extra bonuses and to help speed up development, you can become a Supporter.",
         "pricing.standardTitle": "Standard",
@@ -325,13 +331,23 @@ launcherButtons.forEach(button => {
 // 2. FITUR OVERLAY KONFIRMASI SAAT KLIK DOWNLOAD (pengganti alert())
 const downloadButtons = document.querySelectorAll('.download-btn');
 const downloadOverlay = document.getElementById('downloadOverlay');
+const downloadModalTitle = document.getElementById('downloadModalTitle');
 const downloadModalText = document.getElementById('downloadModalText');
+const downloadModalNote = document.querySelector('.download-modal-note');
 const downloadModalConfirm = document.getElementById('downloadModalConfirm');
 const downloadModalCancel = document.getElementById('downloadModalCancel');
 const downloadModalClose = document.getElementById('downloadModalClose');
 
-function bukaOverlayDownload(fileName, linkAsli) {
-    downloadModalText.innerHTML = t('modal.textTemplate').replace('{fileName}', fileName);
+function bukaOverlayDownload(fileName, linkAsli, isPurchase) {
+    if (isPurchase) {
+        downloadModalTitle.textContent = t('modal.purchaseTitle');
+        downloadModalText.innerHTML = t('modal.purchaseTextTemplate').replace('{fileName}', fileName);
+        if (downloadModalNote) downloadModalNote.style.display = 'none';
+    } else {
+        downloadModalTitle.textContent = t('modal.title');
+        downloadModalText.innerHTML = t('modal.textTemplate').replace('{fileName}', fileName);
+        if (downloadModalNote) downloadModalNote.style.display = '';
+    }
     downloadModalConfirm.setAttribute('href', linkAsli);
     downloadOverlay.classList.add('is-open');
     downloadOverlay.setAttribute('aria-hidden', 'false');
@@ -350,9 +366,10 @@ if (downloadOverlay) {
             event.preventDefault(); // Cegah pindah tab dulu, tampilkan overlay konfirmasi
             const fileName = this.parentElement.querySelector('.file-name').textContent;
             const linkAsli = this.getAttribute('href');
+            const isPurchase = this.classList.contains('purchase-btn');
             soundRelease.currentTime = 0;
             soundRelease.play();
-            bukaOverlayDownload(fileName, linkAsli);
+            bukaOverlayDownload(fileName, linkAsli, isPurchase);
         });
     });
 

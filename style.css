@@ -428,6 +428,8 @@ h1 {
     color: white;
     text-decoration: none;
     padding: 10px 20px;
+    min-width: 130px;
+    text-align: center;
     font-size: 14px;
     font-weight: 600;
     font-family: 'NotoSans', sans-serif !important;
