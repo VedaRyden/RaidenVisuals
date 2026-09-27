@@ -26,8 +26,18 @@
             <a href="#top" class="header-link" data-i18n="nav.home">Beranda</a>
             <a href="#download-section" class="header-link" data-i18n="nav.download">Download</a>
             <a href="#panduan-instalasi" class="header-link" data-i18n="nav.guide">Panduan</a>
-            <a href="#cek-gpu" class="header-link" data-i18n="nav.gpu">Cek GPU</a>
-            <a href="#roadmap" class="header-link" data-i18n="nav.roadmap">Roadmap</a>
+            <a href="#pricing" class="header-link" data-i18n="nav.pricing">Harga</a>
+            <div class="header-dropdown" id="headerMoreDropdown">
+                <button type="button" class="header-link header-more-btn" id="headerMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="headerMoreMenu">
+                    <span data-i18n="nav.more">Lainnya</span>
+                    <span class="header-more-caret" aria-hidden="true"></span>
+                </button>
+                <div class="header-dropdown-menu" id="headerMoreMenu">
+                    <a href="#cek-gpu" class="header-dropdown-item" data-i18n="nav.gpu">Cek GPU</a>
+                    <a href="#changelog" class="header-dropdown-item" data-i18n="nav.changelog">Changelog</a>
+                    <a href="#roadmap" class="header-dropdown-item" data-i18n="nav.roadmap">Roadmap</a>
+                </div>
+            </div>
             <a href="https://discord.gg/U2SUvJKQkk" target="_blank" class="header-link header-link-discord">Discord</a>
         </nav>
         <div class="header-actions">
@@ -185,6 +195,52 @@
 <p data-i18n="gpu.tierInfo4">Tier 5 Adalah spek GPU tertinggi, sedangkan Tier 1 adalah spek GPU terendah.</p><br>
 <p data-i18n="gpu.tierInfo5">Tier 1 Sama Tier 2 lebih kasihan sih. Akan sangat lama untuk dapat menggunakan Vibrant Visuals, mungkin tahun depan? Itupun dengan hasil visual dan performa yang lebih rendah.</p>
 <div class="os-guide-block"></div>
+
+<h2 id="changelog" data-i18n="changelog.sectionTitle">Changelog Terbaru</h2>
+<p class="subtitle" data-i18n="changelog.sectionSubtitle">Pantau terus pembaruan dan perbaikan terbaru dari Raiden Visuals.</p>
+<div class="changelog-card-grid" id="changelogCardContainer"></div>
+<div class="changelog-viewall-wrap">
+    <a href="changelog.html" class="changelog-viewall-btn" data-i18n="changelog.viewAll">Lihat Semua Changelog</a>
+</div>
+
+<div class="os-guide-block"></div>
+
+<h2 id="pricing" data-i18n="pricing.title">Dukung Raiden Visuals</h2>
+<p class="subtitle" data-i18n="pricing.subtitle">Raiden Visuals selalu gratis untuk semua orang. Kalau mau dapat bonus tambahan dan mempercepat pengembangan, kamu bisa jadi Supporter.</p>
+
+<div class="pricing-grid">
+    <div class="pricing-card">
+        <h3 class="pricing-card-title" data-i18n="pricing.standardTitle">Standard</h3>
+        <div class="pricing-price-box">
+            <span class="pricing-amount" data-i18n="pricing.standardPrice">Gratis</span>
+        </div>
+        <ul class="pricing-features">
+            <li data-i18n="pricing.standardFeat1">Raiden Visuals Standard (Stable Release)</li>
+            <li data-i18n="pricing.standardFeat2">Update Berkala</li>
+            <li data-i18n="pricing.standardFeat3">Dukungan Komunitas via Discord</li>
+        </ul>
+        <a href="#download-section" class="pricing-cta-btn pricing-cta-free" data-i18n="pricing.standardCta">Download Gratis</a>
+    </div>
+
+    <div class="pricing-card pricing-card-featured">
+        <span class="pricing-badge" data-i18n="pricing.supporterBadge">Paling Direkomendasikan</span>
+        <h3 class="pricing-card-title" data-i18n="pricing.supporterTitle">Supporter</h3>
+        <div class="pricing-price-box">
+            <span class="pricing-amount" data-i18n="pricing.supporterPrice">Rp17.000</span>
+            <span class="pricing-period" data-i18n="pricing.supporterPeriod">/ sekali beli</span>
+        </div>
+        <ul class="pricing-features">
+            <li data-i18n="pricing.supporterFeat1">Raiden Visuals Standard (Stable + Fast Update)</li>
+            <li data-i18n="pricing.supporterFeat2">Raiden Visuals VIP+ (Experimental)</li>
+            <li data-i18n="pricing.supporterFeat3">Raiden Visuals Beta (Early Access)</li>
+            <li data-i18n="pricing.supporterFeat4">Muka Admin (Bonus)</li>
+        </ul>
+        <a href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" class="pricing-cta-btn pricing-cta-supporter" data-i18n="pricing.supporterCta">Jadi Supporter</a>
+    </div>
+</div>
+<p class="pricing-note" data-i18n="pricing.note">*Pembayaran aman diproses melalui Trakteer.id, bukan syarat wajib untuk mengunduh Raiden Visuals.</p>
+
+<div class="os-guide-block"></div>
 <h2 id="roadmap" data-i18n="roadmap.title">website masih dalam pengembangan terus pantau...</h2>
 <p data-i18n="roadmap.listTitle">📝 To Do List</p>
 <p data-i18n="roadmap.item1">- Perbandingan Performa Vibrant Visuals Bawaan Vs Raiden Visuals</p>
@@ -264,5 +320,6 @@
 </div>
 
 <script src="script.js"></script>
+<script src="changelog.js"></script>
 </body>
 </html>

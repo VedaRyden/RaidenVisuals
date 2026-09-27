@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - Raiden Visuals</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/pack_icon.webp">
+    <link rel="shortcut icon" type="image/png" href="img/pack_icon.webp">
+    <link rel="apple-touch-icon" href="img/pack_icon.webp">
+    <meta name="description" content="Lihat seluruh riwayat pembaruan dan perbaikan Raiden Visuals, Custom Deferred Configuration untuk Minecraft Bedrock Vibrant Visuals.">
+    <meta property="og:site_name" content="Raiden Visuals">
+    <meta property="og:title" content="Changelog - Raiden Visuals">
+    <meta property="og:image" content="img/pack_icon.webp">
+    <meta property="og:description" content="Riwayat lengkap pembaruan Raiden Visuals dari waktu ke waktu.">
+</head>
+<body>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html#top" class="header-brand">
+            <img src="img/R.png" alt="Raiden Visuals" class="header-logo">
+        </a>
+        <nav class="header-nav" id="headerNav">
+            <a href="index.html#top" class="header-link" data-i18n="nav.home">Beranda</a>
+            <a href="index.html#download-section" class="header-link" data-i18n="nav.download">Download</a>
+            <a href="index.html#panduan-instalasi" class="header-link" data-i18n="nav.guide">Panduan</a>
+            <a href="index.html#pricing" class="header-link" data-i18n="nav.pricing">Harga</a>
+            <div class="header-dropdown" id="headerMoreDropdown">
+                <button type="button" class="header-link header-more-btn" id="headerMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="headerMoreMenu">
+                    <span data-i18n="nav.more">Lainnya</span>
+                    <span class="header-more-caret" aria-hidden="true"></span>
+                </button>
+                <div class="header-dropdown-menu" id="headerMoreMenu">
+                    <a href="index.html#cek-gpu" class="header-dropdown-item" data-i18n="nav.gpu">Cek GPU</a>
+                    <a href="index.html#changelog" class="header-dropdown-item" data-i18n="nav.changelog">Changelog</a>
+                    <a href="index.html#roadmap" class="header-dropdown-item" data-i18n="nav.roadmap">Roadmap</a>
+                </div>
+            </div>
+            <a href="https://discord.gg/U2SUvJKQkk" target="_blank" class="header-link header-link-discord">Discord</a>
+        </nav>
+        <div class="header-actions">
+            <a href="index.html#download-section" class="scroll-to-download-btn launcher-btn header-cta" data-i18n="cta.download">DOWNLOAD</a>
+            <button type="button" class="lang-switch" id="langToggle" data-lang="id" role="switch" aria-checked="false" aria-label="Switch language / Ganti bahasa" title="Switch to English">
+                <span class="lang-switch-text" id="langSwitchText">ID</span>
+                <span class="lang-switch-knob">
+                    <img src="img/ind.png" alt="" id="langSwitchFlag" class="lang-switch-flag">
+                </span>
+            </button>
+            <button type="button" class="header-toggle" id="headerToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="headerNav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div class="changelog-page-wrap">
+    <div class="changelog-page">
+        <a href="index.html#changelog" class="changelog-back-link" data-i18n="changelog.backHome">← Kembali ke Beranda</a>
+        <h1 class="changelog-page-title" data-i18n="changelog.pageTitle">Semua Changelog</h1>
+        <div id="changelogFullList"></div>
+    </div>
+</div>
+
+<div class="social-media-container">
+    <a href="https://www.youtube.com/@vedaraiden" target="_blank" class="social-link">
+        <img src="img/yt.png" alt="YouTube">
+    </a>
+    <a href="https://discord.gg/U2SUvJKQkk" target="_blank" class="social-link">
+        <img src="img/dc.png" alt="Discord">
+    </a>
+    <a href="https://www.tiktok.com/@veda_raiden" target="_blank" class="social-link">
+        <img src="img/tt.png" alt="TikTok">
+    </a>
+    <a href="https://modbay.org/user/vedaraidenz/" target="_blank" class="social-link">
+        <img src="img/mb.png" alt="Modrinth">
+    </a>
+    <a href="https://trakteer.id/veda_raiden" target="_blank" class="social-link">
+        <img src="img/ti.png" alt="Trakteer">
+    </a>
+</div>
+
+<audio id="soundClick" src="audio/Click_stereo.ogg.mp3" preload="auto"></audio>
+<audio id="soundSalah" src="audio/error.ogg" preload="auto"></audio>
+<audio id="soundGagal" src="audio/gagal.ogg" preload="auto"></audio>
+<audio id="soundSukses" src="audio/Challenge_complete.ogg" preload="auto"></audio>
+<audio id="soundWarn" src="audio/Villager_idle1.ogg" preload="auto"></audio>
+<audio id="soundRelease" src="audio/Release.ogg.mp3" preload="auto"></audio>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-brand">
+                <img src="img/R.png" alt="Raiden Visuals Logo" class="footer-logo">
+                <div class="footer-brand-text">
+                    <h3>Raiden Visuals</h3>
+                    <p class="footer-desc" data-i18n="footer.desc">Custom Deferred Configuration terbaik untuk mengoptimalkan performa Vibrant Visuals di Minecraft Bedrock.</p>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <p>Not affiliated with Mojang or Microsoft. "Minecraft" is a trademark of Mojang Studios.</p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <a href="index.html#download-section" class="scroll-to-download-btn launcher-btn" data-i18n="footer.cta">GO TO DOWNLOADS</a>
+        </div>
+    </div>
+    <div class="footer-bottom-copyright">
+        <p>&copy; 2026 Raiden Visuals. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="changelog.js"></script>
+</body>
+</html>

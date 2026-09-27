@@ -1,0 +1,88 @@
+{
+    "changelogs": [
+        {
+            "id": "v2-4",
+            "version": "2.4",
+            "image": "img/placeholder.png",
+            "date": "2026-09-27",
+            "title": {
+                "id": "Raiden Visuals Standard Edition v2.4 UPDATE!",
+                "en": "Raiden Visuals Standard Edition v2.4 UPDATE!"
+            },
+            "summary": {
+                "id": "Kompatibel dengan Minecraft Bedrock Stable 26.51+, pembaruan Pack Icon, konfigurasi refleksi, dan dukungan awal Block Light/Point Light di PC.",
+                "en": "Compatible with Minecraft Bedrock Stable 26.51+, updated pack icon, refined reflection configuration, and initial Block Light/Point Light support on PC."
+            },
+            "warning": {
+                "id": "PERINGATAN GPU EXTENDED DAN SHADER MATERIAL BIN TIDAK TERMASUK!",
+                "en": "WARNING: EXTENDED GPU AND SHADER MATERIAL BIN ARE NOT INCLUDED!"
+            },
+            "sections": [
+                {
+                    "heading": {
+                        "id": "Catatan Perubahan",
+                        "en": "Change Notes"
+                    },
+                    "items": [
+                        {
+                            "id": "Kompatibel Dengan Minecraft Bedrock Versi Stable 26.51+",
+                            "en": "Compatible With Minecraft Bedrock Stable Version 26.51+"
+                        },
+                        {
+                            "id": "Memperbarui Pack Icon",
+                            "en": "Updated Pack Icon"
+                        },
+                        {
+                            "id": "Kompatibel Dengan Fitur Block Light/Point Light (Hanya Support PC + Untested)",
+                            "en": "Compatible With Block Light/Point Light Feature (PC Only + Untested)"
+                        },
+                        {
+                            "id": "Memperbarui Konfigurasi Platform Bagian Deferred Mixed Resolution Menjadi \"0.5\"",
+                            "en": "Updated Deferred Mixed Resolution Platform Configuration To \"0.5\""
+                        },
+                        {
+                            "id": "Memperbarui Konfigurasi Refleksi",
+                            "en": "Updated Reflection Configuration"
+                        },
+                        {
+                            "id": "Memperbarui Text \"resourcePack.incompatible.graphics.pbr\"",
+                            "en": "Updated Text \"resourcePack.incompatible.graphics.pbr\""
+                        },
+                        {
+                            "id": "Memperbarui Deskripsi Pack",
+                            "en": "Updated Pack Description"
+                        }
+                    ]
+                },
+                {
+                    "heading": {
+                        "id": "Kompatibilitas Platform",
+                        "en": "Platform Compatibility"
+                    },
+                    "items": [
+                        {
+                            "id": "Support Android, iOS & Windows!",
+                            "en": "Supports Android, iOS & Windows!"
+                        },
+                        {
+                            "id": "Untuk Android Memerlukan Aplikasi Pihak Ketiga Seperti MB Loader, Levi Launcher, Ambient dan Flarial Client.",
+                            "en": "For Android, you'll need a third-party app such as MB Loader, Levi Launcher, Ambient, or Flarial Client."
+                        },
+                        {
+                            "id": "Untuk iOS Memerlukan Hynis-iOS.",
+                            "en": "For iOS, you'll need Hynis-iOS."
+                        },
+                        {
+                            "id": "Untuk Windows Cukup Timpa Folder \"Renderer\" Ke \"C:\\XboxGames\\Minecraft for Windows\\Content\\data\".",
+                            "en": "For Windows, simply overwrite the \"Renderer\" folder into \"C:\\XboxGames\\Minecraft for Windows\\Content\\data\"."
+                        },
+                        {
+                            "id": "Backup dulu sebelum menimpa, seperti kompres dulu folder renderer originalnya.",
+                            "en": "Back up first before overwriting — for example, compress the original renderer folder beforehand."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

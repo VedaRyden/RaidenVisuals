@@ -5,7 +5,10 @@ const translations = {
         "nav.download": "Download",
         "nav.guide": "Panduan",
         "nav.gpu": "Cek GPU",
+        "nav.changelog": "Changelog",
+        "nav.pricing": "Harga",
         "nav.roadmap": "Roadmap",
+        "nav.more": "Lainnya",
         "cta.download": "DOWNLOAD",
         "hero.title": "Raiden Visuals Free Download",
         "hero.subtitle": "Pilih salah satu untuk versi stable dan beta. Harap panduan instalasinya dibaca, ya.",
@@ -63,14 +66,42 @@ const translations = {
         "gpu.msgTier5": '🌟😮✅ Njir HP Gaming Coeg, GPU mu berada di Tier 5. Vibrant Visuals sudah pasti akan berjalan dengan lancar dan optimal di hp gamingmu!<br><img src="img/cihuy.webp" class="result-sticker">',
         "gpu.msgNotFound": '😐 GPU apa ini woy? tolong ketikan nya diperhatikan yah. Pastikan penulisan nama tipe GPU nya sudah benar (Contoh: Adreno 610).<br><img src="img/woylahcik.webp" class="result-sticker">',
         "gpu.msgFetchError": 'Terjadi gangguan sistem saat membaca database.<br><img src="img/waduh.webp" class="result-sticker">',
-        "modal.textTemplate": 'Kamu akan memasuki Link Vertise untuk mengunduh <strong>"{fileName}"</strong>. Harap berhati-hati dengan iklannya.'
+        "modal.textTemplate": 'Kamu akan memasuki Link Vertise untuk mengunduh <strong>"{fileName}"</strong>. Harap berhati-hati dengan iklannya.',
+        "pricing.title": "Dukung Raiden Visuals",
+        "pricing.subtitle": "Raiden Visuals selalu gratis untuk semua orang. Kalau mau dapat bonus tambahan dan mempercepat pengembangan, kamu bisa jadi Supporter.",
+        "pricing.standardTitle": "Standard",
+        "pricing.standardPrice": "Gratis",
+        "pricing.standardFeat1": "Raiden Visuals Standard (Stable Release)",
+        "pricing.standardFeat2": "Update Berkala",
+        "pricing.standardFeat3": "Dukungan Komunitas via Discord",
+        "pricing.standardCta": "Download Gratis",
+        "pricing.supporterBadge": "Paling Direkomendasikan",
+        "pricing.supporterTitle": "Supporter",
+        "pricing.supporterPrice": "Rp17.000",
+        "pricing.supporterPeriod": "/ sekali beli",
+        "pricing.supporterFeat1": "Raiden Visuals Standard (Stable + Fast Update)",
+        "pricing.supporterFeat2": "Raiden Visuals VIP+ (Experimental)",
+        "pricing.supporterFeat3": "Raiden Visuals Beta (Early Access)",
+        "pricing.supporterFeat4": "Muka Admin (Bonus)",
+        "pricing.supporterCta": "Jadi Supporter",
+        "pricing.note": "*Pembayaran aman diproses melalui Trakteer.id, bukan syarat wajib untuk mengunduh Raiden Visuals.",
+        "changelog.sectionTitle": "Changelog Terbaru",
+        "changelog.sectionSubtitle": "Pantau terus pembaruan dan perbaikan terbaru dari Raiden Visuals.",
+        "changelog.viewAll": "Lihat Semua Changelog",
+        "changelog.readMore": "Baca Selengkapnya",
+        "changelog.postedLabel": "Diposting:",
+        "changelog.pageTitle": "Semua Changelog",
+        "changelog.backHome": "← Kembali ke Beranda"
     },
     en: {
         "nav.home": "Home",
         "nav.download": "Download",
         "nav.guide": "Guide",
         "nav.gpu": "Check GPU",
+        "nav.changelog": "Changelog",
+        "nav.pricing": "Pricing",
         "nav.roadmap": "Roadmap",
+        "nav.more": "More",
         "cta.download": "DOWNLOAD",
         "hero.title": "Raiden Visuals Free Download",
         "hero.subtitle": "Choose either the stable or beta version. Please make sure to read the installation guide.",
@@ -128,7 +159,32 @@ const translations = {
         "gpu.msgTier5": '🌟😮✅ Whoa, a real gaming phone! Your GPU is Tier 5. Vibrant Visuals will definitely run smooth and optimized on your gaming phone!<br><img src="img/cihuy.webp" class="result-sticker">',
         "gpu.msgNotFound": "😐 What GPU is this? Please double-check your typing. Make sure the GPU name is spelled correctly (e.g., Adreno 610).<br><img src=\"img/woylahcik.webp\" class=\"result-sticker\">",
         "gpu.msgFetchError": 'A system error occurred while reading the database.<br><img src="img/waduh.webp" class="result-sticker">',
-        "modal.textTemplate": 'You\'re about to go to a Vertise link to download <strong>"{fileName}"</strong>. Please be careful with the ads.'
+        "modal.textTemplate": 'You\'re about to go to a Vertise link to download <strong>"{fileName}"</strong>. Please be careful with the ads.',
+        "pricing.title": "Support Raiden Visuals",
+        "pricing.subtitle": "Raiden Visuals is always free for everyone. If you want extra bonuses and to help speed up development, you can become a Supporter.",
+        "pricing.standardTitle": "Standard",
+        "pricing.standardPrice": "Free",
+        "pricing.standardFeat1": "Raiden Visuals Standard (Stable Release)",
+        "pricing.standardFeat2": "Regular Updates",
+        "pricing.standardFeat3": "Community Support via Discord",
+        "pricing.standardCta": "Download Free",
+        "pricing.supporterBadge": "Most Recommended",
+        "pricing.supporterTitle": "Supporter",
+        "pricing.supporterPrice": "Rp17,000",
+        "pricing.supporterPeriod": "/ one-time",
+        "pricing.supporterFeat1": "Raiden Visuals Standard (Stable + Fast Update)",
+        "pricing.supporterFeat2": "Raiden Visuals VIP+ (Experimental)",
+        "pricing.supporterFeat3": "Raiden Visuals Beta (Early Access)",
+        "pricing.supporterFeat4": "Admin's Face (Bonus)",
+        "pricing.supporterCta": "Become a Supporter",
+        "pricing.note": "*Payment is securely processed via Trakteer.id — it is not required to download Raiden Visuals.",
+        "changelog.sectionTitle": "Latest Changelog",
+        "changelog.sectionSubtitle": "Keep track of the latest updates and fixes for Raiden Visuals.",
+        "changelog.viewAll": "View All Changelogs",
+        "changelog.readMore": "Read More",
+        "changelog.postedLabel": "Posted:",
+        "changelog.pageTitle": "All Changelogs",
+        "changelog.backHome": "← Back to Home"
     }
 };
 
@@ -194,19 +250,29 @@ document.addEventListener('DOMContentLoaded', function () {
 const siteHeader = document.querySelector('.site-header');
 const headerToggle = document.getElementById('headerToggle');
 const headerNav = document.getElementById('headerNav');
+const headerMoreDropdown = document.getElementById('headerMoreDropdown');
+const headerMoreBtn = document.getElementById('headerMoreBtn');
+
+// Fungsi bantu untuk menutup dropdown "MORE" (Cek GPU/Changelog/Roadmap)
+function tutupHeaderMoreDropdown() {
+    if (headerMoreDropdown) headerMoreDropdown.classList.remove('is-open');
+    if (headerMoreBtn) headerMoreBtn.setAttribute('aria-expanded', 'false');
+}
 
 if (siteHeader && headerToggle && headerNav) {
     // Buka/tutup menu mobile saat tombol hamburger diklik
     headerToggle.addEventListener('click', function () {
         const sedangTerbuka = siteHeader.classList.toggle('nav-open');
         headerToggle.setAttribute('aria-expanded', sedangTerbuka ? 'true' : 'false');
+        tutupHeaderMoreDropdown(); // Pastikan dropdown "MORE" ikut tertutup tiap kali menu mobile dibuka/tutup
     });
 
-    // Tutup menu mobile otomatis begitu salah satu link navigasi diklik
-    headerNav.querySelectorAll('.header-link').forEach(function (link) {
+    // Tutup menu mobile otomatis begitu salah satu link navigasi (selain tombol "MORE") diklik
+    headerNav.querySelectorAll('.header-link:not(.header-more-btn), .header-dropdown-item').forEach(function (link) {
         link.addEventListener('click', function () {
             siteHeader.classList.remove('nav-open');
             headerToggle.setAttribute('aria-expanded', 'false');
+            tutupHeaderMoreDropdown();
         });
     });
 
@@ -218,6 +284,30 @@ if (siteHeader && headerToggle && headerNav) {
             siteHeader.classList.remove('header-scrolled');
         }
     }, { passive: true });
+}
+
+// Dropdown "MORE" -> berisi Cek GPU, Changelog, dan Roadmap
+if (headerMoreDropdown && headerMoreBtn) {
+    headerMoreBtn.addEventListener('click', function (event) {
+        event.stopPropagation(); // Cegah klik ini langsung dianggap "klik di luar dropdown"
+        const sedangTerbuka = headerMoreDropdown.classList.toggle('is-open');
+        headerMoreBtn.setAttribute('aria-expanded', sedangTerbuka ? 'true' : 'false');
+        headerMoreBtn.blur(); // Lepas fokus agar warna tombol tidak "nyangkut" di layar sentuh
+    });
+
+    // Klik di mana saja di luar dropdown -> otomatis tutup
+    document.addEventListener('click', function (event) {
+        if (!headerMoreDropdown.contains(event.target)) {
+            tutupHeaderMoreDropdown();
+        }
+    });
+
+    // Tekan tombol Escape -> tutup dropdown
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            tutupHeaderMoreDropdown();
+        }
+    });
 }
 
 // Ambil elemen audio dari HTML
@@ -291,13 +381,16 @@ if (downloadOverlay) {
         }
     });
 }
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+if (document.getElementById('player')) {
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
 // 2. This function creates the <iframe> after the API code downloads
 var player;
 function onYouTubeIframeAPIReady() {
+    if (!document.getElementById('player')) return;
     player = new YT.Player('player', {
         height: '390',
         width: '640',
@@ -314,16 +407,18 @@ function onYouTubeIframeAPIReady() {
 // 3. FITUR SOSIAL MEDIA CONTAINER (HALUS)
 const socialContainer = document.querySelector('.social-media-container');
 let scrollStopTimer;
-window.addEventListener('scroll', function() {
-    // Tambahkan kelas hilangnya transisi halus begitu user mulai scroll
-    socialContainer.classList.add('social-fade-out');
-    // Reset timer setiap kali event scroll terpicu
-    clearTimeout(scrollStopTimer);
-    // Setelah user BERHENTI scroll selama 300ms, munculkan kembali secara halus
-    scrollStopTimer = setTimeout(function() {
-        socialContainer.classList.remove('social-fade-out');
-    }, 1500);
-}, { passive: true });
+if (socialContainer) {
+    window.addEventListener('scroll', function() {
+        // Tambahkan kelas hilangnya transisi halus begitu user mulai scroll
+        socialContainer.classList.add('social-fade-out');
+        // Reset timer setiap kali event scroll terpicu
+        clearTimeout(scrollStopTimer);
+        // Setelah user BERHENTI scroll selama 300ms, munculkan kembali secara halus
+        scrollStopTimer = setTimeout(function() {
+            socialContainer.classList.remove('social-fade-out');
+        }, 1500);
+    }, { passive: true });
+}
 // 4. SISTEM CEK KOMPATIBILITAS GPU
 const gpuInput = document.getElementById('gpuInput');
 const gpuCheckBtn = document.getElementById('gpuCheckBtn');
@@ -469,13 +564,15 @@ let ketikanUser = gpuInput.value.replace(/-/g, '').replace(/\s+/g, '').toLowerCa
         });
 }
 // Jalankan fungsi jika tombol "Cek" di-klik
-gpuCheckBtn.addEventListener('click', periksaKompatibilitasGPU);
-// Jalankan fungsi jika user menekan tombol "Enter" di keyboard komputer
-gpuInput.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        periksaKompatibilitasGPU();
-    }
-});
+if (gpuCheckBtn && gpuInput) {
+    gpuCheckBtn.addEventListener('click', periksaKompatibilitasGPU);
+    // Jalankan fungsi jika user menekan tombol "Enter" di keyboard komputer
+    gpuInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            periksaKompatibilitasGPU();
+        }
+    });
+}
 // Fungsi untuk menyalin teks jalur folder saat diklik
 function copyPath(element) {
     const textToCopy = element.innerText;
