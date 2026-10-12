@@ -8,12 +8,12 @@
 
     // Ambil bahasa aktif dari script.js (variabel global `currentLang` & fungsi `t()`)
     function getLang() {
-        return (typeof currentLang !== 'undefined') ? currentLang : 'id';
+        return window.currentLang || 'id';
     }
 
     function translateStatic(key, fallback) {
-        if (typeof t === 'function') {
-            const hasil = t(key);
+        if (typeof window.t === 'function') {
+            const hasil = window.t(key);
             return (hasil && hasil !== key) ? hasil : fallback;
         }
         return fallback;
@@ -166,12 +166,6 @@
     document.addEventListener('DOMContentLoaded', function () {
         muatChangelog();
 
-        // Render ulang teks tanggal & tombol saat bahasa di-toggle
-        const langToggleBtn = document.getElementById('langToggle');
-        if (langToggleBtn) {
-            langToggleBtn.addEventListener('click', function () {
-                setTimeout(renderAll, 0);
-            });
-        }
+        document.addEventListener('languageChanged', renderAll);
     });
 })();
