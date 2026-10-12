@@ -167,76 +167,48 @@ launcherButtons.forEach(button => {
         soundClick.play();
     });
 });
-// 2. FITUR OVERLAY KONFIRMASI SAAT KLIK DOWNLOAD (pengganti alert())
-const downloadButtons = document.querySelectorAll('.download-btn');
-const downloadOverlay = document.getElementById('downloadOverlay');
-const downloadModalTitle = document.getElementById('downloadModalTitle');
-const downloadModalText = document.getElementById('downloadModalText');
-const downloadModalNote = document.querySelector('.download-modal-note');
-const downloadModalConfirm = document.getElementById('downloadModalConfirm');
-const downloadModalCancel = document.getElementById('downloadModalCancel');
-const downloadModalClose = document.getElementById('downloadModalClose');
+// Payment destinations are centralized here for easy editing.
+const PAYMENT_LINKS = {
+    trakteer: 'https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT',
+    kofi: 'https://ko-fi.com/'
+};
+const paymentOverlay = document.getElementById('paymentOverlay');
+const paymentModalClose = document.getElementById('paymentModalClose');
 
-function bukaOverlayDownload(fileName, linkAsli, isPurchase) {
-    if (isPurchase) {
-        downloadModalTitle.textContent = t('modal.purchaseTitle');
-        downloadModalText.innerHTML = t('modal.purchaseTextTemplate').replace('{fileName}', fileName);
-        if (downloadModalNote) downloadModalNote.style.display = 'none';
-    } else {
-        downloadModalTitle.textContent = t('modal.title');
-        downloadModalText.innerHTML = t('modal.textTemplate').replace('{fileName}', fileName);
-        if (downloadModalNote) downloadModalNote.style.display = '';
-    }
-    downloadModalConfirm.setAttribute('href', linkAsli);
-    downloadOverlay.classList.add('is-open');
-    downloadOverlay.setAttribute('aria-hidden', 'false');
+function bukaOverlayPembayaran() {
+    if (!paymentOverlay) return;
+    paymentOverlay.querySelector('.payment-brand-trakteer').nextElementSibling.href = PAYMENT_LINKS.trakteer;
+    paymentOverlay.querySelector('.payment-brand-kofi').nextElementSibling.href = PAYMENT_LINKS.kofi;
+    paymentOverlay.classList.add('is-open');
+    paymentOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 }
 
-function tutupOverlayDownload() {
-    downloadOverlay.classList.remove('is-open');
-    downloadOverlay.setAttribute('aria-hidden', 'true');
+function tutupOverlayPembayaran() {
+    if (!paymentOverlay) return;
+    paymentOverlay.classList.remove('is-open');
+    paymentOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
 }
 
-if (downloadOverlay) {
-    downloadButtons.forEach(button => {
+if (paymentOverlay) {
+    document.querySelectorAll('[data-payment-selector]').forEach(function (button) {
         button.addEventListener('click', function (event) {
-            event.preventDefault(); // Cegah pindah tab dulu, tampilkan overlay konfirmasi
-            const fileName = this.parentElement.querySelector('.file-name').textContent;
-            const linkAsli = this.getAttribute('href');
-            const isPurchase = this.classList.contains('purchase-btn');
-            soundRelease.currentTime = 0;
-            soundRelease.play();
-            bukaOverlayDownload(fileName, linkAsli, isPurchase);
+            event.preventDefault();
+            bukaOverlayPembayaran();
         });
     });
-
-    // Tombol "Lanjutkan" -> lanjut ke link asli (target="_blank") lalu tutup overlay
-    downloadModalConfirm.addEventListener('click', function () {
-        soundClick.currentTime = 0;
-        soundClick.play();
-        tutupOverlayDownload();
+    paymentModalClose.addEventListener('click', tutupOverlayPembayaran);
+    paymentOverlay.addEventListener('click', function (event) {
+        if (event.target === paymentOverlay) tutupOverlayPembayaran();
     });
-
-    // Tombol "Batal" dan tombol silang (X) -> tutup overlay tanpa mengunduh
-    downloadModalCancel.addEventListener('click', tutupOverlayDownload);
-    downloadModalClose.addEventListener('click', tutupOverlayDownload);
-
-    // Klik di area gelap luar kotak modal -> tutup overlay
-    downloadOverlay.addEventListener('click', function (event) {
-        if (event.target === downloadOverlay) {
-            tutupOverlayDownload();
-        }
-    });
-
-    // Tekan tombol Escape -> tutup overlay
     document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && downloadOverlay.classList.contains('is-open')) {
-            tutupOverlayDownload();
+        if (event.key === 'Escape' && paymentOverlay.classList.contains('is-open')) {
+            tutupOverlayPembayaran();
         }
     });
 }
+
 if (document.getElementById('player')) {
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -454,3 +426,4 @@ function copyPath(element) {
         console.error('Gagal menyalin teks: ', err);
     });
 }
+

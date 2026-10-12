@@ -90,7 +90,7 @@
                     <div class="file-size">Last Updated : 2026-09-24 17:34:20</div>
                 </div>
             </div>
-            <a href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" class="download-btn purchase-btn" data-i18n="cta.purchase">PURCHASE</a>
+            <a href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" class="download-btn purchase-btn" data-payment-selector="true" data-i18n="cta.purchase">PURCHASE</a>
         </div>
     </div> <!-- AKHIR DARI CONTAINER (Pastikan ini menutup setelah semua kartu download) -->
 <div class="description-full-container">
@@ -214,11 +214,15 @@
             <li data-i18n="pricing.standardFeat1">Raiden Visuals Standard (Stable) ✔️</li>
             <li data-i18n="pricing.supporterFeat2">Raiden Visuals VIP+ (Experimental) ❌</li>
             <li data-i18n="pricing.supporterFeat3">Raiden Visuals Beta (Early Access) ❌</li>
-            <li data-i18n="pricing.standardFeat2">Update Berkala</li>
+
             <li data-i18n="pricing.supporterFeat4">Waving Grass/Leaves ❌</li>
             <li data-i18n="pricing.supporterFeat5">Motion Blur ❌</li>
             <li data-i18n="pricing.supporterFeat6">Clean Reflection ❌</li>
             <li data-i18n="pricing.supporterFeat7">Better Volumetric Fogs ❌</li>
+            <li data-i18n="pricing.supporterFeat8">Optimasi Vibrant Visuals ✔️</li>
+            <li data-i18n="pricing.supporterFeat9">Optyimasi Vibrant Visuals (Lanjutan) ❌</li>
+            <li data-i18n="pricing.supporterFeat10">Role Supporter ❌</li>
+            <li data-i18n="pricing.supporterFeat11">Hard Shadows ✔️</li>
         </ul>
         <a href="#download-section" class="pricing-cta-btn pricing-cta-free" data-i18n="pricing.standardCta">Download Gratis</a>
     </div>
@@ -231,15 +235,19 @@
             <span class="pricing-period" data-i18n="pricing.supporterPeriod">/ sekali beli</span>
         </div>
         <ul class="pricing-features">
-            <li data-i18n="pricing.supporterFeat1">Raiden Visuals Standard (Stable) ✔️</li>
-            <li data-i18n="pricing.supporterFeat2">Raiden Visuals VIP+ (Experimental) ✔️</li>
-            <li data-i18n="pricing.supporterFeat3">Raiden Visuals Beta (Early Access) ✔️</li>
-            <li data-i18n="pricing.supporterFeat4">Waving Grass/Leaves ✔️</li>
-            <li data-i18n="pricing.supporterFeat5">Motion Blur ✔️</li>
-            <li data-i18n="pricing.supporterFeat6">Clean Reflection ✔️</li>
-            <li data-i18n="pricing.supporterFeat7">Better Volumetric Fogs ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid1">Raiden Visuals Standard (Stable) ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid2">Raiden Visuals VIP+ (Experimental) ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid3">Raiden Visuals Beta (Early Access) ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid4">Waving Grass/Leaves ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid5">Motion Blur ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid6">Clean Reflection ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid7">Better Volumetric Fogs ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid8">Optimasi Vibrant Visuals ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid9">Optimasi Vibrant Visuals (Lanjutan) ✔️</li>
+            <li data-i18n="pricing.supporterFeatpaid10">Role Supporter ❌</li>
+            <li data-i18n="pricing.supporterFeatpaid11">Hard Shadows ✔️</li>
         </ul>
-        <a href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" class="pricing-cta-btn pricing-cta-supporter" data-i18n="pricing.supporterCta">Jadi Supporter</a>
+        <a href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" class="pricing-cta-btn pricing-cta-supporter" data-payment-selector="true" data-i18n="pricing.supporterCta">Jadi Supporter</a>
     </div>
 </div>
 <p class="pricing-note" data-i18n="pricing.note">*Pembayaran aman diproses melalui Trakteer.id, bukan syarat wajib untuk mengunduh Raiden Visuals.</p>
@@ -308,16 +316,23 @@
         <p>&copy; 2026 Raiden Visuals. All Rights Reserved.</p>
     </div>
 </footer>
-<div class="download-overlay" id="downloadOverlay" aria-hidden="true">
-    <div class="download-modal" role="dialog" aria-modal="true" aria-labelledby="downloadModalTitle">
-        <button type="button" class="download-modal-close" id="downloadModalClose" aria-label="Tutup">&times;</button>
+<div class="download-overlay payment-overlay" id="paymentOverlay" aria-hidden="true">
+    <div class="download-modal payment-modal" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
+        <button type="button" class="download-modal-close" id="paymentModalClose" aria-label="Tutup">&times;</button>
         <img src="img/crab.gif" alt="" class="download-modal-icon">
-        <h3 class="download-modal-title" id="downloadModalTitle" data-i18n="modal.title">Konfirmasi Unduhan</h3>
-        <p class="download-modal-text" id="downloadModalText"></p>
-        <p class="download-modal-note" data-i18n-html="modal.note">*jika ingin melewati semua iklan, kamu bisa donasi Rp1000/bulan di <a href="https://trakteer.id/veda_raiden/reward/raiden-visuals-20-skip-ads-yKsXv" target="_blank" class="trakteer-link"><strong>trakteer.id</strong></a>.</p>
-        <div class="download-modal-actions">
-            <button type="button" class="download-modal-cancel" id="downloadModalCancel" data-i18n="modal.cancel">Batal</button>
-            <a href="#" target="_blank" class="download-modal-confirm scroll-to-download-btn" id="downloadModalConfirm" data-i18n="modal.confirm">Lanjutkan</a>
+        <h3 class="download-modal-title" id="paymentModalTitle" data-i18n="payment.title">Terima kasih banyak!</h3>
+        <p class="download-modal-text" data-i18n-html="payment.description">Terima kasih banyak sudah mendukung pengembangan Raiden Visuals dengan membeli <strong>Raiden Visuals VIP+</strong>! Kamu akan diarahkan ke halaman Trakteer untuk menyelesaikan pembelian. Sampai jumpa di dalam game!</p>
+        <div class="payment-modal-options">
+            <div class="payment-option-card">
+                <img class="payment-brand payment-brand-trakteer" src="img/trakteerid.webp" alt="">
+                <span class="payment-platform-name">Trakteer</span>
+                <a class="payment-continue-btn" href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" rel="noopener noreferrer" data-i18n="payment.continue">Lanjutkan</a>
+            </div>
+            <div class="payment-option-card">
+                <img class="payment-brand payment-brand-kofi" src="img/logomarkLogo.webp" alt="">
+                <span class="payment-platform-name">Ko-fi</span>
+                <a class="payment-continue-btn" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer" data-i18n="payment.continue">Lanjutkan</a>
+            </div>
         </div>
     </div>
 </div>

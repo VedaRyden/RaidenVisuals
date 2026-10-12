@@ -53,10 +53,6 @@
   "roadmap.item9": "- Q&A",
   "footer.desc": "The best Custom Deferred Configuration for optimizing Vibrant Visuals performance in Minecraft Bedrock.",
   "footer.cta": "GO TO DOWNLOADS",
-  "modal.title": "Download Confirmation",
-  "modal.note": "*if you'd like to skip all the ads, you can donate Rp1000/month at <a href=\"https://trakteer.id/veda_raiden/reward/raiden-visuals-20-skip-ads-yKsXv\" target=\"_blank\" class=\"trakteer-link\"><strong>trakteer.id</strong></a>.",
-  "modal.cancel": "Cancel",
-  "modal.confirm": "Continue",
   "gpu.msgEmpty": "Please type in your GPU name first!<br><img src=\"img/woylahcik.webp\" class=\"result-sticker\">",
   "gpu.msgTier1": "❌ Not Compatible! Your GPU is detected as Tier 1. You should consider getting a new phone with better specs — this GPU is too outdated for now.<br><img src=\"img/mkvvgaksupport.webp\" class=\"result-sticker\">",
   "gpu.msgTier2": "❌ Not Compatible! Your GPU is detected as Tier 2. Hang in there — hopefully you'll get a new phone soon ^^.<br><img src=\"img/mkvvgaksupport.webp\" class=\"result-sticker\">",
@@ -65,9 +61,6 @@
   "gpu.msgTier5": "🌟😮✅ Whoa, a real gaming phone! Your GPU is Tier 5. Vibrant Visuals will definitely run smooth and optimized on your gaming phone!<br><img src=\"img/cihuy.webp\" class=\"result-sticker\">",
   "gpu.msgNotFound": "😐 What GPU is this? Please double-check your typing. Make sure the GPU name is spelled correctly (e.g., Adreno 610).<br><img src=\"img/woylahcik.webp\" class=\"result-sticker\">",
   "gpu.msgFetchError": "A system error occurred while reading the database.<br><img src=\"img/waduh.webp\" class=\"result-sticker\">",
-  "modal.textTemplate": "You're about to go to a Vertise link to download <strong>\"{fileName}\"</strong>. Please be careful with the ads.",
-  "modal.purchaseTitle": "Thank You!",
-  "modal.purchaseTextTemplate": "Thank you so much for supporting Raiden Visuals' development by purchasing <strong>\"{fileName}\"</strong>! You'll be redirected to the Trakteer page to complete your purchase. See you in-game!",
   "pricing.title": "Support Raiden Visuals",
   "pricing.subtitle": "Raiden Visuals is always free for everyone. If you want extra bonuses and to help speed up development, you can become a Supporter.",
   "pricing.standardTitle": "Standard",
@@ -92,5 +85,8 @@
   "changelog.readMore": "Read More",
   "changelog.postedLabel": "Posted:",
   "changelog.pageTitle": "All Changelogs",
-  "changelog.backHome": "← Back to Home"
+  "changelog.backHome": "← Back to Home",
+  "payment.title": "Thank you so much!",
+  "payment.description": "Thank you so much for supporting Raiden Visuals by purchasing <strong>Raiden Visuals VIP+</strong>! Choose a payment platform below to complete your purchase. See you in-game!",
+  "payment.continue": "Continue"
 }
