@@ -230,9 +230,15 @@
     <div class="pricing-card pricing-card-featured">
         <span class="pricing-badge" data-i18n="pricing.supporterBadge">Paling Direkomendasikan</span>
         <h3 class="pricing-card-title" data-i18n="pricing.supporterTitle">Supporter</h3>
-        <div class="pricing-price-box">
-            <span class="pricing-amount" data-i18n="pricing.supporterPrice">Rp17.000</span>
-            <span class="pricing-period" data-i18n="pricing.supporterPeriod">/ sekali beli</span>
+        <div class="pricing-price-box pricing-price-options">
+            <div class="pricing-price-option">
+                <span class="pricing-amount" data-i18n="pricing.supporterPrice">IDR 17.800 / 5$</span>
+                <span class="pricing-period" data-i18n="pricing.supporterPeriod">/ sekali beli</span>
+            </div>
+            <div class="pricing-price-option">
+                <span class="pricing-amount" data-i18n="pricing.monthlyPrice">IDR 5.000 / 1$</span>
+                <span class="pricing-period" data-i18n="pricing.monthlyPeriod">/ bulan</span>
+            </div>
         </div>
         <ul class="pricing-features">
             <li data-i18n="pricing.supporterFeatpaid1">Raiden Visuals Standard (Stable) ✔️</li>
@@ -253,6 +259,18 @@
 <p class="pricing-note" data-i18n="pricing.note">*Pembayaran aman diproses melalui Trakteer.id, bukan syarat wajib untuk mengunduh Raiden Visuals.</p>
 
 <div class="os-guide-block"></div>
+<section class="comparison-section" id="visual-comparison">
+    <h2 class="comparison-title" data-i18n="comparison.title">Perbandingan Fog: Vibrant Visuals Default vs Raiden Visuals</h2>
+    <p class="comparison-caption" data-i18n="comparison.caption">Geser garis untuk membandingkan kedua tampilan.</p>
+    <div class="comparison-slider" data-comparison-slider style="--split: 50%" role="group" aria-label="Visual comparison slider">
+        <img class="comparison-image comparison-image-default" src="img/defaultfogson.webp" alt="Default Vibrant Visuals">
+        <img class="comparison-image comparison-image-raiden" src="img/raidenvisualsfogson.webp" alt="Raiden Visuals">
+        <span class="comparison-label comparison-label-default" data-i18n="comparison.default">Default Vibrant Visuals</span>
+        <span class="comparison-label comparison-label-raiden" data-i18n="comparison.raiden">Raiden Visuals</span>
+        <div class="comparison-divider" aria-hidden="true"><span class="comparison-handle"><span aria-hidden="true">‹</span><span aria-hidden="true">›</span></span></div>
+        <input class="comparison-range" type="range" min="0" max="100" value="50" aria-label="Adjust image comparison">
+    </div>
+</section>
 <h2 id="roadmap" data-i18n="roadmap.title">website masih dalam pengembangan terus pantau...</h2>
 <p data-i18n="roadmap.listTitle">📝 To Do List</p>
 <p data-i18n="roadmap.item1">- Perbandingan Performa Vibrant Visuals Bawaan Vs Raiden Visuals</p>
@@ -320,18 +338,18 @@
     <div class="download-modal payment-modal" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
         <button type="button" class="download-modal-close" id="paymentModalClose" aria-label="Tutup">&times;</button>
         <img src="img/crab.gif" alt="" class="download-modal-icon">
-        <h3 class="download-modal-title" id="paymentModalTitle" data-i18n="payment.title">Terima kasih banyak!</h3>
-        <p class="download-modal-text" data-i18n-html="payment.description">Terima kasih banyak sudah mendukung pengembangan Raiden Visuals dengan membeli <strong>Raiden Visuals VIP+</strong>! Kamu akan diarahkan ke halaman Trakteer untuk menyelesaikan pembelian. Sampai jumpa di dalam game!</p>
+        <h3 class="download-modal-title" id="paymentModalTitle" data-i18n="payment.title" data-i18n-fallback="Terima kasih banyak!">Terima kasih banyak!</h3>
+        <p class="download-modal-text" data-i18n-html="payment.description" data-i18n-html-fallback="Terima kasih banyak sudah mendukung pengembangan Raiden Visuals dengan membeli &lt;strong&gt;Raiden Visuals VIP+&lt;/strong&gt;! Kamu akan diarahkan ke halaman pilihan pembayaran untuk menyelesaikan pembelian. Sampai jumpa di dalam game!">Terima kasih banyak sudah mendukung pengembangan Raiden Visuals dengan membeli <strong>Raiden Visuals VIP+</strong>! Kamu akan diarahkan ke halaman Trakteer untuk menyelesaikan pembelian. Sampai jumpa di dalam game!</p>
         <div class="payment-modal-options">
             <div class="payment-option-card">
                 <img class="payment-brand payment-brand-trakteer" src="img/trakteerid.webp" alt="">
-                <span class="payment-platform-name">Trakteer</span>
-                <a class="payment-continue-btn" href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" rel="noopener noreferrer" data-i18n="payment.continue">Lanjutkan</a>
+                <span class="payment-platform-name">Trakteer id</span>
+                <a class="payment-continue-btn" href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" rel="noopener noreferrer" data-i18n="payment.continue" data-i18n-fallback="Lanjutkan">Lanjutkan</a>
             </div>
             <div class="payment-option-card">
                 <img class="payment-brand payment-brand-kofi" src="img/logomarkLogo.webp" alt="">
                 <span class="payment-platform-name">Ko-fi</span>
-                <a class="payment-continue-btn" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer" data-i18n="payment.continue">Lanjutkan</a>
+                <a class="payment-continue-btn" href="https://ko-fi.com/s/c3af744444" target="_blank" rel="noopener noreferrer" data-i18n="payment.continue" data-i18n-fallback="Lanjutkan">Lanjutkan</a>
             </div>
         </div>
     </div>

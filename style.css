@@ -722,6 +722,19 @@ h1 {
 
 /* Responsif HP: Membuat tampilan sejajar ke bawah jika dibuka dari mobile */
 /* KODE PERBAIKAN KHUSUS MOBILE: Mengembalikan layout HP agar rapi di tengah */
+@media (max-width: 480px) {
+    .pricing-price-options {
+        gap: 6px;
+    }
+
+    .pricing-price-option + .pricing-price-option {
+        padding-left: 6px;
+    }
+
+    .pricing-price-option .pricing-amount {
+        font-size: clamp(14px, 4vw, 19px);
+    }
+}
 @media (max-width: 768px) {
     body {
         overflow-x: hidden; 
@@ -1425,6 +1438,130 @@ h1 {
 }
 
 /* ===================== SECTION PRICING (STANDARD VS SUPPORTER) ===================== */
+.comparison-section {
+    margin: 34px 0 12px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(255, 34, 34, 0.35);
+}
+
+.comparison-title {
+    margin-bottom: 8px;
+    color: #ff2222;
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: 22px;
+    text-align: center;
+}
+
+.comparison-caption {
+    margin: 0 0 18px;
+    color: #bbbbbb;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 14px;
+    text-align: center;
+}
+
+.comparison-slider {
+    --split: 50%;
+    position: relative;
+    width: min(100%, 1100px);
+    aspect-ratio: 2.23 / 1;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid rgba(255, 34, 34, 0.65);
+    background: #101010;
+    isolation: isolate;
+    cursor: ew-resize;
+    touch-action: pan-y;
+}
+
+.comparison-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
+}
+
+.comparison-image-default {
+    clip-path: inset(0 calc(100% - var(--split)) 0 0);
+}
+
+.comparison-image-raiden {
+    clip-path: inset(0 0 0 var(--split));
+}
+
+.comparison-divider {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: var(--split);
+    width: 3px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.65);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.comparison-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    width: 68px;
+    height: 48px;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 2px solid #ffffff;
+    border-radius: 2px;
+    background: rgba(20, 20, 20, 0.55);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1;
+    transform: translate(-50%, -50%);
+}
+
+.comparison-handle span {
+    display: block;
+    margin-top: -4px;
+}
+.comparison-label {
+    position: absolute;
+    z-index: 1;
+    top: 14px;
+    padding: 6px 10px;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.66);
+    color: #ffffff;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.comparison-label-default { left: 14px; }
+.comparison-label-raiden { right: 14px; }
+
+.comparison-range {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: ew-resize;
+    touch-action: pan-y;
+}
+
+@media (max-width: 600px) {
+    .comparison-title { font-size: 18px; }
+    .comparison-slider { aspect-ratio: 1.5 / 1; }
+    .comparison-label { top: 8px; padding: 4px 7px; font-size: 10px; }
+}
 .pricing-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1447,6 +1584,7 @@ h1 {
     background: linear-gradient(180deg, #2a1414 0%, #1c1c1c 100%);
     border: 1px solid #ff2222;
     box-shadow: 0 0 18px rgba(255, 0, 0, 0.25);
+    animation: supporter-glow-pulse 5s ease-in-out infinite;
 }
 
 .pricing-badge {
@@ -1479,6 +1617,27 @@ h1 {
     color: #ff4d4d;
 }
 
+.pricing-price-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 12px;
+}
+
+.pricing-price-option {
+    min-width: 0;
+    text-align: center;
+}
+
+.pricing-price-option + .pricing-price-option {
+    border-left: 1px solid rgba(255, 34, 34, 0.28);
+    padding-left: 10px;
+}
+
+.pricing-price-option .pricing-amount {
+    font-size: clamp(17px, 2vw, 25px);
+    white-space: nowrap;
+}
 .pricing-price-box {
     text-align: center;
     margin-bottom: 18px;
@@ -1540,24 +1699,22 @@ h1 {
 .pricing-features li {
     color: #dddddd;
     font-family: 'NotoSans', sans-serif !important;
-    font-size: 13px;
-    padding: 8px 0 8px 24px;
+    font-size: 15px;
+    padding: 9px 6px;
     position: relative;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     line-height: 1.4;
+    text-align: center;
 }
 
-.pricing-features li:last-child {
-    border-bottom: none;
-}
-
+/* Center comparison details and hide the decorative red check at the left. */
+/* Center comparison details and hide the decorative red check at the left. */
 .pricing-features li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 8px;
-    color: #ff2222;
-    font-weight: 700;
+    content: none !important;
+    display: none !important;
+}
+.pricing-card-featured .pricing-features li {
+    font-size: 16px;
 }
 
 .pricing-cta-btn {
@@ -1610,6 +1767,22 @@ h1 {
     }
 }
 
+@keyframes supporter-glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 12px rgba(255, 0, 0, 0.16);
+        border-color: rgba(255, 34, 34, 0.72);
+    }
+    50% {
+        box-shadow: 0 0 28px rgba(255, 0, 0, 0.48);
+        border-color: rgba(255, 55, 55, 1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pricing-card-featured {
+        animation: none;
+    }
+}
 /* ===================== SECTION CHANGELOG (CARD DI HOMEPAGE) ===================== */
 .changelog-card-grid {
     display: grid;
@@ -1620,6 +1793,31 @@ h1 {
     margin-bottom: 20px;
 }
 
+.changelog-edition-group {
+    margin: 20px 0 28px;
+}
+
+.changelog-edition-heading {
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 34, 34, 0.4);
+    color: #ff4d4d;
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: 18px;
+    text-align: left;
+}
+
+.changelog-edition-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+    justify-content: center;
+    gap: 20px;
+}
+
+.changelog-edition-detail > .changelog-edition-heading {
+    margin-top: 28px;
+    font-size: 22px;
+}
 .changelog-card {
     display: block;
     background: #1c1c1c;
@@ -1915,44 +2113,46 @@ h1 {
     color: #ffffff;
     font-weight: 800;
 }
-/* Keep payment platform logos, names, and buttons in a clear vertical stack. */
-.payment-modal-options {
-    display: grid;
+/* Payment platform options: icon, label, and button stay visibly stacked. */
+.payment-modal .payment-modal-options {
+    display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
     gap: 18px;
     margin-top: 22px;
 }
 
-.payment-option-card {
-    display: flex;
+.payment-modal .payment-option-card {
+    display: flex !important;
     min-width: 0;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0 !important;
 }
 
-.payment-brand {
-    display: block;
-    width: 100%;
-    height: 56px;
+.payment-modal .payment-brand {
+    display: block !important;
+    width: 56px !important;
+    height: 56px !important;
+    flex: 0 0 56px;
     object-fit: contain;
 }
 
-.payment-platform-name {
-    display: block;
-    min-height: 18px;
-    color: #ffffff;
+.payment-modal .payment-platform-name {
+    display: block !important;
+    width: 100%;
+    margin: 4px 0 10px;
+    color: #ffffff !important;
     font-family: 'NotoSans', sans-serif !important;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 18px;
-    text-align: center;
-    visibility: visible;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 22px !important;
+    text-align: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-.payment-continue-btn {
-    display: flex;
+.payment-modal .payment-continue-btn {
+    display: flex !important;
     width: 100%;
     height: 44px;
     align-items: center;
@@ -1969,33 +2169,30 @@ h1 {
     font-weight: 700;
     letter-spacing: 0.4px;
     box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.35), inset 0 -4px 0 rgba(0, 0, 0, 0.35), 0 3px 0 rgba(0, 0, 0, 0.6);
-    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-.payment-continue-btn:hover {
+.payment-modal .payment-continue-btn:hover {
     background: #cc1111;
     transform: translateY(-2px);
 }
 
-.payment-continue-btn:active {
-    transform: translateY(2px);
-    box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.25), inset 0 -2px 0 rgba(0, 0, 0, 0.35), 0 1px 0 rgba(0, 0, 0, 0.6);
-}
-
 @media (max-width: 480px) {
-    .payment-modal-options {
+    .payment-modal .payment-modal-options {
         gap: 12px;
     }
 
-    .payment-brand {
-        height: 48px;
+    .payment-modal .payment-brand {
+        width: 48px !important;
+        height: 48px !important;
+        flex-basis: 48px;
     }
 
-    .payment-platform-name {
-        font-size: 12px;
+    .payment-modal .payment-platform-name {
+        margin: 4px 0 8px;
+        font-size: 14px !important;
     }
 
-    .payment-continue-btn {
+    .payment-modal .payment-continue-btn {
         height: 42px;
         padding: 8px 4px;
         font-size: 12px;

@@ -63,82 +63,103 @@
         return div.innerHTML;
     }
 
-    // ---------- RENDER: Card ringkas di index.html ----------
+    // ---------- RENDER: Changelog dipisah berdasarkan edisi ----------
     function renderCard() {
         const container = document.getElementById('changelogCardContainer');
         if (!container || changelogData.length === 0) return;
 
-        const entry = changelogData[0]; // changelog paling baru (urutan pertama di JSON)
-        const judul = localize(entry.title);
-        const ringkasan = localize(entry.summary);
         const readMoreText = translateStatic('changelog.readMore', getLang() === 'en' ? 'Read More' : 'Baca Selengkapnya');
-
-        container.innerHTML = `
-            <a href="changelog.html#${entry.id}" class="changelog-card">
-                <div class="changelog-card-thumb">
-                    <img src="${entry.image}" alt="${escapeHTML(judul)}" loading="lazy">
-                    <span class="changelog-card-version">v${entry.version}</span>
-                </div>
-                <div class="changelog-card-body">
-                    <h3 class="changelog-card-title">${escapeHTML(judul)}</h3>
-                    <p class="changelog-card-summary">${escapeHTML(ringkasan)}</p>
-                    <div class="changelog-card-footer">
-                        <span class="changelog-card-date">${timeAgo(entry.date)}</span>
-                        <span class="changelog-card-readmore">${readMoreText} →</span>
-                    </div>
-                </div>
-            </a>
-        `;
+        const groups = [
+            { type: 'vip-plus', key: 'changelog.vipHeading', fallback: 'Raiden Visuals VIP+' },
+            { type: 'standard', key: 'changelog.standardHeading', fallback: 'Raiden Visuals Standard' }
+        ];
+        container.innerHTML = groups.map(function (group) {
+            const entries = changelogData.filter(function (entry) { return entry.product === group.type; });
+            if (!entries.length) return '';
+            const cards = entries.slice(0, 2).map(function (entry) {
+                const judul = localize(entry.title);
+                const ringkasan = localize(entry.summary);
+                return `
+                    <a href="changelog.html#${entry.id}" class="changelog-card">
+                        <div class="changelog-card-thumb">
+                            <img src="${entry.image}" alt="${escapeHTML(judul)}" loading="lazy">
+                            <span class="changelog-card-version">v${entry.version}</span>
+                        </div>
+                        <div class="changelog-card-body">
+                            <h3 class="changelog-card-title">${escapeHTML(judul)}</h3>
+                            <p class="changelog-card-summary">${escapeHTML(ringkasan)}</p>
+                            <div class="changelog-card-footer">
+                                <span class="changelog-card-date">${timeAgo(entry.date)}</span>
+                                <span class="changelog-card-readmore">${readMoreText} →</span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }).join('');
+            return `
+                <section class="changelog-edition-group">
+                    <h3 class="changelog-edition-heading">${escapeHTML(translateStatic(group.key, group.fallback))}</h3>
+                    <div class="changelog-edition-cards">${cards}</div>
+                </section>
+            `;
+        }).join('');
     }
-
     // ---------- RENDER: Halaman detail penuh di changelog.html ----------
     function renderDetailPage() {
         const container = document.getElementById('changelogFullList');
         if (!container || changelogData.length === 0) return;
 
         const postedLabel = translateStatic('changelog.postedLabel', getLang() === 'en' ? 'Posted:' : 'Diposting:');
+        const groups = [
+            { type: 'vip-plus', key: 'changelog.vipHeading', fallback: 'Raiden Visuals VIP+' },
+            { type: 'standard', key: 'changelog.standardHeading', fallback: 'Raiden Visuals Standard' }
+        ];
 
-        container.innerHTML = changelogData.map(function (entry) {
-            const judul = localize(entry.title);
-            const peringatan = localize(entry.warning);
-
-            const sectionsHTML = entry.sections.map(function (section) {
-                const judulSeksi = localize(section.heading);
-                const itemsHTML = section.items.map(function (item) {
-                    return '<li>' + escapeHTML(localize(item)) + '</li>';
+        container.innerHTML = groups.map(function (group) {
+            const entries = changelogData.filter(function (entry) { return entry.product === group.type; });
+            if (!entries.length) return '';
+            const posts = entries.map(function (entry) {
+                const judul = localize(entry.title);
+                const peringatan = localize(entry.warning);
+                const sectionsHTML = (entry.sections || []).map(function (section) {
+                    const judulSeksi = localize(section.heading);
+                    const itemsHTML = (section.items || []).map(function (item) {
+                        return '<li>' + escapeHTML(localize(item)) + '</li>';
+                    }).join('');
+                    return `
+                        <div class="changelog-section">
+                            <h3 class="changelog-section-heading">${escapeHTML(judulSeksi)}</h3>
+                            <ul class="changelog-list">${itemsHTML}</ul>
+                        </div>
+                    `;
                 }).join('');
+                const warningHTML = peringatan ? `
+                    <div class="changelog-warning-box">
+                        <span class="changelog-warning-icon">⚠</span>
+                        <span>${escapeHTML(peringatan)}</span>
+                    </div>
+                ` : '';
                 return `
-                    <div class="changelog-section">
-                        <h3 class="changelog-section-heading">${escapeHTML(judulSeksi)}</h3>
-                        <ul class="changelog-list">${itemsHTML}</ul>
-                    </div>
+                    <article class="changelog-post" id="${entry.id}">
+                        <div class="changelog-post-thumb"><img src="${entry.image}" alt="${escapeHTML(judul)}" loading="lazy"></div>
+                        <div class="changelog-post-meta">
+                            <span class="changelog-post-version">v${entry.version}</span>
+                            <span class="changelog-post-date">${postedLabel} ${formatTanggalPanjang(entry.date)}</span>
+                        </div>
+                        <h2 class="changelog-post-title">${escapeHTML(judul)}</h2>
+                        ${warningHTML}
+                        ${sectionsHTML}
+                    </article>
                 `;
-            }).join('');
-
-            const warningHTML = peringatan ? `
-                <div class="changelog-warning-box">
-                    <span class="changelog-warning-icon">⚠</span>
-                    <span>${escapeHTML(peringatan)}</span>
-                </div>
-            ` : '';
-
+            }).join('<div class="os-guide-block"></div>');
             return `
-                <article class="changelog-post" id="${entry.id}">
-                    <div class="changelog-post-thumb">
-                        <img src="${entry.image}" alt="${escapeHTML(judul)}" loading="lazy">
-                    </div>
-                    <div class="changelog-post-meta">
-                        <span class="changelog-post-version">v${entry.version}</span>
-                        <span class="changelog-post-date">${postedLabel} ${formatTanggalPanjang(entry.date)}</span>
-                    </div>
-                    <h2 class="changelog-post-title">${escapeHTML(judul)}</h2>
-                    ${warningHTML}
-                    ${sectionsHTML}
-                </article>
+                <section class="changelog-edition-group changelog-edition-detail">
+                    <h2 class="changelog-edition-heading">${escapeHTML(translateStatic(group.key, group.fallback))}</h2>
+                    ${posts}
+                </section>
             `;
         }).join('<div class="os-guide-block"></div>');
     }
-
     function renderAll() {
         renderCard();
         renderDetailPage();

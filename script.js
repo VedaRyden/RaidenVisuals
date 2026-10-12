@@ -19,14 +19,19 @@ function loadLanguageFiles() {
         applyLanguage(currentLang);
     }).catch(function (error) {
         console.error('Gagal memuat file bahasa:', error);
-        applyLanguage(currentLang);
+        // Keep the page readable using the Indonesian text already present in the HTML.
+        languageFilesReady = true;
+        translations = { id: {}, en: {} };
+        document.documentElement.setAttribute('lang', currentLang);
     });
 }
 
 // Ambil terjemahan aktif; teks Indonesia menjadi fallback jika sebuah kunci belum tersedia.
 function t(key) {
+    const el = document.querySelector('[data-i18n="' + key + '"]');
     return (translations[currentLang] && translations[currentLang][key])
         || (translations.id && translations.id[key])
+        || (el && el.getAttribute('data-i18n-fallback'))
         || key;
 }
 
@@ -40,7 +45,9 @@ function applyLanguage(lang) {
         el.textContent = t(el.getAttribute('data-i18n'));
     });
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
-        el.innerHTML = t(el.getAttribute('data-i18n-html'));
+        const key = el.getAttribute('data-i18n-html');
+        const translated = translations[currentLang] && translations[currentLang][key];
+        el.innerHTML = translated || el.getAttribute('data-i18n-html-fallback') || key;
     });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
         el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
@@ -76,6 +83,41 @@ window.t = t;
 window.applyLanguage = applyLanguage;
 window.setLanguage = setLanguage;
 
+function initializeComparisonSliders() {
+    document.querySelectorAll('[data-comparison-slider]').forEach(function (slider) {
+        const range = slider.querySelector('.comparison-range');
+        const divider = slider.querySelector('.comparison-divider');
+        let dragging = false;
+
+        function setPosition(clientX) {
+            const rect = slider.getBoundingClientRect();
+            const percent = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+            const split = percent + '%';
+            slider.style.setProperty('--split', split);
+            divider.style.left = split;
+            range.value = String(Math.round(percent));
+        }
+
+        slider.addEventListener('pointerdown', function (event) {
+            dragging = true;
+            slider.setPointerCapture(event.pointerId);
+            setPosition(event.clientX);
+            event.preventDefault();
+        });
+        slider.addEventListener('pointermove', function (event) {
+            if (dragging) setPosition(event.clientX);
+        });
+        slider.addEventListener('pointerup', function () { dragging = false; });
+        slider.addEventListener('pointercancel', function () { dragging = false; });
+        range.addEventListener('input', function () { setPositionFromRange(); });
+
+        function setPositionFromRange() {
+            const split = range.value + '%';
+            slider.style.setProperty('--split', split);
+            divider.style.left = split;
+        }
+    });
+}
 document.addEventListener('DOMContentLoaded', function () {
     const langToggleBtn = document.getElementById('langToggle');
     if (langToggleBtn) {
@@ -89,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     loadLanguageFiles();
+    initializeComparisonSliders();
 });
 
 // ===================== HEADER / NAVIGASI =====================
