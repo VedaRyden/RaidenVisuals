@@ -53,23 +53,18 @@ function applyLanguage(lang) {
         el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
     });
 
-    const langToggleBtn = document.getElementById('langToggle');
-    if (langToggleBtn) {
-        const flagEl = document.getElementById('langSwitchFlag');
-        const textEl = document.getElementById('langSwitchText');
-        langToggleBtn.setAttribute('data-lang', currentLang);
-        langToggleBtn.setAttribute('aria-checked', currentLang === 'en' ? 'true' : 'false');
-        langToggleBtn.setAttribute('aria-label', currentLang === 'en' ? 'Switch language to Indonesian' : 'Ganti bahasa ke Inggris');
-        if (currentLang === 'en') {
-            if (flagEl) flagEl.src = 'img/eng.webp';
-            if (textEl) textEl.textContent = 'EN';
-            langToggleBtn.setAttribute('title', 'Switch to Bahasa Indonesia');
-        } else {
-            if (flagEl) flagEl.src = 'img/ind.webp';
-            if (textEl) textEl.textContent = 'ID';
-            langToggleBtn.setAttribute('title', 'Switch to English');
-        }
+    // Perbarui dropdown bahasa (ikon globe): kode bahasa aktif + tanda centang di menu
+    const langCurrentText = document.getElementById('langCurrentText');
+    if (langCurrentText) langCurrentText.textContent = currentLang.toUpperCase();
+    const langDropdownBtn = document.getElementById('langDropdownBtn');
+    if (langDropdownBtn) {
+        langDropdownBtn.setAttribute('aria-label', currentLang === 'en'
+            ? 'Change language (current: English)'
+            : 'Ganti bahasa (saat ini: Bahasa Indonesia)');
     }
+    document.querySelectorAll('[data-lang-option]').forEach(function (opt) {
+        opt.setAttribute('aria-checked', opt.getAttribute('data-lang-option') === currentLang ? 'true' : 'false');
+    });
 }
 
 function setLanguage(lang) {
@@ -119,15 +114,36 @@ function initializeComparisonSliders() {
     });
 }
 document.addEventListener('DOMContentLoaded', function () {
-    const langToggleBtn = document.getElementById('langToggle');
-    if (langToggleBtn) {
-        langToggleBtn.addEventListener('click', function () {
-            const soundClickEl = document.getElementById('soundClick');
-            if (soundClickEl) {
-                soundClickEl.currentTime = 0;
-                soundClickEl.play().catch(() => {});
+    // Dropdown bahasa (globe): buka/tutup, pilih bahasa, klik luar & Escape untuk menutup
+    const langDropdown = document.getElementById('langDropdown');
+    const langDropdownBtn = document.getElementById('langDropdownBtn');
+    if (langDropdown && langDropdownBtn) {
+        langDropdownBtn.addEventListener('click', function (event) {
+            event.stopPropagation(); // Cegah klik ini langsung dianggap "klik di luar dropdown"
+            const sedangTerbuka = langDropdown.classList.toggle('is-open');
+            langDropdownBtn.setAttribute('aria-expanded', sedangTerbuka ? 'true' : 'false');
+            if (sedangTerbuka) tutupHeaderMoreDropdown(); // Hanya satu dropdown yang boleh terbuka
+        });
+        langDropdown.querySelectorAll('[data-lang-option]').forEach(function (opt) {
+            opt.addEventListener('click', function () {
+                const soundClickEl = document.getElementById('soundClick');
+                if (soundClickEl) {
+                    soundClickEl.currentTime = 0;
+                    soundClickEl.play().catch(() => {});
+                }
+                setLanguage(opt.getAttribute('data-lang-option'));
+                tutupLangDropdown();
+                langDropdownBtn.focus();
+            });
+        });
+        document.addEventListener('click', function (event) {
+            if (!langDropdown.contains(event.target)) tutupLangDropdown();
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && langDropdown.classList.contains('is-open')) {
+                tutupLangDropdown();
+                langDropdownBtn.focus();
             }
-            setLanguage(currentLang === 'en' ? 'id' : 'en');
         });
     }
     loadLanguageFiles();
@@ -147,12 +163,21 @@ function tutupHeaderMoreDropdown() {
     if (headerMoreBtn) headerMoreBtn.setAttribute('aria-expanded', 'false');
 }
 
+// Fungsi bantu untuk menutup dropdown bahasa (ikon globe)
+function tutupLangDropdown() {
+    const dd = document.getElementById('langDropdown');
+    const btn = document.getElementById('langDropdownBtn');
+    if (dd) dd.classList.remove('is-open');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
 if (siteHeader && headerToggle && headerNav) {
     // Buka/tutup menu mobile saat tombol hamburger diklik
     headerToggle.addEventListener('click', function () {
         const sedangTerbuka = siteHeader.classList.toggle('nav-open');
         headerToggle.setAttribute('aria-expanded', sedangTerbuka ? 'true' : 'false');
         tutupHeaderMoreDropdown(); // Pastikan dropdown "MORE" ikut tertutup tiap kali menu mobile dibuka/tutup
+        tutupLangDropdown(); // Dropdown bahasa juga ikut tertutup
     });
 
     // Tutup menu mobile otomatis begitu salah satu link navigasi (selain tombol "MORE") diklik
@@ -180,6 +205,7 @@ if (headerMoreDropdown && headerMoreBtn) {
         event.stopPropagation(); // Cegah klik ini langsung dianggap "klik di luar dropdown"
         const sedangTerbuka = headerMoreDropdown.classList.toggle('is-open');
         headerMoreBtn.setAttribute('aria-expanded', sedangTerbuka ? 'true' : 'false');
+        if (sedangTerbuka) tutupLangDropdown(); // Hanya satu dropdown yang boleh terbuka
         headerMoreBtn.blur(); // Lepas fokus agar warna tombol tidak "nyangkut" di layar sentuh
     });
 
@@ -213,15 +239,22 @@ launcherButtons.forEach(button => {
 // Payment destinations are centralized here for easy editing.
 const PAYMENT_LINKS = {
     trakteer: 'https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT',
-    kofi: 'https://ko-fi.com/'
+    kofi: 'https://ko-fi.com/s/c3af744444'
 };
+// Platform pembayaran per bahasa: Indonesia -> Trakteer, English -> Ko-fi.
+const PAYMENT_PLATFORM_BY_LANG = { id: 'trakteer', en: 'kofi' };
 const paymentOverlay = document.getElementById('paymentOverlay');
 const paymentModalClose = document.getElementById('paymentModalClose');
 
 function bukaOverlayPembayaran() {
     if (!paymentOverlay) return;
-    paymentOverlay.querySelector('.payment-brand-trakteer').nextElementSibling.href = PAYMENT_LINKS.trakteer;
-    paymentOverlay.querySelector('.payment-brand-kofi').nextElementSibling.href = PAYMENT_LINKS.kofi;
+    // Tampilkan hanya platform yang sesuai bahasa aktif, lalu arahkan tombolnya ke link yang benar.
+    const platform = PAYMENT_PLATFORM_BY_LANG[currentLang] || 'trakteer';
+    paymentOverlay.querySelectorAll('[data-payment-platform]').forEach(function (card) {
+        const aktif = card.getAttribute('data-payment-platform') === platform;
+        card.hidden = !aktif;
+        if (aktif) card.querySelector('.payment-continue-btn').href = PAYMENT_LINKS[platform];
+    });
     paymentOverlay.classList.add('is-open');
     paymentOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -469,4 +502,3 @@ function copyPath(element) {
         console.error('Gagal menyalin teks: ', err);
     });
 }
-

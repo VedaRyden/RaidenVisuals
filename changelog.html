@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changelog - Raiden Visuals</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="img/pack_icon.webp">
     <link rel="shortcut icon" type="image/png" href="img/pack_icon.webp">
@@ -40,12 +41,23 @@
         </nav>
         <div class="header-actions">
             <a href="index.html#download-section" class="scroll-to-download-btn launcher-btn header-cta" data-i18n="cta.download">DOWNLOAD</a>
-            <button type="button" class="lang-switch" id="langToggle" data-lang="id" role="switch" aria-checked="false" aria-label="Switch language / Ganti bahasa" title="Switch to English">
-                <span class="lang-switch-text" id="langSwitchText">ID</span>
-                <span class="lang-switch-knob">
-                    <img src="img/ind.png" alt="" id="langSwitchFlag" class="lang-switch-flag">
-                </span>
-            </button>
+            <div class="lang-dropdown" id="langDropdown">
+                <button type="button" class="lang-dropdown-btn" id="langDropdownBtn" aria-haspopup="true" aria-expanded="false" aria-controls="langDropdownMenu" aria-label="Ganti bahasa / Change language">
+                    <i class="bx bx-globe" aria-hidden="true"></i>
+                    <span class="lang-current" id="langCurrentText">ID</span>
+                    <span class="header-more-caret" aria-hidden="true"></span>
+                </button>
+                <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" aria-label="Pilih bahasa / Select language">
+                    <button type="button" class="lang-option" role="menuitemradio" data-lang-option="id" aria-checked="true">
+                        <span>Bahasa Indonesia</span>
+                        <i class="bx bx-check lang-option-check" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="lang-option" role="menuitemradio" data-lang-option="en" aria-checked="false">
+                        <span>English</span>
+                        <i class="bx bx-check lang-option-check" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
             <button type="button" class="header-toggle" id="headerToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="headerNav">
                 <span></span><span></span><span></span>
             </button>

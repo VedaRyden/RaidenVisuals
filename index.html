@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="google2b6186536590153f" />
     <title>Raiden Visuals - Minecraft Bedrock Vibrant Visuals Optimizer</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="img/pack_icon.webp">
     <link rel="shortcut icon" type="image/png" href="img/pack_icon.webp">
@@ -42,12 +43,23 @@
         </nav>
         <div class="header-actions">
             <a href="#download-section" class="scroll-to-download-btn launcher-btn header-cta" data-i18n="cta.download">DOWNLOAD</a>
-            <button type="button" class="lang-switch" id="langToggle" data-lang="id" role="switch" aria-checked="false" aria-label="Switch language / Ganti bahasa" title="Switch to English">
-                <span class="lang-switch-text" id="langSwitchText">ID</span>
-                <span class="lang-switch-knob">
-                    <img src="img/ind.png" alt="" id="langSwitchFlag" class="lang-switch-flag">
-                </span>
-            </button>
+            <div class="lang-dropdown" id="langDropdown">
+                <button type="button" class="lang-dropdown-btn" id="langDropdownBtn" aria-haspopup="true" aria-expanded="false" aria-controls="langDropdownMenu" aria-label="Ganti bahasa / Change language">
+                    <i class="bx bx-globe" aria-hidden="true"></i>
+                    <span class="lang-current" id="langCurrentText">ID</span>
+                    <span class="header-more-caret" aria-hidden="true"></span>
+                </button>
+                <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" aria-label="Pilih bahasa / Select language">
+                    <button type="button" class="lang-option" role="menuitemradio" data-lang-option="id" aria-checked="true">
+                        <span>Bahasa Indonesia</span>
+                        <i class="bx bx-check lang-option-check" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="lang-option" role="menuitemradio" data-lang-option="en" aria-checked="false">
+                        <span>English</span>
+                        <i class="bx bx-check lang-option-check" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
             <button type="button" class="header-toggle" id="headerToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="headerNav">
                 <span></span><span></span><span></span>
             </button>
@@ -211,18 +223,18 @@
             <span class="pricing-amount" data-i18n="pricing.standardPrice">Gratis</span>
         </div>
         <ul class="pricing-features">
-            <li data-i18n="pricing.standardFeat1">Raiden Visuals Standard (Stable) ✔️</li>
-            <li data-i18n="pricing.supporterFeat2">Raiden Visuals VIP+ (Experimental) ❌</li>
-            <li data-i18n="pricing.supporterFeat3">Raiden Visuals Beta (Early Access) ❌</li>
+            <li><span data-i18n="pricing.standardFeat1">Raiden Visuals Standard (Stable)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat2">Raiden Visuals VIP+ (Experimental)</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat3">Raiden Visuals Beta (Early Access)</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
 
-            <li data-i18n="pricing.supporterFeat4">Waving Grass/Leaves ❌</li>
-            <li data-i18n="pricing.supporterFeat5">Motion Blur ❌</li>
-            <li data-i18n="pricing.supporterFeat6">Clean Reflection ❌</li>
-            <li data-i18n="pricing.supporterFeat7">Better Volumetric Fogs ❌</li>
-            <li data-i18n="pricing.supporterFeat8">Optimasi Vibrant Visuals ✔️</li>
-            <li data-i18n="pricing.supporterFeat9">Optyimasi Vibrant Visuals (Lanjutan) ❌</li>
-            <li data-i18n="pricing.supporterFeat10">Role Supporter ❌</li>
-            <li data-i18n="pricing.supporterFeat11">Hard Shadows ✔️</li>
+            <li><span data-i18n="pricing.supporterFeat4">Waving Grass/Leaves</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat5">Motion Blur</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat6">Clean Reflection</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat7">Better Volumetric Fogs</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat8">Optimasi Vibrant Visuals</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat9">Optimasi Vibrant Visuals (Lanjutan)</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat10">Discord Role Supporter</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat11">Hard Shadows</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
         </ul>
         <a href="#download-section" class="pricing-cta-btn pricing-cta-free" data-i18n="pricing.standardCta">Download Gratis</a>
     </div>
@@ -232,26 +244,26 @@
         <h3 class="pricing-card-title" data-i18n="pricing.supporterTitle">Supporter</h3>
         <div class="pricing-price-box pricing-price-options">
             <div class="pricing-price-option">
-                <span class="pricing-amount" data-i18n="pricing.supporterPrice">IDR 17.800 / 5$</span>
+                <span class="pricing-amount" data-i18n="pricing.supporterPrice">IDR 17.800</span>
                 <span class="pricing-period" data-i18n="pricing.supporterPeriod">/ sekali beli</span>
             </div>
             <div class="pricing-price-option">
-                <span class="pricing-amount" data-i18n="pricing.monthlyPrice">IDR 5.000 / 1$</span>
+                <span class="pricing-amount" data-i18n="pricing.monthlyPrice">IDR 5.000</span>
                 <span class="pricing-period" data-i18n="pricing.monthlyPeriod">/ bulan</span>
             </div>
         </div>
         <ul class="pricing-features">
-            <li data-i18n="pricing.supporterFeatpaid1">Raiden Visuals Standard (Stable) ✔️</li>
-            <li data-i18n="pricing.supporterFeatpaid2">Raiden Visuals VIP+ (Experimental) ✔️</li>
-            <li data-i18n="pricing.supporterFeatpaid3">Raiden Visuals Beta (Early Access) ✔️</li>
-            <li data-i18n="pricing.supporterFeatpaid4">Waving Grass/Leaves ✔️</li>
-            <li data-i18n="pricing.supporterFeatpaid5">Motion Blur ✔️</li>
-            <li data-i18n="pricing.supporterFeatpaid6">Clean Reflection ✔️</li>
-            <li data-i18n="pricing.supporterFeatpaid7">Better Volumetric Fogs ✔️</li>
-            <li data-i18n="pricing.supporterFeatpaid8">Optimasi Vibrant Visuals ✔️</li>
-            <li data-i18n="pricing.supporterFeatpaid9">Optimasi Vibrant Visuals (Lanjutan) ✔️</li>
-            <li data-i18n="pricing.supporterFeatpaid10">Role Supporter ❌</li>
-            <li data-i18n="pricing.supporterFeatpaid11">Hard Shadows ✔️</li>
+            <li><span data-i18n="pricing.supporterFeatpaid1">Raiden Visuals Standard (Stable)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid2">Raiden Visuals VIP+ (Experimental)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid3">Raiden Visuals Beta (Early Access)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid4">Waving Grass/Leaves</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid5">Motion Blur</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid6">Clean Reflection</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid7">Better Volumetric Fogs</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid8">Optimasi Vibrant Visuals</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid9">Optimasi Vibrant Visuals (Lanjutan)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid10">Discord Role Supporter</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid11">Hard Shadows</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
         </ul>
         <a href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" class="pricing-cta-btn pricing-cta-supporter" data-payment-selector="true" data-i18n="pricing.supporterCta">Jadi Supporter</a>
     </div>
@@ -339,14 +351,14 @@
         <button type="button" class="download-modal-close" id="paymentModalClose" aria-label="Tutup">&times;</button>
         <img src="img/crab.gif" alt="" class="download-modal-icon">
         <h3 class="download-modal-title" id="paymentModalTitle" data-i18n="payment.title" data-i18n-fallback="Terima kasih banyak!">Terima kasih banyak!</h3>
-        <p class="download-modal-text" data-i18n-html="payment.description" data-i18n-html-fallback="Terima kasih banyak sudah mendukung pengembangan Raiden Visuals dengan membeli &lt;strong&gt;Raiden Visuals VIP+&lt;/strong&gt;! Kamu akan diarahkan ke halaman pilihan pembayaran untuk menyelesaikan pembelian. Sampai jumpa di dalam game!">Terima kasih banyak sudah mendukung pengembangan Raiden Visuals dengan membeli <strong>Raiden Visuals VIP+</strong>! Kamu akan diarahkan ke halaman Trakteer untuk menyelesaikan pembelian. Sampai jumpa di dalam game!</p>
+        <p class="download-modal-text" data-i18n-html="payment.description" data-i18n-html-fallback="Terima kasih banyak sudah mendukung pengembangan Raiden Visuals dengan membeli &lt;strong&gt;Raiden Visuals VIP+&lt;/strong&gt;! Kamu akan diarahkan ke halaman Trakteer untuk menyelesaikan pembelian. Sampai jumpa di dalam game!">Terima kasih banyak sudah mendukung pengembangan Raiden Visuals dengan membeli <strong>Raiden Visuals VIP+</strong>! Kamu akan diarahkan ke halaman Trakteer untuk menyelesaikan pembelian. Sampai jumpa di dalam game!</p>
         <div class="payment-modal-options">
-            <div class="payment-option-card">
+            <div class="payment-option-card" data-payment-platform="trakteer">
                 <img class="payment-brand payment-brand-trakteer" src="img/trakteerid.webp" alt="">
                 <span class="payment-platform-name">Trakteer id</span>
                 <a class="payment-continue-btn" href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" rel="noopener noreferrer" data-i18n="payment.continue" data-i18n-fallback="Lanjutkan">Lanjutkan</a>
             </div>
-            <div class="payment-option-card">
+            <div class="payment-option-card" data-payment-platform="kofi">
                 <img class="payment-brand payment-brand-kofi" src="img/logomarkLogo.webp" alt="">
                 <span class="payment-platform-name">Ko-fi</span>
                 <a class="payment-continue-btn" href="https://ko-fi.com/s/c3af744444" target="_blank" rel="noopener noreferrer" data-i18n="payment.continue" data-i18n-fallback="Lanjutkan">Lanjutkan</a>
