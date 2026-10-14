@@ -86,8 +86,11 @@
   "changelog.standardHeading": "Raiden Visuals Standard",
   "pricing.monthlyPrice": "IDR 5,000 / $1",
   "pricing.monthlyPeriod": "/ month",
-  "comparison.title": "Fog Comparison: Default Vibrant Visuals vs Raiden Visuals",
+  "comparison.title": "Visual Comparison: Default Vibrant Visuals vs Raiden Visuals",
   "comparison.caption": "Drag the divider to compare both visuals.",
+  "comparison.fogs": "Volumetric Fogs",
+  "comparison.shadows": "Shadows",
+  "comparison.reflections": "Reflections",
   "comparison.default": "Default Vibrant Visuals",
   "comparison.raiden": "Raiden Visuals"
 }

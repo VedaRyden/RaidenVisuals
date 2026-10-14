@@ -118,6 +118,32 @@ function initializeComparisonSliders() {
         }
     });
 }
+
+function initializeComparisonTabs() {
+    const tabs = document.querySelectorAll('[data-comparison-tab]');
+    const slider = document.querySelector('[data-comparison-slider]');
+    if (!slider || tabs.length === 0) return;
+    const defaultImage = slider.querySelector('.comparison-image-default');
+    const raidenImage = slider.querySelector('.comparison-image-raiden');
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            tabs.forEach(function (otherTab) {
+                const isSelected = otherTab === tab;
+                otherTab.classList.toggle('is-active', isSelected);
+                otherTab.setAttribute('aria-selected', String(isSelected));
+            });
+            slider.setAttribute('aria-labelledby', tab.id);
+
+            defaultImage.src = tab.dataset.defaultImage;
+            raidenImage.src = tab.dataset.raidenImage;
+            const category = tab.textContent.trim();
+            defaultImage.alt = category + ' - Default Vibrant Visuals';
+            raidenImage.alt = category + ' - Raiden Visuals VIP+';
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const langToggleBtn = document.getElementById('langToggle');
     if (langToggleBtn) {
@@ -132,6 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     loadLanguageFiles();
     initializeComparisonSliders();
+    initializeComparisonTabs();
 });
 
 // ===================== HEADER / NAVIGASI =====================

@@ -1460,6 +1460,42 @@ h1 {
     text-align: center;
 }
 
+.comparison-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 0 auto 18px;
+}
+
+.comparison-tab {
+    min-height: 48px;
+    padding: 0 20px;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    background: transparent;
+    color: #ffffff;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.comparison-tab:hover,
+.comparison-tab.is-active {
+    color: #ff0000;
+}
+
+.comparison-tab.is-active {
+    border-bottom-color: #ff2222;
+}
+
+.comparison-tab:focus-visible {
+    outline: 2px solid #ff5555;
+    outline-offset: -4px;
+}
+
 .comparison-slider {
     --split: 50%;
     position: relative;
@@ -1499,8 +1535,7 @@ h1 {
     bottom: 0;
     left: var(--split);
     width: 3px;
-    background: rgba(255, 255, 255, 0.88);
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.65);
+    background: rgb(255, 255, 255);
     transform: translateX(-50%);
     pointer-events: none;
 }
@@ -1517,17 +1552,14 @@ h1 {
     border: 2px solid #ffffff;
     border-radius: 2px;
     background: rgba(20, 20, 20, 0.55);
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    font-size: 36px;
-    font-weight: 300;
-    line-height: 1;
     transform: translate(-50%, -50%);
 }
 
-.comparison-handle span {
+.comparison-handle img {
     display: block;
-    margin-top: -4px;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
 }
 .comparison-label {
     position: absolute;
@@ -1561,6 +1593,8 @@ h1 {
     .comparison-title { font-size: 18px; }
     .comparison-slider { aspect-ratio: 1.5 / 1; }
     .comparison-label { top: 8px; padding: 4px 7px; font-size: 10px; }
+    .comparison-tabs { margin-bottom: 14px; }
+    .comparison-tab { min-height: 44px; padding: 0 10px; font-size: 11px; }
 }
 .pricing-grid {
     display: grid;
