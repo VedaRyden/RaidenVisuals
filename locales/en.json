@@ -92,5 +92,12 @@
   "comparison.shadows": "Shadows",
   "comparison.reflections": "Reflections",
   "comparison.default": "Default Vibrant Visuals",
-  "comparison.raiden": "Raiden Visuals"
+  "comparison.raiden": "Raiden Visuals",
+  "comparison.creditsPrefix": "Screenshots captured with ",
+  "comparison.strawberryDeferred": "Strawberry Deferred 4.0 Rewrite",
+  "comparison.creditsSuffix": ". Raiden Visuals works with Strawberry Graphics to make Vibrant Visuals better for everyone.",
+  "comparison.creditsFollow": "Interested in the work by Strawberry Graphics? Visit",
+  "comparison.discord": "Discord",
+  "comparison.and": "and",
+  "comparison.youtube": "YouTube"
 }

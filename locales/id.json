@@ -122,5 +122,12 @@
   "comparison.shadows": "Shadows",
   "comparison.reflections": "Reflections",
   "comparison.default": "Default Vibrant Visuals",
-  "comparison.raiden": "Raiden Visuals VIP+"
+  "comparison.raiden": "Raiden Visuals VIP+",
+  "comparison.creditsPrefix": "Screenshot diambil menggunakan ",
+  "comparison.strawberryDeferred": "Strawberry Deferred 4.0 Rewrite",
+  "comparison.creditsSuffix": ". Raiden Visuals bekerja sama dengan Strawberry Graphics untuk mengembangkan Vibrant Visuals menjadi lebih baik bagi semua orang.",
+  "comparison.creditsFollow": "Tertarik dengan karya Strawberry Graphics? Kunjungi",
+  "comparison.discord": "Discord",
+  "comparison.and": "dan",
+  "comparison.youtube": "YouTube"
 }

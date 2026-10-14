@@ -1520,6 +1520,30 @@ h1 {
     touch-action: pan-y;
 }
 
+.comparison-credits {
+    width: min(100%, 1100px);
+    margin: 16px auto 0;
+    color: #bcbcbc;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.comparison-credits p {
+    margin: 0 0 6px;
+}
+
+.comparison-credits a {
+    color: #ff7f7f;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.comparison-credits a:hover {
+    color: #ffffff;
+}
+
 .comparison-image {
     position: absolute;
     inset: 0;
