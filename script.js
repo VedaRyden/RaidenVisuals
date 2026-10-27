@@ -365,102 +365,120 @@ soundWarn.volume = 0.6;
 soundSukses.volume = 0.5; // Mengecilkan volume suara SUKSES (Tier 3 & 4) menjadi 40% saja
 soundRelease.volume = 0.5;
 soundClick.volume = 0.3; // Mengecilkan volume suara klik tombol menjadi 30% saja
-// Cocokkan ketikan user dengan database GPU (tiers.json).
-// Dolan key "GPU" dari user, lalu bandingkan dengan setiap nama di database.
-// Karena nama GPU mengandung karakter aneh (contoh: "V3D4.2.14"), normalisasi dulu.
+// Cari GPU di database (tiers.json) berdasarkan ketikan user.
+//
+// Prinsipnya: JANGAN PERNAH MENERKA. Kalau hasilnya bisa ambigu,
+// fungsi ini mengembalikan null (artinya "tidak ditemukan")
+// daripada menampilkan tier milik GPU yang salah.
+//
+// Normalisasi dulu, karena nama GPU mengandung banyak hal yang tidak
+// konsisten antar perangkat (spasi, tanda hubung, titik, kurung, "TM"):
+//   "Adreno 730"                -> "adreno730"
+//   "Adreno (TM) 730"           -> "adreno730"   (format GL_RENDERER Android)
+//   "Mali-G710 MC4"             -> "malig710mc4"
+//   "V3D4.2.14"                 -> "v3d4214"
 function normalisasiNamaGpu(nama) {
     return String(nama)
         .toLowerCase()
-        .replace(/[^a-z0-9]/g, ''); // buang spasi, tanda hubung, titik, kurung
+        .replace(/\(tm\)|\(c\)|™|®|©/g, '') // buang tanda dagang & hak cipta
+        .replace(/opengl|opengles|^es\b/g, '') // buang nama API yang sering ikut ter-copy
+        .replace(/[^a-z0-9]/g, ''); // buang sisanya: spasi, tanda hubung, titik, kurung
 }
 
-// Hitung berapa karakter dari "pendek" yang muncul berurutan di "panjang".
-// Dipakai untuk mendeteksi kemiripan seperti "adreno730" vs "adreno73".
-function panjangSubstringBersama(pendek, panjang) {
-    let terbaik = 0;
-    let saatIni = 0;
-    for (let i = 0; i < pendek.length; i++) {
-        const posisi = panjang.indexOf(pendek[i], saatIni);
-        if (posisi === -1) {
-            saatIni = 0;
-            continue;
-        }
-        saatIni = posisi + 1;
-        terbaik = Math.max(terbaik, saatIni);
-    }
-    return terbaik;
-}
-
-// Ranking kandidat:.skala 0-100. Semakin tinggi semakin yakin cocok.
-// Exact > prefix > substring > token > fuzzy. Kalau seri, nama paling panjang menang.
-function skorKecocokan(namaDb, ketikanUser) {
-    if (namaDb === ketikanUser) return 1000;
-
-    // 1. Persis sebagai prefix (mis. "adreno" -> "adreno730")
-    if (namaDb.startsWith(ketikanUser)) {
-        return 900 - Math.min(90, namaDb.length - ketikanUser.length);
-    }
-    // 2. Ketikan user adalah prefix dari nama db
-    if (ketikanUser.startsWith(namaDb)) {
-        return 850 - Math.min(90, ketikanUser.length - namaDb.length);
-    }
-    // 3. Nama db memuat ketikan user di tengah (mis. "mali" -> "mali-g710")
-    if (namaDb.includes(ketikanUser)) {
-        return 700 - Math.min(90, namaDb.length - ketikanUser.length);
-    }
-    // 4. Ketikan user memuat nama db di tengah
-    if (ketikanUser.includes(namaDb)) {
-        return 650 - Math.min(90, ketikanUser.length - namaDb.length);
-    }
-
-    // 5. Fuzzy: hitung substring bersama terpanjang.
-    // Hanya berlaku kalau sebagian besar dari ketikan user benar-benar ada,
-    // supaya "adreno" tidak dicocokkan ke "mali" atau "powervr".
-    const bersama = panjangSubstringBersama(ketikanUser, namaDb);
-    const rasio = bersama / ketikanUser.length;
-    if (rasio >= 0.75 && bersama >= 4) {
-        return 400 + Math.round(rasio * 100) - Math.min(90, namaDb.length - bersama);
-    }
-    return 0;
-}
-
-// Cari GPU di database yang paling cocok dengan ketikan user.
-// Mengembalikan { tier, nama, skor } atau null kalau tidak ada yang cukup yakin.
+// Cari nama GPU di database yang paling spesifik cocok dengan ketikan user.
+// Mengembalikan { tier, nama } atau null kalau tidak ada / ambigu.
 function carikanTierGpu(ketikanUser, database) {
     const target = normalisasiNamaGpu(ketikanUser);
     if (!target) return null;
 
-    let terbaik = null;
+    // Normalisasi semua nama di database sekali saja, biar tidak diulang
+    // untuk setiap baris loop.
+    const daftarGpu = [];
     for (const namaGpuAsli in database) {
-        const namaDb = normalisasiNamaGpu(namaGpuAsli);
-        const skor = skorKecocokan(namaDb, target);
-        if (skor <= 0) continue;
+        daftarGpu.push({ asli: namaGpuAsli, bersih: normalisasiNamaGpu(namaGpuAsli) });
+    }
 
-        // Tie-break: skor sama -> nama db paling panjang & paling spesifik menang.
-        if (!terbaik
-            || skor > terbaik.skor
-            || (skor === terbaik.skor && namaDb.length > terbaik.nama.length)) {
-            terbaik = { tier: database[namaGpuAsli], nama: namaGpuAsli, skor: skor };
+    // Kumpulkan semua kandidat yang berhubungan secara prefix,
+    // lalu catat seberapa panjang kecocokannya.
+    const kandidat = [];
+    const kandidatEkor = [];
+
+    for (let i = 0; i < daftarGpu.length; i++) {
+        const namaGpuAsli = daftarGpu[i].asli;
+        const namaDb = daftarGpu[i].bersih;
+
+        if (namaDb === target) {
+            // Kecocokan sempurna: langsung menang, tanpa perlu cek yang lain.
+            return { tier: database[namaGpuAsli], nama: namaGpuAsli };
+        }
+
+        // Kasus 1: ketikan user adalah awalan dari nama di database.
+        // Contoh: user mengetik "Mali-G710", database punya "MaliG710MC10".
+        if (namaDb.startsWith(target)) {
+            kandidat.push({ nama: namaGpuAsli, panjang: target.length });
+        }
+        // Kasus 2: nama di database adalah awalan dari ketikan user.
+        // Contoh: user mengetik "Mali-G710 MC10", database punya "MaliG710".
+        else if (target.startsWith(namaDb)) {
+            // Karakter sisanya hanya boleh suffix yang memang benar-benar
+            // ada di database. Syaratnya: harus ada entri lain yang dimulai
+            // dengan seluruh ketikan user. Dengan begitu "Mali G71x"
+            // (suffix "x" tidak ada di mana pun) ikut ditolak.
+            const sisaAdaDiDb = daftarGpu.some(function (g) {
+                return g.bersih !== namaDb && g.bersih.startsWith(target);
+            });
+            if (sisaAdaDiDb) {
+                kandidat.push({ nama: namaGpuAsli, panjang: namaDb.length });
+            }
+        }
+        // Kasus 3: ketikan user adalah EKOR dari nama di database.
+        // Contoh: user mengetik "V3D510", database punya "VideoCoreVHW(V3D510)".
+        // Dipakai untuk nama GPU yang panjang dan bervariasi antar perangkat.
+        // Cukup panjang, supaya angka pendek seperti "104" tidak ikut cocok.
+        else if (target.length >= 6 && namaDb.endsWith(target)) {
+            kandidatEkor.push(namaGpuAsli);
         }
     }
 
-    // Ambang minimal: jangan pernah menebak. Kalau tidak yakin -> "tidak ditemukan".
-    if (!terbaik || terbaik.skor < 300) return null;
-    return terbaik;
+    if (kandidat.length === 0) {
+        // Tidak ada cocokan prefix. Cocokan ekor hanya boleh dipakai kalau
+        // TIDAK ADA pesaing lain, biar tidak menebak.
+        if (kandidatEkor.length === 1) {
+            return { tier: database[kandidatEkor[0]], nama: kandidatEkor[0] };
+        }
+        return null;
+    }
+
+    // Ambil kecocokan paling panjang (paling spesifik).
+    let panjangTerbaik = 0;
+    for (let i = 0; i < kandidat.length; i++) {
+        if (kandidat[i].panjang > panjangTerbaik) panjangTerbaik = kandidat[i].panjang;
+    }
+    const terbaik = kandidat.filter(function (k) { return k.panjang === panjangTerbaik; });
+
+    // Lebih dari satu kandidat dengan kecocokan sama panjang = AMBIGUOUS.
+    // Contoh: user mengetik "adreno7" -> ada Adreno702, Adreno710, Adreno714, dst.
+    // Menebak salah satunya bisa menampilkan tier yang keliru, jadi tolak saja.
+    if (terbaik.length > 1) return null;
+
+    return { tier: database[terbaik[0].nama], nama: terbaik[0].nama };
 }
 
 // Fungsi utama untuk memeriksa kecocokan GPU
 function periksaKompatibilitasGPU() {
-    // Ambil ketikan user, hapus spasi kosong, dan ubah ke huruf kecil agar pencarian fleksibel
-// Menghapus semua tanda minus (-) DAN menghapus semua jenis spasi kosong, lalu ubah ke huruf kecil
-// Mengubah tanda minus (-) menjadi kosong DAN menghapus semua spasi pada nama GPU dari database JSON
-let ketikanUser = gpuInput.value.replace(/-/g, '').replace(/\s+/g, '').toLowerCase();
+    // Serahkan teks asli ke carikanTierGpu: proses normalisasi (spasi,
+    // tanda hubung, titik, kurung, "TM") dikerjakan di satu tempat saja.
+    const ketikanUser = gpuInput.value;
+    const ketikanBersih = normalisasiNamaGpu(ketikanUser);
 
-    if (ketikanUser === "" || ketikanUser.length <= 5) {
+    // Validasi panjang setelah normalisasi. Nama GPU di database terpendek
+    // adalah V3D4.2 (5 karakter bersih), jadi pakai batas minimum 5.
+    if (ketikanBersih === "" || ketikanBersih.length < 5) {
         soundSalah.pause(); soundSalah.currentTime = 0;
         gpuInput.classList.remove('efek-cahaya-hijau');
         gpuInput.classList.remove('outline-kuning'); // Hapus kuning karena salah isi
         gpuInput.classList.remove('outline-hijau'); // Hapus hijau karena salah isi
+        gpuInput.classList.remove('outline-merah'); // Hapus merah dari hasil sebelumnya
         soundSalah.play(); // KODE BARU: Putar suara salah ketik
         gpuResult.innerHTML = t('gpu.msgEmpty');
         gpuResult.className = "gpu-result-msg gpu-fail";
