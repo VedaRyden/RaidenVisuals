@@ -5,6 +5,11 @@
 
 (function () {
     let changelogData = [];
+    let scrollToEntryOnNextRender = true;
+    const editions = [
+        { type: 'vip-plus', key: 'changelog.vipHeading', fallback: 'Raiden Visuals VIP+' },
+        { type: 'standard', key: 'changelog.standardHeading', fallback: 'Raiden Visuals Standard' }
+    ];
 
     // Ambil bahasa aktif dari script.js (variabel global `currentLang` & fungsi `t()`)
     function getLang() {
@@ -63,17 +68,61 @@
         return div.innerHTML;
     }
 
+    function getSelectedEdition() {
+        const requested = new URLSearchParams(window.location.search).get('edition');
+        if (editions.some(function (edition) { return edition.type === requested; })) return requested;
+
+        const entryId = decodeURIComponent(window.location.hash.slice(1));
+        const linkedEntry = changelogData.find(function (entry) { return entry.id === entryId; });
+        return linkedEntry ? linkedEntry.product : '';
+    }
+
+    function renderEditionPicker() {
+        const picker = document.getElementById('changelogEditionPicker');
+        if (!picker) return;
+
+        picker.innerHTML = editions.map(function (edition) {
+            const entries = changelogData
+                .filter(function (entry) { return entry.product === edition.type; })
+                .sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+            if (!entries.length) return '';
+
+            const latest = entries[0];
+            const title = localize(latest.title);
+            const summary = localize(latest.summary);
+            const countLabel = translateStatic('changelog.updateCount', '{count} updates')
+                .replace('{count}', String(entries.length));
+            const latestLabel = translateStatic('changelog.latestUpdate', 'Latest update');
+            const viewLabel = translateStatic('changelog.viewUpdates', 'View Updates');
+
+            return `
+                <a class="changelog-edition-card" href="changelog.html?edition=${edition.type}">
+                    <div class="changelog-edition-card-thumb">
+                        <img src="${escapeHTML(String(latest.image))}" alt="${escapeHTML(title)}" loading="lazy">
+                        <span class="changelog-edition-card-version">v${escapeHTML(String(latest.version))}</span>
+                    </div>
+                    <div class="changelog-edition-card-body">
+                        <div class="changelog-edition-card-meta">
+                            <span>${escapeHTML(countLabel)}</span>
+                            <span>${escapeHTML(latestLabel)} · ${timeAgo(latest.date)}</span>
+                        </div>
+                        <h2>${escapeHTML(translateStatic(edition.key, edition.fallback))}</h2>
+                        <p class="changelog-edition-card-latest">${escapeHTML(title)}</p>
+                        ${summary ? `<p class="changelog-edition-card-summary">${escapeHTML(summary)}</p>` : ''}
+                        <span class="changelog-edition-card-link">${escapeHTML(viewLabel)} <span aria-hidden="true">→</span></span>
+                    </div>
+                </a>
+            `;
+        }).join('');
+    }
+
     // ---------- RENDER: Changelog dipisah berdasarkan edisi ----------
     function renderCard() {
         const container = document.getElementById('changelogCardContainer');
         if (!container || changelogData.length === 0) return;
 
         const readMoreText = translateStatic('changelog.readMore', getLang() === 'en' ? 'Read More' : 'Baca Selengkapnya');
-        const groups = [
-            { type: 'vip-plus', key: 'changelog.vipHeading', fallback: 'Raiden Visuals VIP+' },
-            { type: 'standard', key: 'changelog.standardHeading', fallback: 'Raiden Visuals Standard' }
-        ];
-        container.innerHTML = groups.map(function (group) {
+        container.innerHTML = editions.map(function (group) {
             const entries = changelogData.filter(function (entry) { return entry.product === group.type; });
             if (!entries.length) return '';
             const cards = entries.slice(0, 2).map(function (entry) {
@@ -107,19 +156,39 @@
     // ---------- RENDER: Halaman detail penuh di changelog.html ----------
     function renderDetailPage() {
         const container = document.getElementById('changelogFullList');
+        const picker = document.getElementById('changelogEditionPicker');
+        const pickerIntro = document.getElementById('changelogPickerIntro');
+        const backLink = document.getElementById('changelogBackEditions');
         if (!container || changelogData.length === 0) return;
 
         const postedLabel = translateStatic('changelog.postedLabel', getLang() === 'en' ? 'Posted:' : 'Diposting:');
-        const groups = [
-            { type: 'vip-plus', key: 'changelog.vipHeading', fallback: 'Raiden Visuals VIP+' },
-            { type: 'standard', key: 'changelog.standardHeading', fallback: 'Raiden Visuals Standard' }
-        ];
+        const selectedEdition = getSelectedEdition();
+        const selectedEntryId = decodeURIComponent(window.location.hash.slice(1));
 
-        container.innerHTML = groups.map(function (group) {
+        if (!selectedEdition) {
+            if (picker) picker.hidden = false;
+            if (pickerIntro) pickerIntro.hidden = false;
+            if (backLink) backLink.hidden = true;
+            container.hidden = true;
+            container.innerHTML = '';
+            renderEditionPicker();
+            scrollToEntryOnNextRender = false;
+            return;
+        }
+
+        if (picker) picker.hidden = true;
+        if (pickerIntro) pickerIntro.hidden = true;
+        if (backLink) backLink.hidden = false;
+        container.hidden = false;
+
+        container.innerHTML = editions.filter(function (group) {
+            return group.type === selectedEdition;
+        }).map(function (group) {
             const entries = changelogData.filter(function (entry) { return entry.product === group.type; });
             if (!entries.length) return '';
             const posts = entries.map(function (entry) {
                 const judul = localize(entry.title);
+                const ringkasan = localize(entry.summary);
                 const peringatan = localize(entry.warning);
                 const sectionsHTML = (entry.sections || []).map(function (section) {
                     const judulSeksi = localize(section.heading);
@@ -141,12 +210,16 @@
                 ` : '';
                 return `
                     <article class="changelog-post" id="${entry.id}">
-                        <div class="changelog-post-thumb"><img src="${entry.image}" alt="${escapeHTML(judul)}" loading="lazy"></div>
-                        <div class="changelog-post-meta">
-                            <span class="changelog-post-version">v${entry.version}</span>
-                            <span class="changelog-post-date">${postedLabel} ${formatTanggalPanjang(entry.date)}</span>
-                        </div>
-                        <h2 class="changelog-post-title">${escapeHTML(judul)}</h2>
+                        <header class="changelog-post-header">
+                            <h2 class="changelog-post-title">${escapeHTML(judul)}</h2>
+                            <div class="changelog-post-meta">
+                                <span class="changelog-post-edition">${escapeHTML(translateStatic(group.key, group.fallback))}</span>
+                                <span class="changelog-post-version">v${escapeHTML(String(entry.version))}</span>
+                                <time class="changelog-post-date" datetime="${escapeHTML(String(entry.date))}">${postedLabel} ${formatTanggalPanjang(entry.date)}</time>
+                            </div>
+                        </header>
+                        <div class="changelog-post-thumb"><img src="${escapeHTML(String(entry.image))}" alt="${escapeHTML(judul)}" loading="lazy"></div>
+                        ${ringkasan ? `<p class="changelog-post-summary">${escapeHTML(ringkasan)}</p>` : ''}
                         ${warningHTML}
                         ${sectionsHTML}
                     </article>
@@ -158,7 +231,15 @@
                     ${posts}
                 </section>
             `;
-        }).join('<div class="os-guide-block"></div>');
+        }).join('');
+
+        if (selectedEntryId && scrollToEntryOnNextRender) {
+            requestAnimationFrame(function () {
+                const entry = document.getElementById(selectedEntryId);
+                if (entry) entry.scrollIntoView();
+            });
+        }
+        scrollToEntryOnNextRender = false;
     }
     function renderAll() {
         renderCard();
@@ -188,5 +269,6 @@
         muatChangelog();
 
         document.addEventListener('languageChanged', renderAll);
+        window.addEventListener('hashchange', renderAll);
     });
 })();

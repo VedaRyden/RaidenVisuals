@@ -17,6 +17,7 @@ function loadLanguageFiles() {
     })).then(function () {
         languageFilesReady = true;
         applyLanguage(currentLang);
+        document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: currentLang } }));
     }).catch(function (error) {
         console.error('Gagal memuat file bahasa:', error);
         // Keep the page readable using the Indonesian text already present in the HTML.
@@ -42,10 +43,18 @@ function applyLanguage(lang) {
     document.documentElement.setAttribute('lang', currentLang);
 
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        // Save the original HTML copy once so missing locale files/keys never
+        // replace visible copy with a raw translation key.
+        if (!el.hasAttribute('data-i18n-fallback')) {
+            el.setAttribute('data-i18n-fallback', el.textContent.trim());
+        }
         el.textContent = t(el.getAttribute('data-i18n'));
     });
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
         const key = el.getAttribute('data-i18n-html');
+        if (!el.hasAttribute('data-i18n-html-fallback')) {
+            el.setAttribute('data-i18n-html-fallback', el.innerHTML.trim());
+        }
         const translated = translations[currentLang] && translations[currentLang][key];
         el.innerHTML = translated || el.getAttribute('data-i18n-html-fallback') || key;
     });

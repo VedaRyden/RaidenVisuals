@@ -780,6 +780,160 @@ h1 {
     scroll-margin-top: 96px;
 }
 
+/* Installation guide layout */
+#panduan-instalasi {
+    display: flow-root;
+}
+
+.guide-platform {
+    margin-top: 22px;
+}
+
+.guide-platform .os-title-wrapper {
+    margin: 0 0 10px !important;
+}
+
+.guide-platform > p {
+    margin-bottom: 14px;
+}
+
+.app-launcher-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.app-launcher-list li {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between;
+    gap: 16px !important;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 16px;
+    border: 1px solid rgba(255, 0, 0, 0.32);
+    border-radius: 8px;
+    background: #202020;
+}
+
+.app-info-wrapper {
+    flex: 1 1 auto;
+    min-width: 0 !important;
+    width: auto !important;
+}
+
+.app-name-link {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.app-launcher-list .app-subtext {
+    max-width: none !important;
+    margin: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.5;
+}
+
+.app-launcher-list .launcher-btn {
+    flex: 0 0 auto;
+}
+
+.app-launcher-list .badge-img {
+    display: block;
+    width: auto;
+    max-width: 138px;
+    height: 42px !important;
+    margin: 0 !important;
+    object-fit: contain;
+}
+
+.guide-windows {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 0, 0, 0.25);
+}
+
+.guide-path-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.guide-path-list > p {
+    min-width: 0;
+    margin: 0 !important;
+    padding: 14px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #202020;
+}
+
+.guide-path-list .copyable-path {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 10px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+}
+
+.gpu-guide-notes {
+    display: grid;
+    gap: 9px;
+    width: min(100%, 1050px);
+    margin: 18px auto 0;
+}
+
+.gpu-guide-notes p {
+    margin: 0 !important;
+    padding: 11px 15px;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-left: 3px solid #e32121;
+    border-radius: 5px;
+    background: #1d1d1d;
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+@media (max-width: 700px) {
+    .app-launcher-list,
+    .guide-path-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .app-launcher-list li {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        margin-bottom: 0 !important;
+        padding: 14px;
+    }
+
+    .app-launcher-list .badge-img {
+        height: 38px !important;
+        margin: 0 !important;
+    }
+
+    #panduan-instalasi {
+        padding: 22px 16px;
+    }
+
+    .gpu-guide-notes {
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .gpu-guide-notes p {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+}
+
 .site-header {
     position: sticky;
     top: 0;
@@ -1825,6 +1979,98 @@ h1 {
     margin-bottom: 0;
 }
 
+.pricing-section {
+    margin: 24px 0 30px;
+    padding: 20px 0 22px;
+    border-top: 1px solid rgba(255, 34, 34, 0.55);
+    border-bottom: 1px solid rgba(255, 34, 34, 0.55);
+}
+
+.gpu-requirements {
+    margin: 34px 0 30px;
+    padding: 22px 24px;
+    background: linear-gradient(180deg, rgba(58, 10, 10, 0.48), #191919 38%);
+    border: 1px solid rgba(255, 34, 34, 0.62);
+    border-bottom: 2px solid #ff2222;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 0 16px rgba(255, 0, 0, 0.12);
+    color: #dddddd;
+    font-family: 'NotoSans', sans-serif !important;
+}
+
+.gpu-requirements h2 {
+    margin: 0 0 6px;
+    color: #ff2222;
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: 23px !important;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.gpu-requirements-intro {
+    margin: 0 0 18px;
+    color: #c4c4c4;
+    font-size: 14px;
+}
+
+.gpu-requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.gpu-requirements-column h3 {
+    margin: 0 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 34, 34, 0.45);
+    color: #ff4a4a;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.gpu-requirements-column dl {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 5px 8px;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.gpu-requirements-column dt {
+    color: #aaaaaa;
+    text-transform: uppercase;
+}
+
+.gpu-requirements-column dd {
+    margin: 0;
+    color: #e2e2e2;
+}
+
+.gpu-requirements-recommended h3 {
+    border-color: rgba(255, 34, 34, 0.55);
+}
+
+.gpu-requirements-note {
+    margin: 14px 0 0;
+    color: #aaaaaa;
+    font-size: 12px;
+}
+
+@media (max-width: 650px) {
+    .gpu-requirements {
+        padding: 18px 16px;
+    }
+
+    .gpu-requirements-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+}
+
 @media (max-width: 768px) {
     .pricing-grid {
         grid-template-columns: 1fr;
@@ -2315,5 +2561,385 @@ h1 {
 
     .pricing-icon {
         font-size: 20px;
+    }
+}
+
+/* Article-style changelog page, inspired by Minecraft Feedback articles. */
+body.changelog-page-body {
+    background-color: #080808;
+    background-image: none;
+}
+
+.changelog-page-wrap {
+    padding: 38px 20px 80px;
+}
+
+.changelog-page {
+    width: min(100%, 860px);
+    max-width: none;
+}
+
+.changelog-page-title {
+    margin: 0 0 36px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #343434;
+    font-size: 32px !important;
+    text-align: left;
+}
+
+.changelog-edition-detail > .changelog-edition-heading {
+    margin: 0 0 8px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid rgba(255, 34, 34, 0.45);
+    color: #ff4d4d;
+    font-size: 23px;
+}
+
+.changelog-post {
+    margin: 0 0 42px;
+    padding: 22px 0 40px;
+    border: 0;
+    border-bottom: 1px solid #343434;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    scroll-margin-top: 100px;
+}
+
+.changelog-post-header {
+    margin-bottom: 20px;
+}
+
+.changelog-post-title {
+    margin: 0 0 13px;
+    color: #f5f5f5;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+.changelog-post-meta {
+    gap: 9px;
+    margin: 0;
+}
+
+.changelog-post-edition {
+    color: #ff6565;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.changelog-post-version {
+    padding: 3px 8px;
+    border: 1px solid rgba(255, 34, 34, 0.65);
+    background: rgba(255, 34, 34, 0.14);
+    color: #ff7777;
+}
+
+.changelog-post-date {
+    color: #a8a8a8;
+}
+
+.changelog-post-thumb {
+    margin: 0 0 20px;
+    border-radius: 4px;
+    background: #101010;
+}
+
+.changelog-post-summary {
+    margin: 0 0 20px !important;
+    color: #dedede;
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+}
+
+.changelog-warning-box {
+    margin: 0 0 25px;
+    padding: 13px 16px;
+    border-color: rgba(255, 90, 90, 0.55);
+    border-radius: 4px;
+    background: rgba(255, 50, 50, 0.08);
+    font-size: 14px;
+}
+
+.changelog-section {
+    margin: 28px 0 0;
+}
+
+.changelog-section-heading {
+    margin: 0 0 10px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #303030;
+    color: #f0f0f0;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 19px !important;
+    font-weight: 750;
+    letter-spacing: 0;
+}
+
+.changelog-list {
+    padding-left: 23px;
+    list-style: disc;
+}
+
+.changelog-list li {
+    padding: 5px 0;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.changelog-list li::marker {
+    color: #ff3838;
+}
+
+.changelog-list li::before {
+    content: none;
+}
+
+@media (max-width: 600px) {
+    .changelog-page-wrap {
+        padding: 26px 16px 64px;
+    }
+
+    .changelog-page-title {
+        margin-bottom: 28px;
+        padding-bottom: 14px;
+        font-size: 26px !important;
+    }
+
+    .changelog-edition-detail > .changelog-edition-heading {
+        font-size: 20px;
+    }
+
+    .changelog-post {
+        padding: 18px 0 30px;
+        margin-bottom: 32px;
+    }
+
+    .changelog-post-title {
+        font-size: 23px !important;
+    }
+
+    .changelog-post-meta {
+        gap: 7px;
+    }
+
+    .changelog-post-date {
+        width: 100%;
+    }
+
+    .changelog-post-summary {
+        font-size: 15px !important;
+    }
+
+    .changelog-section-heading {
+        font-size: 17px !important;
+    }
+
+    .changelog-list li {
+        font-size: 14px;
+    }
+}
+
+.changelog-page-intro {
+    margin: -20px 0 24px !important;
+    color: #b7b7b7;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+}
+
+.changelog-edition-picker {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.changelog-edition-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #343434;
+    border-radius: 6px;
+    background: #111111;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.changelog-edition-card:hover {
+    transform: translateY(-3px);
+    border-color: #ff3030;
+    box-shadow: 0 8px 24px rgba(255, 0, 0, 0.13);
+}
+
+.changelog-edition-card-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #181818;
+}
+
+.changelog-edition-card-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.changelog-edition-card-version {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    border: 1px solid #ff3333;
+    border-radius: 999px;
+    background: #171717;
+    color: #ff6666;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.changelog-edition-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 18px 20px 20px;
+}
+
+.changelog-edition-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 12px;
+    margin-bottom: 13px;
+    color: #999999;
+    font-size: 12px;
+}
+
+.changelog-edition-card-body h2 {
+    margin: 0 0 8px;
+    color: #ff5555;
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: 22px !important;
+}
+
+.changelog-edition-card-latest {
+    margin: 0 0 8px !important;
+    color: #f2f2f2;
+    font-size: 16px !important;
+    font-weight: 700;
+    line-height: 1.45 !important;
+}
+
+.changelog-edition-card-summary {
+    margin: 0 0 18px !important;
+    color: #aaaaaa;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+}
+
+.changelog-edition-card-link {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 13px;
+    border-top: 1px solid #292929;
+    color: #ff4a4a;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.changelog-back-editions {
+    margin: -18px 0 24px;
+}
+
+@media (max-width: 640px) {
+    .changelog-edition-picker {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .changelog-page-intro {
+        margin-top: -14px !important;
+        font-size: 14px !important;
+    }
+
+    .changelog-edition-card-body {
+        padding: 15px 16px 17px;
+    }
+
+    .changelog-edition-card-body h2 {
+        font-size: 20px !important;
+    }
+}
+
+/* Homepage changelogs: swipe horizontally between product editions. */
+#changelogCardContainer.changelog-card-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 18px;
+    width: 100%;
+    max-width: 100%;
+    padding: 4px 2px 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 2px;
+    scrollbar-color: #ff2222 #1a1a1a;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+}
+
+#changelogCardContainer .changelog-edition-group {
+    flex: 0 0 calc((100% - 18px) / 2);
+    width: calc((100% - 18px) / 2);
+    max-width: 500px;
+    min-width: 0;
+    margin: 8px 0 12px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+#changelogCardContainer .changelog-edition-cards {
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: stretch;
+}
+
+#changelogCardContainer .changelog-card {
+    width: 100%;
+    height: 100%;
+}
+
+#changelogCardContainer::-webkit-scrollbar {
+    width: 0;
+    height: 7px;
+}
+
+#changelogCardContainer::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 999px;
+}
+
+#changelogCardContainer::-webkit-scrollbar-thumb {
+    border: 0;
+    border-radius: 999px;
+    background: #ff2222;
+}
+
+@media (max-width: 700px) {
+    #changelogCardContainer.changelog-card-grid {
+        gap: 14px;
+    }
+
+    #changelogCardContainer .changelog-edition-group {
+        flex-basis: 88%;
+        width: 88%;
     }
 }

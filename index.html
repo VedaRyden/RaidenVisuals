@@ -87,6 +87,7 @@
     <div class="video-container">
         <iframe 
             src="https://youtube.com/embed/EFGAV0GaRUc"
+            title="Raiden Visuals showcase video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
@@ -129,9 +130,30 @@
     <p data-i18n="features.item3">Mengoptimalkan Point Light Beserta Bayangan Pada Vibrant Visuals.</p>
     <p data-i18n="features.item4">Mengoptimalkan Kabut Volumetrik Pada Vibrant Visuals.</p>
     <p data-i18n="features.item5">Memperluas Opsi Jarak Render (Menjadi 1-50 Chunks).</p>
-<p class="desc-list">
+<section class="comparison-section" id="visual-comparison">
+    <h2 class="comparison-title" data-i18n="comparison.title">Perbandingan Visual: Vibrant Visuals Default vs Raiden Visuals VIP+</h2>
+    <p class="comparison-caption" data-i18n="comparison.caption">Geser garis untuk membandingkan kedua tampilan.</p>
+    <div class="comparison-tabs" role="tablist" aria-label="Comparison categories">
+        <button type="button" class="comparison-tab is-active" role="tab" id="comparisonTabFogs" aria-selected="true" aria-controls="comparisonSlider" data-comparison-tab data-default-image="img/volumetricfogsdefaultvibrantvisuals.webp" data-raiden-image="img/volumetricfogsraidenvisuals.webp" data-i18n="comparison.fogs">Volumetric Fogs</button>
+        <button type="button" class="comparison-tab" role="tab" id="comparisonTabShadows" aria-selected="false" aria-controls="comparisonSlider" data-comparison-tab data-default-image="img/shadowsdefaultvibrantvisuals.webp" data-raiden-image="img/shadowsraidenvisuals.webp" data-i18n="comparison.shadows">Shadows</button>
+        <button type="button" class="comparison-tab" role="tab" id="comparisonTabReflections" aria-selected="false" aria-controls="comparisonSlider" data-comparison-tab data-default-image="img/reflectionsdefaultvibrantvisuals.webp" data-raiden-image="img/reflectionsraidenvisuals.webp" data-i18n="comparison.reflections">Reflections</button>
+    </div>
+    <div class="comparison-slider" id="comparisonSlider" data-comparison-slider style="--split: 50%" role="tabpanel" aria-labelledby="comparisonTabFogs" aria-label="Visual comparison slider">
+        <img class="comparison-image comparison-image-default" src="img/volumetricfogsdefaultvibrantvisuals.webp" alt="Default Vibrant Visuals comparison screenshot">
+        <img class="comparison-image comparison-image-raiden" src="img/volumetricfogsraidenvisuals.webp" alt="Raiden Visuals VIP+ comparison screenshot">
+        <span class="comparison-label comparison-label-default" data-i18n="comparison.default">Default Vibrant Visuals</span>
+        <span class="comparison-label comparison-label-raiden" data-i18n="comparison.raiden">Raiden Visuals VIP+</span>
+        <div class="comparison-divider" aria-hidden="true"><span class="comparison-handle"><img src="img/left.png" alt=""><img src="img/right.png" alt=""></span></div>
+        <input class="comparison-range" type="range" min="0" max="100" value="50" aria-label="Adjust image comparison">
+    </div>
+    <div class="comparison-credits">
+        <p><span data-i18n="comparison.creditsPrefix">Screenshot diambil menggunakan </span><a href="https://youtu.be/LNBmIT3gXRc" target="_blank" rel="noopener noreferrer" data-i18n="comparison.strawberryDeferred">Strawberry Deferred 4.0 Rewrite</a><span data-i18n="comparison.creditsSuffix">. Raiden Visuals bekerja sama dengan Strawberry Graphics untuk mengembangkan Vibrant Visuals menjadi lebih baik bagi semua orang.</span></p>
+        <p><span data-i18n="comparison.creditsFollow">Tertarik dengan karya Strawberry Graphics? Kunjungi</span> <a href="https://discord.com/invite/yHvF7TaW72" target="_blank" rel="noopener noreferrer" data-i18n="comparison.discord">Discord</a> <span data-i18n="comparison.and">dan</span> <a href="https://www.youtube.com/@strawberrygraphics55" target="_blank" rel="noopener noreferrer" data-i18n="comparison.youtube">YouTube</a>.</p>
+    </div>
+</section>
 <div class="os-guide-block" id="panduan-instalasi">
     <h2 class="desc-title-bold" data-i18n="guide.title">Panduan Instalasi</h2>
+    <div class="guide-platform">
     <div class="os-title-wrapper">
         <img src="img/android.png" alt="Android Logo" class="os-icon">
         <h2 class="desc-title-bold" data-i18n="guide.android">ANDROID</h2>
@@ -191,42 +213,32 @@
         </a>
     </li>
 </ul>
+    </div>
+    <div class="os-guide-block guide-platform guide-windows">
     <div class="os-title-wrapper">
         <img src="img/windows.png" alt="Windows Logo" class="os-icon">
         <h2 class="desc-title-bold" data-i18n="guide.windows">WINDOWS</h2>
     </div>
-    <p data-i18n="guide.windowsIntro">Untuk sistem operasi Windows atau Linux, cukup memindahkan folder "renderer" di dalam file mcpack yang diberikan, lalu tempelkan di lokasi.</p><br>
-</div>
-    <p data-i18n-html="guide.stablePath">Untuk Minecraft Bedrock versi stable, buka isi folder "subpacks\OfficialFix" lalu pindahkan folder "renderer" nya ke <code class="copyable-path" onclick="copyPath(this)">C:\XboxGames\Minecraft for Windows\Content\data</code></p><br>
-    <p data-i18n-html="guide.previewPath">Untuk Minecraft Bedrock versi preview, tidak perlu memindahkan renderer didalam folder subpacks, langsung pindahkan folder "renderer" nya ke <code class="copyable-path" onclick="copyPath(this)">C:\XboxGames\Minecraft Preview for Windows\Content\data</code></p><br>
-</ul>
-<div class="os-guide-block"></div>
-<h2 id="cek-gpu" data-i18n="gpu.title">Pengecekan GPU untuk android</h2>
-<div class="gpu-checker-box">
-    <h4 class="gpu-box-title" data-i18n="gpu.boxTitle">Cek Kompatibilitas GPU HP-Mu:</h4>
-    <div class="gpu-input-row">
-        <input type="text" id="gpuInput" placeholder="Contoh: Adreno 610 atau Mali-G52..." data-i18n-placeholder="gpu.placeholder">
-        <button id="gpuCheckBtn" data-i18n="gpu.checkBtn">Cek</button>
+    <p data-i18n="guide.windowsIntro">Untuk sistem operasi Windows atau Linux, cukup memindahkan folder "renderer" di dalam file mcpack yang diberikan, lalu tempelkan di lokasi.</p>
+    <div class="guide-path-list">
+        <p data-i18n-html="guide.stablePath">Untuk Minecraft Bedrock versi stable, buka isi folder "subpacks\OfficialFix" lalu pindahkan folder "renderer" nya ke <code class="copyable-path" onclick="copyPath(this)">C:\XboxGames\Minecraft for Windows\Content\data</code></p>
+        <p data-i18n-html="guide.previewPath">Untuk Minecraft Bedrock versi preview, tidak perlu memindahkan renderer didalam folder subpacks, langsung pindahkan folder "renderer" nya ke <code class="copyable-path" onclick="copyPath(this)">C:\XboxGames\Minecraft Preview for Windows\Content\data</code></p>
     </div>
-    <div id="gpuResult" class="gpu-result-msg"></div>
 </div>
-<p data-i18n="gpu.howToCheck">Cek nama dan seri GPU HP-mu menggunakan aplikasi DevCheck, AIDA64, CPU-Z, atau Debug Text di Minecraft versi Beta.</p><br>
-<p data-i18n="gpu.tierInfo1">Tier 1 dan Tier 2 tidak kompatibel, Tier 3 belum kompatibel untuk saat ini, Tier 4 sudah kompatibel, Tier 5 pasti kompatibel.</p><br>
-<p data-i18n="gpu.tierInfo2">Jika GPU Anda masuk di Tier 3 tapi Vibrant Visuals tidak dapat digunakan maka sebentar lagi akan kompatibel di update minecraft selanjutnya.</p><br>
-<p data-i18n="gpu.tierInfo3">Jika GPU Anda tidak terdaftar, maka kemungkinan besar tidak akan pernah kompatibel, solusi beli hp baru.</p><br>
-<p data-i18n="gpu.tierInfo4">Tier 5 Adalah spek GPU tertinggi, sedangkan Tier 1 adalah spek GPU terendah.</p><br>
-<p data-i18n="gpu.tierInfo5">Tier 1 Sama Tier 2 lebih kasihan sih. Akan sangat lama untuk dapat menggunakan Vibrant Visuals, mungkin tahun depan? Itupun dengan hasil visual dan performa yang lebih rendah.</p>
+</div>
+<div class="os-guide-block"></div>
 <div class="os-guide-block"></div>
 
 <h2 id="changelog" data-i18n="changelog.sectionTitle">Changelog Terbaru</h2>
 <p class="subtitle" data-i18n="changelog.sectionSubtitle">Pantau terus pembaruan dan perbaikan terbaru dari Raiden Visuals.</p>
-<div class="changelog-card-grid" id="changelogCardContainer"></div>
+<div class="changelog-card-grid" id="changelogCardContainer" role="region" aria-label="Changelog terbaru / Latest changelog updates" tabindex="0"></div>
 <div class="changelog-viewall-wrap">
     <a href="changelog.html" class="changelog-viewall-btn" data-i18n="changelog.viewAll">Lihat Semua Changelog</a>
 </div>
 
 <div class="os-guide-block"></div>
 
+<div class="pricing-section">
 <h2 id="pricing" data-i18n="pricing.title">Dukung Raiden Visuals</h2>
 <p class="subtitle" data-i18n="pricing.subtitle">Raiden Visuals selalu gratis untuk semua orang. Kalau mau dapat bonus tambahan dan mempercepat pengembangan, kamu bisa jadi Supporter.</p>
 
@@ -283,38 +295,66 @@
     </div>
 </div>
 <p class="pricing-note" data-i18n="pricing.note">*Pembayaran aman diproses melalui Trakteer.id, bukan syarat wajib untuk mengunduh Raiden Visuals.</p>
+</div>
+
+<section class="gpu-requirements" aria-labelledby="gpu-requirements-title">
+    <h2 id="gpu-requirements-title" data-i18n="gpu.requirementsTitle">Persyaratan Sistem</h2>
+    <p class="gpu-requirements-intro" data-i18n="gpu.requirementsIntro">Rekomendasi GPU Android untuk menggunakan Vibrant Visuals.</p>
+    <div class="gpu-requirements-grid">
+        <div class="gpu-requirements-column">
+            <h3 data-i18n="gpu.minimum">Minimum</h3>
+            <dl>
+                <dt data-i18n="gpu.memory">RAM:</dt>
+                <dd data-i18n="gpu.minimumMemory">4 GB</dd>
+                <dt data-i18n="gpu.processor">CPU:</dt>
+                <dd data-i18n="gpu.minimumProcessor">MediaTek Helio G85, G100, atau lebih tinggi.</dd>
+                <dt data-i18n="gpu.gpu">GPU:</dt>
+                <dd data-i18n="gpu.minimumGpu">Adreno 640, Mali-G57, Mali-G68</dd>
+            </dl>
+        </div>
+        <div class="gpu-requirements-column gpu-requirements-recommended">
+            <h3 data-i18n="gpu.recommended">Direkomendasikan</h3>
+            <dl>
+                <dt data-i18n="gpu.memory">RAM:</dt>
+                <dd data-i18n="gpu.recommendedMemory">8 GB</dd>
+                <dt data-i18n="gpu.processor">CPU:</dt>
+                <dd data-i18n="gpu.recommendedProcessor">Snapdragon 6 Gen 1, Dimensity 7050, atau yang lebih tinggi.</dd>
+                <dt data-i18n="gpu.gpu">GPU:</dt>
+                <dd data-i18n="gpu.recommendedGpu">Adreno 740, Mali-G715, Mali-G720</dd>
+            </dl>
+        </div>
+    </div>
+</section>
 
 <div class="os-guide-block"></div>
-<section class="comparison-section" id="visual-comparison">
-    <h2 class="comparison-title" data-i18n="comparison.title">Perbandingan Visual: Vibrant Visuals Default vs Raiden Visuals VIP+</h2>
-    <p class="comparison-caption" data-i18n="comparison.caption">Geser garis untuk membandingkan kedua tampilan.</p>
-    <div class="comparison-tabs" role="tablist" aria-label="Comparison categories">
-        <button type="button" class="comparison-tab is-active" role="tab" id="comparisonTabFogs" aria-selected="true" aria-controls="comparisonSlider" data-comparison-tab data-default-image="img/volumetricfogsdefaultvibrantvisuals.webp" data-raiden-image="img/volumetricfogsraidenvisuals.webp" data-i18n="comparison.fogs">Volumetric Fogs</button>
-        <button type="button" class="comparison-tab" role="tab" id="comparisonTabShadows" aria-selected="false" aria-controls="comparisonSlider" data-comparison-tab data-default-image="img/shadowsdefaultvibrantvisuals.webp" data-raiden-image="img/shadowsraidenvisuals.webp" data-i18n="comparison.shadows">Shadows</button>
-        <button type="button" class="comparison-tab" role="tab" id="comparisonTabReflections" aria-selected="false" aria-controls="comparisonSlider" data-comparison-tab data-default-image="img/reflectionsdefaultvibrantvisuals.webp" data-raiden-image="img/reflectionsraidenvisuals.webp" data-i18n="comparison.reflections">Reflections</button>
+<h2 id="cek-gpu" data-i18n="gpu.title">Pengecekan GPU untuk android</h2>
+<div class="gpu-checker-box">
+    <h4 class="gpu-box-title" data-i18n="gpu.boxTitle">Cek Kompatibilitas GPU HP-Mu:</h4>
+    <div class="gpu-input-row">
+        <input type="text" id="gpuInput" placeholder="Contoh: Adreno 610 atau Mali-G52..." data-i18n-placeholder="gpu.placeholder">
+        <button id="gpuCheckBtn" data-i18n="gpu.checkBtn">Cek</button>
     </div>
-    <div class="comparison-slider" id="comparisonSlider" data-comparison-slider style="--split: 50%" role="tabpanel" aria-labelledby="comparisonTabFogs" aria-label="Visual comparison slider">
-        <img class="comparison-image comparison-image-default" src="img/volumetricfogsdefaultvibrantvisuals.webp" alt="Default Vibrant Visuals comparison screenshot">
-        <img class="comparison-image comparison-image-raiden" src="img/volumetricfogsraidenvisuals.webp" alt="Raiden Visuals VIP+ comparison screenshot">
-        <span class="comparison-label comparison-label-default" data-i18n="comparison.default">Default Vibrant Visuals</span>
-        <span class="comparison-label comparison-label-raiden" data-i18n="comparison.raiden">Raiden Visuals VIP+</span>
-        <div class="comparison-divider" aria-hidden="true"><span class="comparison-handle"><img src="img/left.png" alt=""><img src="img/right.png" alt=""></span></div>
-        <input class="comparison-range" type="range" min="0" max="100" value="50" aria-label="Adjust image comparison">
-    </div>
-    <div class="comparison-credits">
-        <p><span data-i18n="comparison.creditsPrefix">Screenshot diambil menggunakan </span><a href="https://youtu.be/LNBmIT3gXRc" target="_blank" rel="noopener noreferrer" data-i18n="comparison.strawberryDeferred">Strawberry Deferred 4.0 Rewrite</a><span data-i18n="comparison.creditsSuffix">. Raiden Visuals bekerja sama dengan Strawberry Graphics untuk mengembangkan Vibrant Visuals menjadi lebih baik bagi semua orang.</span></p>
-        <p><span data-i18n="comparison.creditsFollow">Tertarik dengan karya Strawberry Graphics? Kunjungi</span> <a href="https://discord.com/invite/yHvF7TaW72" target="_blank" rel="noopener noreferrer" data-i18n="comparison.discord">Discord</a> <span data-i18n="comparison.and">dan</span> <a href="https://www.youtube.com/@strawberrygraphics55" target="_blank" rel="noopener noreferrer" data-i18n="comparison.youtube">YouTube</a>.</p>
-    </div>
+    <div id="gpuResult" class="gpu-result-msg"></div>
+</div>
+<div class="gpu-guide-notes" aria-label="GPU compatibility information">
+    <p data-i18n="gpu.howToCheck">Cek nama dan seri GPU HP-mu menggunakan aplikasi DevCheck, AIDA64, CPU-Z, atau Debug Text di Minecraft versi Beta.</p>
+    <p data-i18n="gpu.tierInfo1">Tier 1 dan Tier 2 tidak kompatibel, Tier 3 belum kompatibel untuk saat ini, Tier 4 sudah kompatibel, Tier 5 pasti kompatibel.</p>
+    <p data-i18n="gpu.tierInfo2">Jika GPU Anda masuk di Tier 3 tapi Vibrant Visuals tidak dapat digunakan maka sebentar lagi akan kompatibel di update minecraft selanjutnya.</p>
+    <p data-i18n="gpu.tierInfo3">Jika GPU Anda tidak terdaftar, maka kemungkinan besar tidak akan pernah kompatibel, solusi beli hp baru.</p>
+    <p data-i18n="gpu.tierInfo4">Tier 5 Adalah spek GPU tertinggi, sedangkan Tier 1 adalah spek GPU terendah.</p>
+    <p data-i18n="gpu.tierInfo5">Tier 1 Sama Tier 2 lebih kasihan sih. Akan sangat lama untuk dapat menggunakan Vibrant Visuals, mungkin tahun depan? Itupun dengan hasil visual dan performa yang lebih rendah.</p>
+</div>
+
 </section>
 <h2 id="roadmap" data-i18n="roadmap.title">website masih dalam pengembangan terus pantau...</h2>
 <p data-i18n="roadmap.listTitle">📝 To Do List</p>
 <p data-i18n="roadmap.item1">- Perbandingan Performa Vibrant Visuals Bawaan Vs Raiden Visuals</p>
 <p data-i18n="roadmap.item3">- Tutorial Pemasangan untuk Android pada masing-masing Launcher mengunakan Screenhots Step By Step</p>
-<p data-i18n="roadmap.item4">- Rekomendasi GPU untuk menggunakan Vibrant Visuals</p>
 <p data-i18n="roadmap.item5">- Rekomendasi setingan opsi grafis Vibrant Visuals untuk performa dan kualitas</p>
 <p data-i18n="roadmap.item6">- Rekomendasi Vibrant Visuals Pack Agar lebih indah dan Immersive</p>
 <p data-i18n="roadmap.item7">- Join DIscord Untuk Info Update Terbaru Dan Berkomunikasi Mengenai Vibrant Visuals</p>
 <p data-i18n="roadmap.item9">- Pertanyaan dan jawaban Q&A</p>
+</section>
 </div> <!-- AKHIR DARI MAIN CONTENT ROW -->
 <div class="social-media-container">
     <a href="https://www.youtube.com/@vedaraiden" target="_blank" class="social-link" rel="noopener noreferrer">
@@ -341,7 +381,6 @@
 <audio id="soundRelease" src="audio/Release.ogg.mp3" preload="none"></audio>
     <!-- Batas akhir dari semua kotak to-do list atau konten atas Anda -->
     </div> 
-</div> <!-- PASTIKAN SEMUA TAG DIV KONTEN ATAS SUDAH DITUTUP DI SINI -->
 <!-- KOTAK FOOTER WAJIB BERDIRI SENDIRI BEBAS DI LUAR SEMUA DIV ATAS -->
 <footer class="site-footer">
     <div class="footer-container">

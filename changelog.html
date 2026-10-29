@@ -26,7 +26,7 @@
     <meta name="twitter:description" content="Riwayat lengkap pembaruan Raiden Visuals dari waktu ke waktu.">
     <meta name="twitter:image" content="https://vedaryden.github.io/RaidenVisuals/img/og-image.jpg">
 </head>
-<body>
+<body class="changelog-page-body">
 <header class="site-header">
     <div class="header-inner">
         <a href="index.html#top" class="header-brand">
@@ -80,7 +80,10 @@
     <div class="changelog-page">
         <a href="index.html#changelog" class="changelog-back-link" data-i18n="changelog.backHome">← Kembali ke Beranda</a>
         <h1 class="changelog-page-title" data-i18n="changelog.pageTitle">Semua Changelog</h1>
-        <div id="changelogFullList"></div>
+        <p class="changelog-page-intro" id="changelogPickerIntro" data-i18n="changelog.chooseEdition">Pilih varian Raiden Visuals untuk melihat pembaruannya.</p>
+        <div class="changelog-edition-picker" id="changelogEditionPicker"></div>
+        <a href="changelog.html" class="changelog-back-link changelog-back-editions" id="changelogBackEditions" data-i18n="changelog.backToEditions" hidden>← Semua Varian</a>
+        <div id="changelogFullList" hidden></div>
     </div>
 </div>
 
