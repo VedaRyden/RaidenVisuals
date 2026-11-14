@@ -32,7 +32,7 @@
 }
 @font-face {
   font-family: 'Gellix';
-  src: url('Gellix-TRIAL-Regular.otf') format('woff2');
+  src: url('Gellix-TRIAL-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -50,6 +50,7 @@ a {
 /* Tambahkan kode ini di bagian paling atas file style.css Anda */
 html {
     scroll-behavior: smooth; /* KODE UTAMA: Membuat semua efek lompatan link menjadi animasi gulir halus */
+    background-color: #000000;
 }
     /* KODE BARU: Merapikan baris launcher Android saat dibuka di layar HP */
     .app-launcher-list li {
@@ -201,8 +202,10 @@ body, p, .desc-text-light, .desc-list li, .file-name, .file-size {
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     border: 1px solid #ff0000;
-    max-width: 1340px; 
+    max-width: 1340px;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 0 !important; /* Menghilangkan margin bawah lama agar lurus dengan teks */
 }
 
@@ -334,11 +337,11 @@ body {
     padding: 20px 15px 0px 15px;       /* Setel padding bawah ke 0px agar footer nempel mentok */
     box-sizing: border-box;
     
-    /* Kode background-image Anda tetap biarkan sama di bawah ini */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: #000000;
+    background-image: linear-gradient(to bottom, #3F0000 0%, #000000 100%);
+    background-size: 100% 100%;
+    background-position: center top;
+    background-attachment: scroll;
     background-repeat: no-repeat;
 }
 
@@ -885,7 +888,7 @@ h1 {
 .gpu-guide-notes {
     display: grid;
     gap: 9px;
-    width: min(100%, 1050px);
+    width: min(100%, 1300px);
     margin: 18px auto 0;
 }
 
@@ -900,10 +903,279 @@ h1 {
     line-height: 1.55;
 }
 
+.gpu-faq {
+    width: min(100%, 1300px);
+    margin: 24px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 34, 34, 0.45);
+}
+
+.gpu-faq h3 {
+    margin: 0 0 12px;
+    color: #ff2222;
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: 22px;
+}
+
+.gpu-faq-list {
+    display: grid;
+    gap: 10px;
+}
+
+.gpu-faq-item {
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-left: 3px solid #e32121;
+    background: #1d1d1d;
+}
+
+.gpu-faq-item p {
+    margin: 0 !important;
+    line-height: 1.55;
+}
+
+.gpu-faq-question {
+    color: #ff7777;
+    font-weight: 700;
+}
+
+.gpu-faq-answer {
+    margin-top: 6px !important;
+    color: #ffffff;
+}
+
+.vip-feature-label {
+    color: #ff3333;
+    font-weight: 700;
+}
+
+.youtube-showcase {
+    width: min(100%, 1300px);
+    margin: 28px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 34, 34, 0.45);
+}
+
+#roadmap {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 34, 34, 0.45);
+}
+
+.youtube-showcase > h3 {
+    margin: 0 0 14px;
+    color: #ff2222;
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: 22px;
+}
+
+.youtube-video-grid,
+.showcase-community-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.youtube-video {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(255, 0, 0, 0.35);
+    background: #111111;
+}
+
+.youtube-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.showcase-community-grid {
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.showcase-community-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    background: #171717;
+}
+
+.showcase-community-card h4 {
+    margin: 0;
+    color: #ff0000;
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: 20px;
+    text-align: center;
+}
+
+.discord-server-widget {
+    display: block;
+    width: 100%;
+    height: 350px;
+    border: 0;
+    background: #202225;
+}
+
+.showcase-trakteer-card {
+    justify-content: flex-start;
+}
+
+.trakteer-support-list {
+    width: 100%;
+    height: 350px;
+    max-height: 350px;
+    overflow: auto;
+    border: 1px solid #444444;
+    background: #242626;
+    scrollbar-color: #9a3036 #1c1e1e;
+    scrollbar-width: thin;
+}
+
+.trakteer-support-table {
+    width: 100%;
+    min-width: 360px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    color: #e2e2e2;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 12px;
+    line-height: 1.25;
+}
+
+.trakteer-support-table th,
+.trakteer-support-table td {
+    padding: 5px 7px;
+    border: 1px solid #454848;
+    vertical-align: middle;
+}
+
+.trakteer-support-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #292c2c;
+    color: #f0f0f0;
+    font-weight: 700;
+    text-align: center;
+}
+
+.trakteer-support-table th:nth-child(1),
+.trakteer-support-table td:nth-child(1) {
+    width: 27%;
+    text-align: center;
+}
+
+.trakteer-support-table th:nth-child(2),
+.trakteer-support-table td:nth-child(2) {
+    width: 48%;
+}
+
+.trakteer-support-table th:nth-child(3),
+.trakteer-support-table td:nth-child(3) {
+    display: none;
+}
+
+.trakteer-support-table th:nth-child(4),
+.trakteer-support-table td:nth-child(4) {
+    width: 25%;
+    text-align: center;
+}
+
+.trakteer-support-table td:nth-child(1),
+.trakteer-support-table td:nth-child(4) {
+    padding-block: 2px;
+    line-height: 15px;
+}
+
+.trakteer-support-table tbody tr:nth-child(even) {
+    background: #292b2b;
+}
+
+.trakteer-support-table time {
+    white-space: nowrap;
+}
+
+.trakteer-support-table td strong {
+    display: block;
+    color: #c8c8c8;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.support-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.support-badges span {
+    padding: 2px 6px;
+    background: #303333;
+    color: #d3d3d3;
+    font-size: 9px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.support-creator {
+    color: #ff5555;
+    font-size: 10px;
+}
+
+.support-amount {
+    position: relative;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.support-help-icon {
+    display: none;
+}
+
+.showcase-community-link {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 14px;
+    border: 1px solid #ff2222;
+    background: #252020;
+    color: #ffffff;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+.showcase-community-link:hover {
+    background: #ff2222;
+}
+
 @media (max-width: 700px) {
     .app-launcher-list,
     .guide-path-list {
         grid-template-columns: minmax(0, 1fr);
+    }
+
+    .trakteer-support-table th:nth-child(1),
+    .trakteer-support-table td:nth-child(1) {
+        width: 34%;
+    }
+
+    .trakteer-support-table th:nth-child(2),
+    .trakteer-support-table td:nth-child(2) {
+        width: 41%;
     }
 
     .app-launcher-list li {
@@ -931,6 +1203,19 @@ h1 {
     .gpu-guide-notes p {
         padding: 10px 12px;
         font-size: 14px;
+    }
+
+    .gpu-faq-item {
+        padding: 10px 12px;
+    }
+
+    .youtube-video-grid,
+    .showcase-community-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .showcase-community-card {
+        padding: 12px;
     }
 }
 
@@ -2942,4 +3227,407 @@ body.changelog-page-body {
         flex-basis: 88%;
         width: 88%;
     }
+}
+
+.top-banner-wrapper {
+    position: relative;
+    width: min(100%, 620px);
+    margin: 12px auto 28px;
+}
+
+.splash-text {
+    position: absolute;
+    top: 62%;
+    right: 2%;
+    color: #ffff00;
+    font-family: 'MinecraftSeven', sans-serif;
+    font-weight: 300;
+    font-size: clamp(16px, 2.2vw, 25px);
+    text-decoration: none;
+    text-shadow: 2px 2px 0 #171000;
+    transform: rotate(-13deg);
+    animation: minecraft-splash 1.8s ease-in-out infinite;
+}
+
+.splash-text:hover {
+    color: #fff35a;
+}
+
+@keyframes minecraft-splash {
+    0%, 100% { transform: rotate(-13deg) scale(1); }
+    50% { transform: rotate(-13deg) scale(1.12); }
+}
+
+.main-content-row {
+    display: block;
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+}
+
+.hero-showcase {
+    width: 100%;
+}
+
+.hero-showcase-image-frame {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    aspect-ratio: 64 / 27;
+    overflow: hidden;
+    border: 1px solid #ff2222;
+    border-radius: 10px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+    background: #111111;
+    touch-action: pan-y;
+}
+
+.hero-showcase-image {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center var(--showcase-image-position-y, 50%);
+    transition: opacity 400ms ease-in-out, transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.hero-showcase-image-incoming {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hero-showcase-image-frame.is-crossfading .hero-showcase-image {
+    opacity: 0;
+}
+
+.hero-showcase-image-frame.is-crossfading .hero-showcase-image-incoming {
+    opacity: 1;
+}
+
+.hero-showcase-image-frame.has-feature-screenshot {
+    cursor: ns-resize;
+}
+
+.hero-showcase-image-frame.is-dragging {
+    cursor: grabbing;
+}
+
+.hero-feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 8px 18px;
+    padding: 10px 0 8px;
+    color: #ff2222;
+    font-family: 'MinecraftTen', sans-serif;
+    font-size: clamp(16px, 1.65vw, 22px);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.hero-feature-button {
+    padding: 2px 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    transition: color 160ms ease, text-shadow 160ms ease;
+}
+
+.hero-feature-button:hover,
+.hero-feature-button.is-active {
+    color: #ff6666;
+    text-shadow: 0 0 8px rgba(255, 34, 34, 0.45);
+}
+
+.hero-feature-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+.hero-feature-button:disabled {
+    cursor: progress;
+    opacity: 0.7;
+}
+
+.hero-feature-status {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    width: max-content;
+    max-width: calc(100% - 24px);
+    margin: 0;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 119, 119, 0.7);
+    background: rgba(0, 0, 0, 0.8);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.hero-feature-status:empty {
+    display: none;
+}
+
+.hero-feature-status:not(:empty) {
+    color: #ff7777;
+    font-size: 12px;
+    text-align: center;
+}
+
+.hero-feature-status.is-error {
+    z-index: 2;
+}
+
+.hero-branding {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 2px auto 0;
+    gap: 8px 12px;
+    padding: 0 0 18px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.hero-brand-title {
+    margin: 0;
+    color: #ffffff;
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: clamp(38px, 5vw, 64px) !important;
+    line-height: 1;
+}
+
+.hero-brand-tagline {
+    margin: 0;
+    color: #ffffff;
+    font-family: 'MinecraftTen', sans-serif !important;
+    font-size: clamp(14px, 2vw, 24px);
+    line-height: 1.2;
+}
+
+.download-section {
+    width: min(100%, 1340px);
+    max-width: 1340px;
+    margin: 10px auto 30px;
+    padding: 14px 22px;
+    border: 1px solid #ff2222;
+    background: #171717;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+}
+
+.download-section .download-card {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 18px;
+    width: 100%;
+    margin: 0;
+    padding: 14px 8px;
+    border-bottom: 1px solid rgba(255, 34, 34, 0.45);
+}
+
+.download-section .download-card:last-child {
+    border-bottom: 0;
+    padding-bottom: 6px;
+}
+
+.download-section .file-info {
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+    gap: 14px;
+    min-width: 0;
+}
+
+.download-section .file-icon-img {
+    flex: 0 0 84px;
+    width: 84px;
+    height: 84px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.download-section .file-copy {
+    flex: 1;
+    min-width: 0;
+}
+
+.download-section .file-name {
+    margin: 0 0 4px;
+    color: #ffffff !important;
+    font-family: 'MinecraftSeven', sans-serif !important;
+    font-size: clamp(16px, 1.6vw, 20px);
+    font-weight: 300;
+    line-height: 1.15;
+}
+
+.download-section .file-name span,
+.download-section .file-description span {
+    font-family: inherit !important;
+}
+
+.download-section .file-description {
+    margin: 0;
+    color: #ffffff;
+    font-family: 'Gellix', sans-serif !important;
+    font-size: 12px;
+    line-height: 1.25;
+}
+
+.download-section .file-updated {
+    margin-top: 6px;
+    color: #aaaaaa;
+    font-family: 'MinecraftSeven', sans-serif !important;
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+.download-section .file-actions {
+    display: flex;
+    flex: 0 0 120px;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 3px 0;
+}
+
+.download-section .file-status {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    min-height: 18px;
+    color: #ffffff;
+    font-family: 'MinecraftSeven', sans-serif !important;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.download-section .file-size {
+    margin: 0;
+    color: #ffffff !important;
+    font-size: 12px;
+}
+
+.download-section .online-status {
+    display: block;
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.download-section .download-btn {
+    min-width: 110px;
+    padding: 8px 10px;
+    font-family: 'NotoSans', sans-serif !important;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+@media (max-width: 640px) {
+    .top-banner-wrapper {
+        margin-top: 20px;
+    }
+
+    .splash-text {
+        top: 60%;
+        right: 0;
+        font-size: 15px;
+    }
+
+    .hero-feature-list {
+        justify-content: center;
+        gap: 8px 14px;
+    }
+
+    .hero-branding {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .hero-brand-title {
+        font-size: clamp(36px, 11vw, 56px) !important;
+    }
+
+    .download-section {
+        padding: 14px 12px;
+    }
+
+    .download-section .download-card {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 0;
+    }
+
+    .download-section .file-info {
+        gap: 10px;
+    }
+
+    .download-section .file-icon-img {
+        flex-basis: 60px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .download-section .file-actions {
+        width: 100%;
+        flex: 0 0 auto;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+    }
+
+    .download-section .file-status {
+        gap: 4px;
+    }
+
+    .download-section .file-size {
+        font-size: 10px;
+    }
+
+    .download-section .online-status {
+        width: 12px;
+        height: 12px;
+    }
+
+    .download-section .download-btn {
+        min-width: 88px;
+        padding: 8px 6px;
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .splash-text,
+    .hero-showcase-image {
+        animation: none;
+        transition: none;
+    }
+}
+
+*,
+*::before,
+*::after {
+    border-radius: 0 !important;
 }

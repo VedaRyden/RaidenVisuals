@@ -21,15 +21,17 @@
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:url" content="https://vedaryden.github.io/RaidenVisuals/">
     <meta property="og:title" content="Raiden Visuals - Vibrant Visuals Optimizer">
-    <meta property="og:image" content="https://vedaryden.github.io/RaidenVisuals/img/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Preview Raiden Visuals untuk Minecraft Bedrock Vibrant Visuals">
+    <meta property="og:image" content="https://vedaryden.github.io/RaidenVisuals/img/foto%20sampul.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="2560">
+    <meta property="og:image:height" content="1080">
+    <meta property="og:image:alt" content="Foto sampul Raiden Visuals untuk Minecraft Bedrock Vibrant Visuals">
     <meta property="og:description" content="Raiden Visuals adalah Custom Deferred Configuration yang dapat mengoptimalkan performa Vibrant Visuals pada Minecraft Bedrockmu dan kompatibel dengan sistem operasi Android, Windows dan iOS.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Raiden Visuals - Vibrant Visuals Optimizer">
     <meta name="twitter:description" content="Custom Deferred Configuration untuk mengoptimalkan performa Vibrant Visuals di Minecraft Bedrock. Kompatibel Android, Windows, dan iOS.">
-    <meta name="twitter:image" content="https://vedaryden.github.io/RaidenVisuals/img/og-image.jpg">
+    <meta name="twitter:image" content="https://vedaryden.github.io/RaidenVisuals/img/foto%20sampul.png">
+    <meta name="twitter:image:alt" content="Foto sampul Raiden Visuals untuk Minecraft Bedrock Vibrant Visuals">
 </head>
 <body>
 <header class="site-header">
@@ -82,56 +84,85 @@
 </header>
 <div class="top-banner-wrapper" id="top">
     <img src="img/title.webp" alt="Minecraft With Raiden Visuals" class="minecraft-title-logo">
+    <a class="splash-text" href="#download-section">Download Now!</a>
 </div>
 <div class="main-content-row">
-    <div class="video-container">
-        <iframe 
-            src="https://youtube.com/embed/EFGAV0GaRUc"
-            title="Raiden Visuals showcase video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-    </div>
-<div class="container" id="download-section">
-        <div class="main-icon-wrapper">
-            <img src="img/pack_icon.webp" alt="Logo" class="main-page-icon">
+    <section class="hero-showcase" aria-label="Raiden Visuals showcase">
+        <div class="hero-showcase-image-frame">
+            <p class="hero-feature-status" data-showcase-status role="status" aria-live="polite"></p>
+            <img id="heroShowcaseImage" src="img/foto%20sampul.webp" alt="Montage showcase fitur visual Raiden Visuals" class="hero-showcase-image" draggable="false">
+            <img id="heroShowcaseTransitionImage" class="hero-showcase-image hero-showcase-image-incoming" alt="" aria-hidden="true" draggable="false">
         </div>
-        <h1 data-i18n="hero.title">Raiden Visuals Download</h1>
-        <p class="subtitle" data-i18n="hero.subtitle">Pilih salah satu versi FREE atau PAID. Harap panduan instalasinya dibaca, ya.</p>
-        <!-- KARTU DOWNLOAD HARUS MASUK DI SINI (SEBELUM CONTAINER DI-TUTUP) -->
-        <div class="download-card">
-            <div class="file-info">
-                <img src="img/rv.webp" alt="Icon" class="file-icon-img">
-                <div>
-                    <div class="file-name">Raiden Visuals 2.5 (Stable) FREE</div>
-                    <div class="file-size">Last Updated : 2026-11-04</div>
-                </div>
+        <div class="hero-feature-list" role="group" aria-label="Pilih fitur untuk melihat screenshot">
+            <button type="button" class="hero-feature-button" data-showcase-image="img/features/motion_blur_v2.webp" aria-controls="heroShowcaseImage" aria-pressed="false">Motion Blur</button>
+            <button type="button" class="hero-feature-button" data-showcase-image="img/features/better_volumetric_fogs.webp" aria-controls="heroShowcaseImage" aria-pressed="false">Better Fogs</button>
+            <button type="button" class="hero-feature-button" data-showcase-image="img/features/clean_reflection.webp" aria-controls="heroShowcaseImage" aria-pressed="false">Clean SSR</button>
+            <button type="button" class="hero-feature-button" data-showcase-image="img/features/hard_shadow.webp" aria-controls="heroShowcaseImage" aria-pressed="false">Hard Shadows</button>
+            <button type="button" class="hero-feature-button" data-showcase-image="img/features/rain_pudles.webp" aria-controls="heroShowcaseImage" aria-pressed="false">Rain Puddles</button>
+            <button type="button" class="hero-feature-button" data-showcase-image="img/features/better_fogs_behind_camera.webp" aria-controls="heroShowcaseImage" aria-pressed="false">Better Fogs (Behind Cam)</button>
+        </div>
+        <div class="hero-branding">
+            <h1 class="hero-brand-title">Raiden Visuals</h1>
+            <p class="hero-brand-tagline">King of Vibrant Visuals Optimizer</p>
+        </div>
+    </section>
+</div>
+<section class="container download-section" id="download-section" aria-label="Raiden Visuals downloads">
+    <div class="download-card">
+        <div class="file-info">
+            <img src="img/apple-touch-icon.png" alt="Raiden Visuals Standard logo" class="file-icon-img">
+            <div class="file-copy">
+                <div class="file-name" data-minecraft-text>Raiden Visuals Standard 2.5</div>
+                <p class="file-description" data-i18n="download.standardDescription" data-minecraft-text>TOP 1 Vibrant Visuals Optimizer?§c§lWAJIB PAKAI Aplikasi MB LOADER, Levi launcher, Ambient atau Flarial Client Untuk Android, MC PATCH TIDAK DIDUKUNG!, §rPastikan Deferred Render Distance Dapat di Set ke 1 Chunks itu artinya Raiden Visuals sudah berfungsi, Paket ini bukan shader melainkan Deferred Configuration.</p>
+                <div class="file-updated" data-i18n="download.updated" data-minecraft-text>§7Diperbarui: §f2026-11-04</div>
+            </div>
+        </div>
+        <div class="file-actions">
+            <div class="file-status">
+                <span class="file-size" data-minecraft-text>§f1,37MB</span>
+                <img src="img/active.png" alt="Online" title="Online" class="online-status">
             </div>
             <a href="https://link-target.net/459609/CVeT9e5pbOOe" target="_blank" class="download-btn" data-i18n="cta.download" rel="noopener noreferrer">DOWNLOAD</a>
         </div>
-        <div class="download-card">
-            <div class="file-info">
-                <img src="img/rvvip+.webp" alt="Icon" class="file-icon-img">
-                <div>
-                    <div class="file-name">Raiden Visuals VIP+ 2.5(Beta) PAID</div>
-                    <div class="file-size">Last Updated : 2026-11-04</div>
-                </div>
+    </div>
+    <div class="download-card">
+        <div class="file-info">
+            <img src="img/vip+_icon.webp" alt="Raiden Visuals VIP+ logo" class="file-icon-img">
+            <div class="file-copy">
+                <div class="file-name" data-minecraft-text>Raiden Visuals VIP+ 2.5.1</div>
+                <p class="file-description" data-i18n="download.vipDescription" data-minecraft-text>TOP 1 Vibrant Visuals Optimizer? TERIMA KASIH SUDAH SUPPORT KREATOR DENGAN MEMBELI RAIDEN VISUALSNYA. §c§lWAJIB PAKAI Aplikasi MB LOADER, Levi launcher, Ambient atau Flarial Client Untuk Android, MC PATCH TIDAK DIDUKUNG!, §rPastikan Deferred Render Distance Dapat di Set ke 1 Chunks itu artinya Raiden Visuals sudah berfungsi.</p>
+                <div class="file-updated" data-i18n="download.updated" data-minecraft-text>§7Diperbarui: §f2026-11-04</div>
+            </div>
+        </div>
+        <div class="file-actions">
+            <div class="file-status">
+                <span class="file-size" data-minecraft-text>§f10,11MB~</span>
+                <img src="img/active.png" alt="Online" title="Online" class="online-status">
             </div>
             <a href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" class="download-btn purchase-btn" data-payment-selector="true" data-i18n="cta.purchase" rel="noopener noreferrer">PURCHASE</a>
         </div>
-    </div> <!-- AKHIR DARI CONTAINER (Pastikan ini menutup setelah semua kartu download) -->
+    </div>
+</section>
 <div class="description-full-container">
     <h2 data-i18n="about.title">Apa itu Raiden Visuals?</h2>
-    <p data-i18n="about.desc">Raiden Visuals Adalah Custom Deferred Configuration Yang Dapat Mengoptimalkan Performa Vibrant Visuals Pada Minecraft Bedrock.</p>
+    <p data-i18n="about.desc">Raiden Visuals adalah custom deferred configuration yang dapat mengoptimalkan performa vibrant visuals berkali kali lipat pada minecraft bedrock edition, untuk edisi VIP+ memiliki custom shader renderdragon untuk meningkatkan performa lebih jauh lagi serta memperbagus visual tanpa mengorbankan FPS!.</p>
     <div class="os-guide-block"></div>
     <h2 data-i18n="features.title">Keunggulan</h2>
     <p data-i18n="features.item1">Mengoptimalkan Bayangan Pada Vibrant Visuals.</p>
     <p data-i18n="features.item2">Mengoptimalkan Refleksi Ruang Layar Pada Vibrant Visuals.</p>
     <p data-i18n="features.item3">Mengoptimalkan Point Light Beserta Bayangan Pada Vibrant Visuals.</p>
     <p data-i18n="features.item4">Mengoptimalkan Kabut Volumetrik Pada Vibrant Visuals.</p>
-    <p data-i18n="features.item5">Memperluas Opsi Jarak Render (Menjadi 1-50 Chunks).</p>
+    <p data-i18n="features.item5">Memperluas Opsi Jarak Render (Menjadi 1-256 Chunks).</p>
+    <p data-i18n-html="features.item6">Menambahkan FX Motion Blur <span class="vip-feature-label">(VIP+)</span>.</p>
+    <p data-i18n-html="features.item7">Menambahkan FX Chroma Abberation <span class="vip-feature-label">(VIP+)</span>.</p>
+    <p data-i18n-html="features.item8">Memperbarui Kabut Volumetrik Menjadi dapat dilihat segala arah dengan godrays lebih panjang <span class="vip-feature-label">(VIP+)</span>.</p>
+    <p data-i18n-html="features.item9">Pantulan dibuat jauh lebih bersih, bening dan tajam <span class="vip-feature-label">(VIP+)</span>.</p>
+    <p data-i18n-html="features.item10">Bayangan Lebih Keras dan tajam <span class="vip-feature-label">(VIP+)</span>.</p>
+    <p data-i18n-html="features.item11">Menambahkan efek becek <span class="vip-feature-label">(VIP+)</span>.</p>
+    <p data-i18n-html="features.item12">Menambahkan efek genangan air <span class="vip-feature-label">(VIP+)</span>.</p>
+    <p data-i18n-html="features.item13">Efek Enchant menyala di ruangan gelap <span class="vip-feature-label">(VIP+)</span>.</p>
 <section class="comparison-section" id="visual-comparison">
-    <h2 class="comparison-title" data-i18n="comparison.title">Perbandingan Visual: Vibrant Visuals Default vs Raiden Visuals VIP+</h2>
+    <h2 class="comparison-title" data-i18n="comparison.title">Perbandingan Visual: Vibrant Visuals Default vs Raiden Visuals VIP+ 2.4.5</h2>
     <p class="comparison-caption" data-i18n="comparison.caption">Geser garis untuk membandingkan kedua tampilan.</p>
     <div class="comparison-tabs" role="tablist" aria-label="Comparison categories">
         <button type="button" class="comparison-tab is-active" role="tab" id="comparisonTabFogs" aria-selected="true" aria-controls="comparisonSlider" data-comparison-tab data-default-image="img/volumetricfogsdefaultvibrantvisuals.webp" data-raiden-image="img/volumetricfogsraidenvisuals.webp" data-i18n="comparison.fogs">Volumetric Fogs</button>
@@ -253,7 +284,7 @@
             <li><span data-i18n="pricing.supporterFeat2">Raiden Visuals VIP+ (Experimental)</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeat3">Raiden Visuals Beta (Early Access)</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
 
-            <li><span data-i18n="pricing.supporterFeat4">Waving Grass/Leaves</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeat4">Waving Grass/Leaves(Dinonaktifkan)</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeat5">Motion Blur</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeat6">Clean Reflection</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeat7">Better Volumetric Fogs</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
@@ -282,7 +313,7 @@
             <li><span data-i18n="pricing.supporterFeatpaid1">Raiden Visuals Standard (Stable)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeatpaid2">Raiden Visuals VIP+ (Experimental)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeatpaid3">Raiden Visuals Beta (Early Access)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
-            <li><span data-i18n="pricing.supporterFeatpaid4">Waving Grass/Leaves</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.supporterFeatpaid4">Waving Grass/Leaves(Dinonaktifkan)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeatpaid5">Motion Blur</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeatpaid6">Clean Reflection</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeatpaid7">Better Volumetric Fogs</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
@@ -344,6 +375,82 @@
     <p data-i18n="gpu.tierInfo4">Tier 5 Adalah spek GPU tertinggi, sedangkan Tier 1 adalah spek GPU terendah.</p>
     <p data-i18n="gpu.tierInfo5">Tier 1 Sama Tier 2 lebih kasihan sih. Akan sangat lama untuk dapat menggunakan Vibrant Visuals, mungkin tahun depan? Itupun dengan hasil visual dan performa yang lebih rendah.</p>
 </div>
+<section class="gpu-faq" aria-labelledby="gpuFaqTitle">
+    <h3 id="gpuFaqTitle" data-i18n="gpu.faqTitle">Q&A</h3>
+    <div class="gpu-faq-list">
+        <div class="gpu-faq-item">
+            <p class="gpu-faq-question" data-i18n="gpu.faq1.question">Q : Apakah Raiden Visuals dapat langsung dipasang?</p>
+            <p class="gpu-faq-answer" data-i18n="gpu.faq1.answer">A : Tidak, karena minecraft bedrock original masih membatasi folder "Renderer" tidak terbaca di resource pack pada game, maka dari itu diperlukan aplikasi pihak ketiga untuk android seperti mb loader, wyvern atau copy paste untuk windows, dan HynisiOS untuk iOS.</p>
+        </div>
+        <div class="gpu-faq-item">
+            <p class="gpu-faq-question" data-i18n="gpu.faq2.question">Q : Apakah kompatibel dengan Vibrant Visuals Pack lain seperti Strawberry dan Prizma?</p>
+            <p class="gpu-faq-answer" data-i18n="gpu.faq2.answer">A : Ya, tentu saja kenapa tidak?</p>
+        </div>
+        <div class="gpu-faq-item">
+            <p class="gpu-faq-question" data-i18n="gpu.faq3.question">Q : Apakah kompatibel dengan shader renderdragon seperti Mirai?</p>
+            <p class="gpu-faq-answer" data-i18n="gpu.faq3.answer">A : Ya, tapi hanya untuk edisi standard bukan yang VIP+</p>
+        </div>
+    </div>
+</section>
+<section class="youtube-showcase" aria-labelledby="youtubeShowcaseTitle">
+    <h3 id="youtubeShowcaseTitle" data-i18n="showcase.title">YOUTUBE SHOWCASE</h3>
+    <div class="youtube-video-grid">
+        <div class="youtube-video"><iframe src="https://www.youtube-nocookie.com/embed/EFGAV0GaRUc" title="Raiden Visuals YouTube Showcase 1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="youtube-video"><iframe src="https://www.youtube-nocookie.com/embed/WsQIPwSmLvk" title="Raiden Visuals YouTube Showcase 2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="youtube-video"><iframe src="https://www.youtube-nocookie.com/embed/XAPp-Gq630o" title="Raiden Visuals YouTube Showcase 3" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="youtube-video"><iframe src="https://www.youtube-nocookie.com/embed/AnULv4WB138" title="Raiden Visuals YouTube Showcase 4" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="youtube-video"><iframe src="https://www.youtube-nocookie.com/embed/yJb5sHLY4t4" title="Raiden Visuals YouTube Showcase 5" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="youtube-video"><iframe src="https://www.youtube-nocookie.com/embed/eUmuL_hSBq4" title="Raiden Visuals YouTube Showcase 6" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </div>
+    <div class="showcase-community-grid">
+        <div class="showcase-community-card">
+            <h4 data-i18n="showcase.discordTitle">Discord Server Online Viewer</h4>
+            <iframe class="discord-server-widget" src="https://discord.com/widget?id=1244977232972349440&amp;theme=dark" title="Discord server online viewer" loading="lazy" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            <a class="showcase-community-link" href="https://discord.com/invite/veda-pack-x-raiden-visuals-official-1244977232972349440" target="_blank" rel="noopener noreferrer" data-i18n="showcase.discordLink">Buka Discord Server</a>
+        </div>
+        <div class="showcase-community-card showcase-trakteer-card">
+            <h4 data-i18n="showcase.trakteerTitle">List Trakteer shop supporter</h4>
+            <div class="trakteer-support-list" role="region" aria-label="Daftar supporter Trakteer" tabindex="0">
+                <table class="trakteer-support-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-i18n="showcase.supportDate">Tanggal</th>
+                            <th scope="col" data-i18n="showcase.supportCustomer">Customer</th>
+                            <th scope="col" data-i18n="showcase.supportProduct">Produk &amp; Potongan</th>
+                            <th scope="col" data-i18n="showcase.supportAmount">Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><time datetime="2026-11-11T16:00:00+07:00">11 Nov 2026 16:00</time></td><td>THEandromedarius Play</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-11-09T21:36:00+07:00">09 Nov 2026 21:36</time></td><td>Ilham Arsyaputra</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-11-08T19:31:00+07:00">08 Nov 2026 19:31</time></td><td>masden gtg</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-11-04T07:27:00+07:00">04 Nov 2026 07:27</time></td><td>Rishajah<br><span class="support-creator">Creator</span></td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-11-02T14:35:00+07:00">02 Nov 2026 14:35</time></td><td>Anemo</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-30T11:11:00+07:00">30 Oct 2026 11:11</time></td><td>Zxlfadhli</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-30T08:23:00+07:00">30 Oct 2026 08:23</time></td><td>Hadi Kurnia Ramadhoni</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-29T10:00:00+07:00">29 Oct 2026 10:00</time></td><td>Wildan Ahmad Nabawy</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-29T03:12:00+07:00">29 Oct 2026 03:12</time></td><td>ukail khairul anam</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-28T17:10:00+07:00">28 Oct 2026 17:10</time></td><td>Warung mekar sari87</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>GoPay</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-26T14:53:00+07:00">26 Oct 2026 14:53</time></td><td>zafran Alvito</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-22T06:05:00+07:00">22 Oct 2026 06:05</time></td><td>Abdiannor Tanjung</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-20T17:02:00+07:00">20 Oct 2026 17:02</time></td><td>Rin</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-20T14:24:00+07:00">20 Oct 2026 14:24</time></td><td>Taufik Siregar</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>Dana</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-16T08:36:00+07:00">16 Oct 2026 08:36</time></td><td>jo mar</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>GoPay</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-15T22:30:00+07:00">15 Oct 2026 22:30</time></td><td>Gonza Tiai</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>ShopeePay</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-15T17:29:00+07:00">15 Oct 2026 17:29</time></td><td>Natsuha Rika</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>GoPay</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-11T18:47:00+07:00">11 Oct 2026 18:47</time></td><td>Van<br><span class="support-creator">Creator</span></td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 17.800</span><span>Discount 11%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp16.910<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-09T01:58:00+07:00">09 Oct 2026 01:58</time></td><td>R</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 11.050</span><span>Discount 35%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp10.497<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-08T20:35:00+07:00">08 Oct 2026 20:35</time></td><td>Nurul Ifad</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 11.050</span><span>Discount 35%</span><span>GoPay</span><span>Platform 5%</span></div></td><td class="support-amount">Rp10.497<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-10-05T15:27:00+07:00">05 Oct 2026 15:27</time></td><td>Topaz TopazAja</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 11.050</span><span>Discount 35%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp10.497<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-09-30T18:18:00+07:00">30 Sep 2026 18:18</time></td><td>Muhamad Lukman Afrio</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 11.050</span><span>Discount 35%</span><span>QRIS</span><span>Platform 5%</span></div></td><td class="support-amount">Rp10.497<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                        <tr><td><time datetime="2026-09-26T21:57:00+07:00">26 Sep 2026 21:57</time></td><td>KenzieSukaTuru</td><td><strong>Raiden Visuals Plus Bundle</strong><div class="support-badges"><span>Price Rp 10.200</span><span>Discount 10%</span><span>QRIS by Flip</span><span>Platform 5%</span></div></td><td class="support-amount">Rp9.690<span class="support-help-icon" title="Nominal setelah diskon dan biaya platform" aria-label="Nominal setelah diskon dan biaya platform">?</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <a class="showcase-community-link" href="https://trakteer.id/veda_raiden/support" target="_blank" rel="noopener noreferrer" data-i18n="showcase.trakteerLink">Lihat List Supporter</a>
+        </div>
+    </div>
+</section>
 
 </section>
 <h2 id="roadmap" data-i18n="roadmap.title">website masih dalam pengembangan terus pantau...</h2>
@@ -352,8 +459,6 @@
 <p data-i18n="roadmap.item3">- Tutorial Pemasangan untuk Android pada masing-masing Launcher mengunakan Screenhots Step By Step</p>
 <p data-i18n="roadmap.item5">- Rekomendasi setingan opsi grafis Vibrant Visuals untuk performa dan kualitas</p>
 <p data-i18n="roadmap.item6">- Rekomendasi Vibrant Visuals Pack Agar lebih indah dan Immersive</p>
-<p data-i18n="roadmap.item7">- Join DIscord Untuk Info Update Terbaru Dan Berkomunikasi Mengenai Vibrant Visuals</p>
-<p data-i18n="roadmap.item9">- Pertanyaan dan jawaban Q&A</p>
 </section>
 </div> <!-- AKHIR DARI MAIN CONTENT ROW -->
 <div class="social-media-container">
