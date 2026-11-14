@@ -3,6 +3,72 @@ let translations = { id: {}, en: {} };
 let currentLang = localStorage.getItem('raidenLang') === 'en' ? 'en' : 'id';
 let languageFilesReady = false;
 
+const minecraftColorPalette = {
+    '0': '#000000',
+    '1': '#0000AA',
+    '2': '#00AA00',
+    '3': '#00AAAA',
+    '4': '#AA0000',
+    '5': '#AA00AA',
+    '6': '#FFAA00',
+    '7': '#AAAAAA',
+    '8': '#555555',
+    '9': '#5555FF',
+    a: '#55FF55',
+    b: '#55FFFF',
+    c: '#FF5555',
+    d: '#FF55FF',
+    e: '#FFFF55',
+    f: '#FFFFFF'
+};
+
+function applyMinecraftFormatting() {
+    document.querySelectorAll('[data-minecraft-text]').forEach(function (element) {
+        const source = element.textContent;
+        const formatCode = /§([0-9a-flr])/gi;
+        const fragment = document.createDocumentFragment();
+        let currentColor = null;
+        let currentBold = false;
+        let lastIndex = 0;
+        let match;
+        let hasFormatting = false;
+
+        function appendText(text) {
+            if (!text) return;
+            if (!currentColor && !currentBold) {
+                fragment.appendChild(document.createTextNode(text));
+                return;
+            }
+
+            const span = document.createElement('span');
+            if (currentColor) span.style.color = currentColor;
+            if (currentBold) span.style.fontWeight = '700';
+            span.textContent = text;
+            fragment.appendChild(span);
+        }
+
+        while ((match = formatCode.exec(source)) !== null) {
+            hasFormatting = true;
+            appendText(source.slice(lastIndex, match.index));
+            const code = match[1].toLowerCase();
+            if (code === 'r') {
+                currentColor = null;
+                currentBold = false;
+            } else if (code === 'l') {
+                currentBold = true;
+            } else {
+                currentColor = minecraftColorPalette[code];
+                currentBold = false;
+            }
+            lastIndex = formatCode.lastIndex;
+        }
+
+        if (!hasFormatting) return;
+        appendText(source.slice(lastIndex));
+        element.replaceChildren(fragment);
+    });
+}
+
 // Semua terjemahan disimpan di locales/id.json dan locales/en.json.
 function loadLanguageFiles() {
     return Promise.all(['id', 'en'].map(function (lang) {
@@ -61,6 +127,7 @@ function applyLanguage(lang) {
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
         el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
     });
+    applyMinecraftFormatting();
 
     // Perbarui dropdown bahasa (ikon globe): kode bahasa aktif + tanda centang di menu
     const langCurrentText = document.getElementById('langCurrentText');
@@ -148,6 +215,264 @@ function initializeComparisonTabs() {
     });
 }
 
+function initializeHeroShowcaseFeatures() {
+    let showcaseImage = document.getElementById('heroShowcaseImage');
+    let transitionImage = document.getElementById('heroShowcaseTransitionImage');
+    const featureButtons = Array.from(document.querySelectorAll('[data-showcase-image]'));
+    const status = document.querySelector('[data-showcase-status]');
+    const heroShowcase = document.querySelector('.hero-showcase');
+    const imageFrame = showcaseImage && showcaseImage.closest('.hero-showcase-image-frame');
+    if (!showcaseImage || !transitionImage || !imageFrame || !heroShowcase || !status || featureButtons.length === 0) return;
+
+    const defaultImagePath = showcaseImage.getAttribute('src');
+    const defaultImageAlt = showcaseImage.alt;
+    let isLoading = false;
+    let selectedFeatureButton = null;
+    let isDragging = false;
+    let draggingPointerId = null;
+    let dragStartY = 0;
+    let dragStartImagePositionY = 50;
+    let imagePositionY = 50;
+    let pendingRequest = null;
+    let hasPendingRequest = false;
+    let resetTimeout = null;
+
+    function setLoading(loading) {
+        isLoading = loading;
+        showcaseImage.setAttribute('aria-busy', String(loading));
+        transitionImage.setAttribute('aria-busy', String(loading));
+    }
+
+    function setImagePosition(position) {
+        imagePositionY = Math.max(0, Math.min(100, position));
+        showcaseImage.style.setProperty('--showcase-image-position-y', imagePositionY + '%');
+        transitionImage.style.setProperty('--showcase-image-position-y', imagePositionY + '%');
+    }
+
+    function setSelectedButton(selectedButton) {
+        selectedFeatureButton = selectedButton;
+        featureButtons.forEach(function (featureButton) {
+            const selected = featureButton === selectedButton;
+            featureButton.classList.toggle('is-active', selected);
+            featureButton.setAttribute('aria-pressed', String(selected));
+        });
+        imageFrame.classList.toggle('has-feature-screenshot', selectedButton !== null);
+        setImagePosition(50);
+    }
+
+    function processPendingRequest() {
+        if (!hasPendingRequest) return;
+
+        const request = pendingRequest;
+        pendingRequest = null;
+        hasPendingRequest = false;
+        if (!request.button) {
+            showDefaultImage();
+        } else if (!request.triggeredByHover || heroShowcase.matches(':hover')) {
+            selectFeature(request.button, request.triggeredByHover);
+        }
+    }
+
+    function queueRequest(button, triggeredByHover) {
+        pendingRequest = { button: button, triggeredByHover: triggeredByHover };
+        hasPendingRequest = true;
+    }
+
+    function showLoadError(featureName, error) {
+        const label = featureName || 'foto sampul';
+        console.error('Gagal memuat ' + label + '.', error);
+        transitionImage.onload = null;
+        transitionImage.onerror = null;
+        imageFrame.classList.remove('is-crossfading');
+        status.textContent = 'Gagal memuat ' + label + '. Coba lagi.';
+        status.classList.add('is-error');
+        setLoading(false);
+        processPendingRequest();
+    }
+
+    function loadShowcaseImage(imagePath, imageAlt, featureName, selectedButton) {
+        if (isLoading) {
+            queueRequest(selectedButton, selectedButton !== null);
+            return;
+        }
+        if (!imagePath) {
+            showLoadError(featureName, new Error('Lokasi gambar tidak tersedia.'));
+            return;
+        }
+        if (showcaseImage.getAttribute('src') === imagePath) {
+            showcaseImage.alt = imageAlt;
+            setSelectedButton(selectedButton);
+            status.textContent = '';
+            status.classList.remove('is-error');
+            return;
+        }
+
+        setLoading(true);
+        status.classList.remove('is-error');
+        status.textContent = featureName
+            ? 'Memuat screenshot ' + featureName + '...'
+            : 'Memuat foto sampul...';
+
+        function loadSelectedImage() {
+            function beginTransition() {
+                transitionImage.onload = null;
+                transitionImage.onerror = null;
+                let transitionFinished = false;
+                let transitionTimeout = null;
+                let onTransitionEnd = null;
+
+                function finishTransition() {
+                    if (transitionFinished) return;
+                    transitionFinished = true;
+                    window.clearTimeout(transitionTimeout);
+                    if (onTransitionEnd) {
+                        transitionImage.removeEventListener('transitionend', onTransitionEnd);
+                    }
+                    const previousImage = showcaseImage;
+                    showcaseImage = transitionImage;
+                    transitionImage = previousImage;
+                    showcaseImage.id = 'heroShowcaseImage';
+                    showcaseImage.classList.remove('hero-showcase-image-incoming');
+                    transitionImage.id = 'heroShowcaseTransitionImage';
+                    transitionImage.classList.add('hero-showcase-image-incoming');
+                    showcaseImage.alt = imageAlt;
+                    transitionImage.alt = '';
+                    imageFrame.classList.remove('is-crossfading');
+                    setSelectedButton(selectedButton);
+                    status.textContent = '';
+                    status.classList.remove('is-error');
+                    setLoading(false);
+                    processPendingRequest();
+                }
+
+                if (prefersReducedMotion) {
+                    finishTransition();
+                    return;
+                }
+
+                onTransitionEnd = function (event) {
+                    if (event.target !== transitionImage || event.propertyName !== 'opacity') return;
+                    finishTransition();
+                };
+
+                setSelectedButton(selectedButton);
+                transitionImage.addEventListener('transitionend', onTransitionEnd);
+                imageFrame.classList.add('is-crossfading');
+                transitionTimeout = window.setTimeout(finishTransition, 550);
+            }
+
+            transitionImage.onload = beginTransition;
+            transitionImage.onerror = function () {
+                transitionImage.onload = null;
+                transitionImage.onerror = null;
+                showLoadError(featureName, new Error('Browser gagal memuat ' + imagePath));
+            };
+            transitionImage.src = imagePath;
+            if (transitionImage.complete && transitionImage.naturalWidth > 0) beginTransition();
+        }
+
+        const prefersReducedMotion = window.matchMedia
+            && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        loadSelectedImage();
+    }
+
+    function selectFeature(button, triggeredByHover) {
+        if (isLoading) {
+            if (triggeredByHover) queueRequest(button, true);
+            return;
+        }
+        if (button.getAttribute('aria-pressed') === 'true') return;
+
+        const imagePath = button.getAttribute('data-showcase-image');
+        const featureName = button.textContent.trim();
+        if (!imagePath) {
+            showLoadError(featureName, new Error('Atribut data-showcase-image tidak tersedia.'));
+            return;
+        }
+        loadShowcaseImage(imagePath, 'Screenshot fitur ' + featureName, featureName, button);
+    }
+
+    function showDefaultImage() {
+        if (!defaultImagePath) {
+            showLoadError('', new Error('Lokasi foto sampul tidak tersedia.'));
+            return;
+        }
+        loadShowcaseImage(defaultImagePath, defaultImageAlt, '', null);
+    }
+
+    function updateImagePositionFromPointer(event) {
+        if (!imageFrame.clientHeight) return;
+        const position = Math.max(0, Math.min(
+            100,
+            ((event.clientY - imageFrame.getBoundingClientRect().top - imageFrame.clientTop)
+                / imageFrame.clientHeight) * 100
+        ));
+        setImagePosition(position);
+    }
+
+    function scheduleDefaultReset() {
+        if (resetTimeout !== null) window.clearTimeout(resetTimeout);
+        resetTimeout = window.setTimeout(function () {
+            resetTimeout = null;
+            if (!isDragging && !heroShowcase.matches(':hover')) showDefaultImage();
+        }, 80);
+    }
+
+    imageFrame.addEventListener('pointermove', function (event) {
+        if (!selectedFeatureButton) return;
+        if (isDragging) {
+            const positionDelta = ((event.clientY - dragStartY) / imageFrame.clientHeight) * 100;
+            setImagePosition(dragStartImagePositionY + positionDelta);
+        } else if (event.pointerType !== 'touch') {
+            updateImagePositionFromPointer(event);
+        }
+    });
+
+    imageFrame.addEventListener('pointerdown', function (event) {
+        if (!selectedFeatureButton || event.pointerType === 'touch' || event.button !== 0) return;
+        isDragging = true;
+        draggingPointerId = event.pointerId;
+        dragStartY = event.clientY;
+        dragStartImagePositionY = imagePositionY;
+        imageFrame.classList.add('is-dragging');
+        imageFrame.setPointerCapture(event.pointerId);
+        event.preventDefault();
+    });
+
+    function stopDragging(event) {
+        if (!isDragging || draggingPointerId !== event.pointerId) return;
+        isDragging = false;
+        draggingPointerId = null;
+        imageFrame.classList.remove('is-dragging');
+        if (imageFrame.hasPointerCapture(event.pointerId)) {
+            imageFrame.releasePointerCapture(event.pointerId);
+        }
+        if (!heroShowcase.matches(':hover')) scheduleDefaultReset();
+    }
+
+    imageFrame.addEventListener('pointerup', stopDragging);
+    imageFrame.addEventListener('pointercancel', stopDragging);
+
+    heroShowcase.addEventListener('pointerenter', function (event) {
+        if (event.pointerType === 'touch' || resetTimeout === null) return;
+        window.clearTimeout(resetTimeout);
+        resetTimeout = null;
+    });
+    heroShowcase.addEventListener('pointerleave', function (event) {
+        if (event.pointerType !== 'touch' && !isDragging) scheduleDefaultReset();
+    });
+
+    featureButtons.forEach(function (button) {
+        button.addEventListener('pointerenter', function (event) {
+            if (event.pointerType === 'touch') return;
+            selectFeature(button, true);
+        });
+        button.addEventListener('click', function () {
+            selectFeature(button, false);
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Dropdown bahasa (globe): buka/tutup, pilih bahasa, klik luar & Escape untuk menutup
     const langDropdown = document.getElementById('langDropdown');
@@ -181,9 +506,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+    applyMinecraftFormatting();
     loadLanguageFiles();
     initializeComparisonSliders();
     initializeComparisonTabs();
+    initializeHeroShowcaseFeatures();
 });
 
 // ===================== HEADER / NAVIGASI =====================
