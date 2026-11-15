@@ -473,6 +473,64 @@ function initializeHeroShowcaseFeatures() {
     });
 }
 
+function initializePageSectionNav() {
+    const nav = document.querySelector('[data-page-section-nav]');
+    if (!nav) return;
+
+    const links = Array.from(nav.querySelectorAll('[data-page-nav-link]'));
+    const sections = links.map(function (link) {
+        return document.getElementById(link.getAttribute('data-section-id'));
+    }).filter(Boolean);
+    if (sections.length === 0) return;
+
+    function updateActiveSection() {
+        const activationPoint = window.innerHeight * 0.5;
+        let activeSection = sections[0];
+
+        sections.forEach(function (section) {
+            if (section.getBoundingClientRect().top <= activationPoint) {
+                activeSection = section;
+            }
+        });
+
+        links.forEach(function (link) {
+            const isActive = link.getAttribute('data-section-id') === activeSection.id;
+            link.classList.toggle('is-active', isActive);
+            if (isActive) {
+                link.setAttribute('aria-current', 'location');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+    nav.addEventListener('click', function (event) {
+        const target = event.target instanceof Element
+            ? event.target.closest('[data-page-nav-link]')
+            : null;
+        if (!target) return;
+
+        const section = document.getElementById(target.getAttribute('data-section-id'));
+        if (!section) return;
+
+        event.preventDefault();
+        const bounds = section.getBoundingClientRect();
+        const targetTop = window.scrollY + bounds.top + (bounds.height - window.innerHeight) / 2;
+        const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        const href = target.getAttribute('href');
+        if (href && window.location.hash !== href) {
+            window.history.pushState(null, '', href);
+        }
+        window.scrollTo({
+            top: Math.max(0, Math.min(targetTop, maxScroll)),
+            behavior: 'smooth'
+        });
+    });
+    updateActiveSection();
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Dropdown bahasa (globe): buka/tutup, pilih bahasa, klik luar & Escape untuk menutup
     const langDropdown = document.getElementById('langDropdown');
@@ -511,6 +569,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeComparisonSliders();
     initializeComparisonTabs();
     initializeHeroShowcaseFeatures();
+    initializePageSectionNav();
 });
 
 // ===================== HEADER / NAVIGASI =====================

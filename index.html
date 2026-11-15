@@ -105,7 +105,7 @@
             <h1 class="hero-brand-title">Raiden Visuals</h1>
             <p class="hero-brand-tagline">King of Vibrant Visuals Optimizer</p>
         </div>
-    </section>
+   </section>
 </div>
 <section class="container download-section" id="download-section" aria-label="Raiden Visuals downloads">
     <div class="download-card">
@@ -143,11 +143,12 @@
         </div>
     </div>
 </section>
-<div class="description-full-container">
-    <h2 data-i18n="about.title">Apa itu Raiden Visuals?</h2>
+<section class="description-full-container about-card" aria-labelledby="aboutTitle">
+    <h2 id="aboutTitle" data-i18n="about.title">Apa itu Raiden Visuals?</h2>
     <p data-i18n="about.desc">Raiden Visuals adalah custom deferred configuration yang dapat mengoptimalkan performa vibrant visuals berkali kali lipat pada minecraft bedrock edition, untuk edisi VIP+ memiliki custom shader renderdragon untuk meningkatkan performa lebih jauh lagi serta memperbagus visual tanpa mengorbankan FPS!.</p>
-    <div class="os-guide-block"></div>
-    <h2 data-i18n="features.title">Keunggulan</h2>
+ </section>
+<section class="description-full-container features-full-container" aria-labelledby="featuresTitle">
+    <h2 id="featuresTitle" data-i18n="features.title">Keunggulan</h2>
     <p data-i18n="features.item1">Mengoptimalkan Bayangan Pada Vibrant Visuals.</p>
     <p data-i18n="features.item2">Mengoptimalkan Refleksi Ruang Layar Pada Vibrant Visuals.</p>
     <p data-i18n="features.item3">Mengoptimalkan Point Light Beserta Bayangan Pada Vibrant Visuals.</p>
@@ -161,7 +162,8 @@
     <p data-i18n-html="features.item11">Menambahkan efek becek <span class="vip-feature-label">(VIP+)</span>.</p>
     <p data-i18n-html="features.item12">Menambahkan efek genangan air <span class="vip-feature-label">(VIP+)</span>.</p>
     <p data-i18n-html="features.item13">Efek Enchant menyala di ruangan gelap <span class="vip-feature-label">(VIP+)</span>.</p>
-<section class="comparison-section" id="visual-comparison">
+</section>
+<section class="comparison-section content-card" id="visual-comparison">
     <h2 class="comparison-title" data-i18n="comparison.title">Perbandingan Visual: Vibrant Visuals Default vs Raiden Visuals VIP+ 2.4.5</h2>
     <p class="comparison-caption" data-i18n="comparison.caption">Geser garis untuk membandingkan kedua tampilan.</p>
     <div class="comparison-tabs" role="tablist" aria-label="Comparison categories">
@@ -182,7 +184,7 @@
         <p><span data-i18n="comparison.creditsFollow">Tertarik dengan karya Strawberry Graphics? Kunjungi</span> <a href="https://discord.com/invite/yHvF7TaW72" target="_blank" rel="noopener noreferrer" data-i18n="comparison.discord">Discord</a> <span data-i18n="comparison.and">dan</span> <a href="https://www.youtube.com/@strawberrygraphics55" target="_blank" rel="noopener noreferrer" data-i18n="comparison.youtube">YouTube</a>.</p>
     </div>
 </section>
-<div class="os-guide-block" id="panduan-instalasi">
+<div class="os-guide-block content-card" id="panduan-instalasi">
     <h2 class="desc-title-bold" data-i18n="guide.title">Panduan Instalasi</h2>
     <div class="guide-platform">
     <div class="os-title-wrapper">
@@ -257,19 +259,16 @@
     </div>
 </div>
 </div>
-<div class="os-guide-block"></div>
-<div class="os-guide-block"></div>
-
+<section class="changelog-section content-card" aria-labelledby="changelog">
 <h2 id="changelog" data-i18n="changelog.sectionTitle">Changelog Terbaru</h2>
 <p class="subtitle" data-i18n="changelog.sectionSubtitle">Pantau terus pembaruan dan perbaikan terbaru dari Raiden Visuals.</p>
 <div class="changelog-card-grid" id="changelogCardContainer" role="region" aria-label="Changelog terbaru / Latest changelog updates" tabindex="0"></div>
 <div class="changelog-viewall-wrap">
     <a href="changelog.html" class="changelog-viewall-btn" data-i18n="changelog.viewAll">Lihat Semua Changelog</a>
 </div>
+</section>
 
-<div class="os-guide-block"></div>
-
-<div class="pricing-section">
+<div class="pricing-section content-card">
 <h2 id="pricing" data-i18n="pricing.title">Dukung Raiden Visuals</h2>
 <p class="subtitle" data-i18n="pricing.subtitle">Raiden Visuals selalu gratis untuk semua orang. Kalau mau dapat bonus tambahan dan mempercepat pengembangan, kamu bisa jadi Supporter.</p>
 
@@ -292,6 +291,8 @@
             <li><span data-i18n="pricing.supporterFeat9">Optimasi Vibrant Visuals (Lanjutan)</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeat10">Discord Role Supporter</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeat11">Hard Shadows</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.rainPuddlesUnavailable">Rain Puddles</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.skipAdsUnavailable">Skip Ads</span><i class="bx bx-x pricing-icon pricing-icon-no" aria-hidden="true"></i></li>
         </ul>
         <a href="#download-section" class="pricing-cta-btn pricing-cta-free" data-i18n="pricing.standardCta">Download Gratis</a>
     </div>
@@ -321,6 +322,8 @@
             <li><span data-i18n="pricing.supporterFeatpaid9">Optimasi Vibrant Visuals (Lanjutan)</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeatpaid10">Discord Role Supporter</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
             <li><span data-i18n="pricing.supporterFeatpaid11">Hard Shadows</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.rainPuddlesAvailable">Rain Puddles</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
+            <li><span data-i18n="pricing.skipAdsAvailable">Skip Ads</span><i class="bx bx-check pricing-icon pricing-icon-yes" aria-hidden="true"></i></li>
         </ul>
         <a href="https://trakteer.id/veda_raiden/shop/raiden-visuals-plus-bundle-oq8tT" target="_blank" class="pricing-cta-btn pricing-cta-supporter" data-payment-selector="true" data-i18n="pricing.supporterCta" rel="noopener noreferrer">Jadi Supporter</a>
     </div>
@@ -357,7 +360,7 @@
     </div>
 </section>
 
-<div class="os-guide-block"></div>
+<section class="gpu-check-section content-card" aria-labelledby="cek-gpu">
 <h2 id="cek-gpu" data-i18n="gpu.title">Pengecekan GPU untuk android</h2>
 <div class="gpu-checker-box">
     <h4 class="gpu-box-title" data-i18n="gpu.boxTitle">Cek Kompatibilitas GPU HP-Mu:</h4>
@@ -375,7 +378,8 @@
     <p data-i18n="gpu.tierInfo4">Tier 5 Adalah spek GPU tertinggi, sedangkan Tier 1 adalah spek GPU terendah.</p>
     <p data-i18n="gpu.tierInfo5">Tier 1 Sama Tier 2 lebih kasihan sih. Akan sangat lama untuk dapat menggunakan Vibrant Visuals, mungkin tahun depan? Itupun dengan hasil visual dan performa yang lebih rendah.</p>
 </div>
-<section class="gpu-faq" aria-labelledby="gpuFaqTitle">
+</section>
+<section class="gpu-faq content-card" aria-labelledby="gpuFaqTitle">
     <h3 id="gpuFaqTitle" data-i18n="gpu.faqTitle">Q&A</h3>
     <div class="gpu-faq-list">
         <div class="gpu-faq-item">
@@ -392,7 +396,7 @@
         </div>
     </div>
 </section>
-<section class="youtube-showcase" aria-labelledby="youtubeShowcaseTitle">
+<section class="youtube-showcase content-card" aria-labelledby="youtubeShowcaseTitle">
     <h3 id="youtubeShowcaseTitle" data-i18n="showcase.title">YOUTUBE SHOWCASE</h3>
     <div class="youtube-video-grid">
         <div class="youtube-video"><iframe src="https://www.youtube-nocookie.com/embed/EFGAV0GaRUc" title="Raiden Visuals YouTube Showcase 1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
@@ -451,8 +455,16 @@
         </div>
     </div>
 </section>
-
-</section>
+<section class="project-collaboration content-card" aria-labelledby="projectCollaborationTitle">
+    <h2 id="projectCollaborationTitle" data-i18n="collaboration.title">Project Collaboration</h2>
+    <div class="collaboration-partners" aria-label="Raiden Visuals VIP+ and Strawberry Graphics">
+        <img src="img/title_vip+.webp" alt="Raiden Visuals VIP+">
+        <img class="collaboration-x" src="img/x-thin-svgrepo-com.svg" alt="" aria-hidden="true">
+        <img src="img/strawberry_title.webp" alt="Strawberry Deferred">
+    </div>
+    <p data-i18n="collaboration.description">Proyek Raiden Visuals Sudah Tidak Sendiri lagi, Selama Hampir 3 Tahun sejak Raiden Visuals Tercipta hanya 1 orang yang mengerjakan proyek ini untuk mengembangkan konfigurasi deferred vibrant visuals dengan optimasi perbaiknya agar perangkat kelas bawah dapat merasakan peningkatan peforma, sekarang aku sudah tidak sendirian lagi, dengan segala hormat aku bisa menjadi bagian tim dari Proyek Strawberry Graphics Developer, kami akan selalu membuat inovasi baru untuk komunitas minecraft!</p>
+ </section>
+<section class="roadmap-section content-card" aria-labelledby="roadmap">
 <h2 id="roadmap" data-i18n="roadmap.title">website masih dalam pengembangan terus pantau...</h2>
 <p data-i18n="roadmap.listTitle">📝 To Do List</p>
 <p data-i18n="roadmap.item1">- Perbandingan Performa Vibrant Visuals Bawaan Vs Raiden Visuals</p>
@@ -460,7 +472,6 @@
 <p data-i18n="roadmap.item5">- Rekomendasi setingan opsi grafis Vibrant Visuals untuk performa dan kualitas</p>
 <p data-i18n="roadmap.item6">- Rekomendasi Vibrant Visuals Pack Agar lebih indah dan Immersive</p>
 </section>
-</div> <!-- AKHIR DARI MAIN CONTENT ROW -->
 <div class="social-media-container">
     <a href="https://www.youtube.com/@vedaraiden" target="_blank" class="social-link" rel="noopener noreferrer">
         <img src="img/yt.png" alt="YouTube">
@@ -485,7 +496,6 @@
 <audio id="soundWarn" src="audio/Villager_idle1.ogg" preload="none"></audio>
 <audio id="soundRelease" src="audio/Release.ogg.mp3" preload="none"></audio>
     <!-- Batas akhir dari semua kotak to-do list atau konten atas Anda -->
-    </div> 
 <!-- KOTAK FOOTER WAJIB BERDIRI SENDIRI BEBAS DI LUAR SEMUA DIV ATAS -->
 <footer class="site-footer">
     <div class="footer-container">
@@ -531,6 +541,20 @@
         </div>
     </div>
 </div>
+<nav class="page-section-nav" data-page-section-nav aria-label="Navigasi bagian halaman">
+    <a href="#top" data-page-nav-link data-section-id="top" data-i18n="pageNav.overview">Gambaran Umum</a>
+    <a href="#download-section" data-page-nav-link data-section-id="download-section" data-i18n="pageNav.downloads">Download</a>
+    <a href="#visual-comparison" data-page-nav-link data-section-id="visual-comparison" data-i18n="pageNav.comparison">Perbandingan</a>
+    <a href="#panduan-instalasi" data-page-nav-link data-section-id="panduan-instalasi" data-i18n="pageNav.installation">Panduan</a>
+    <a href="#changelog" data-page-nav-link data-section-id="changelog" data-i18n="pageNav.changelog">Changelog</a>
+    <a href="#pricing" data-page-nav-link data-section-id="pricing" data-i18n="pageNav.pricing">Dukung</a>
+    <a href="#gpu-requirements-title" data-page-nav-link data-section-id="gpu-requirements-title" data-i18n="pageNav.system">Persyaratan Sistem</a>
+    <a href="#cek-gpu" data-page-nav-link data-section-id="cek-gpu" data-i18n="pageNav.gpu">GPU Check</a>
+    <a href="#gpuFaqTitle" data-page-nav-link data-section-id="gpuFaqTitle" data-i18n="pageNav.faq">Q&amp;A</a>
+    <a href="#youtubeShowcaseTitle" data-page-nav-link data-section-id="youtubeShowcaseTitle" data-i18n="pageNav.videos">YouTube</a>
+    <a href="#projectCollaborationTitle" data-page-nav-link data-section-id="projectCollaborationTitle" data-i18n="pageNav.collaboration">Kolaborasi</a>
+    <a href="#roadmap" data-page-nav-link data-section-id="roadmap" data-i18n="pageNav.roadmap">Roadmap</a>
+</nav>
 <script src="script.js"></script>
 <script src="changelog.js"></script>
 </body>
