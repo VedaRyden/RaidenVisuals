@@ -1,6 +1,167 @@
 {
     "changelogs": [
         {
+            "id": "vip-plus-v2-5-1",
+            "version": "2.5.1",
+            "image": "img/changelog-vip-plus-v2.5.1.webp",
+            "date": "2026-11-17",
+            "title": {
+                "id": "Raiden Visuals VIP+ v2.5.1 Update",
+                "en": "Raiden Visuals VIP+ v2.5.1 Update"
+            },
+            "summary": {
+                "id": "VIP+ kini tersedia untuk Windows dan kompatibel dengan Minecraft Bedrock 26.60. Pembaruan ini membangun ulang Material Bin lintas platform serta menyempurnakan motion blur, bayangan, kabut volumetrik, godrays, refleksi, air, dan efek hujan.",
+                "en": "VIP+ is now available for Windows and is compatible with Minecraft Bedrock 26.60. This update rebuilds the cross-platform Material Bin and improves motion blur, shadows, volumetric fog, godrays, reflections, water, and rain effects."
+            },
+            "warning": {
+                "id": "Versi ini memiliki masalah yang diketahui, termasuk teks sign yang tidak muncul dan tampilan Warden yang bermasalah. HynisiOS tidak disarankan untuk versi ini.",
+                "en": "This release has known issues, including missing sign text and incorrect Warden appearance. HynisiOS is not recommended for this release."
+            },
+            "sections": [
+                {
+                    "heading": {
+                        "id": "Kompatibilitas dan Build Multi-platform",
+                        "en": "Compatibility and Multi-platform Build"
+                    },
+                    "items": [
+                        {
+                            "id": "Raiden Visuals VIP+ kini tersedia untuk Windows.",
+                            "en": "Raiden Visuals VIP+ is now available for Windows."
+                        },
+                        {
+                            "id": "Kompatibel dengan Minecraft Bedrock versi 26.60.",
+                            "en": "Compatible with Minecraft Bedrock version 26.60."
+                        },
+                        {
+                            "id": "Material Bin dibuat ulang dari awal agar dapat dibangun untuk beberapa platform.",
+                            "en": "The Material Bin was rebuilt from scratch to support builds for multiple platforms."
+                        }
+                    ]
+                },
+                {
+                    "heading": {
+                        "id": "Material Bin yang Dibuat Ulang dan Ditambahkan",
+                        "en": "Rebuilt and Added Material Bin Materials"
+                    },
+                    "items": [
+                        {
+                            "id": "Actor: ActorBannerForwardPBR, ActorBannerPrepass, ActorForwardPBR, ActorGlintForwardPBR, ActorGlintPrepass, ActorMultiTextureForwardPBR, ActorMultiTexturePrepass, ActorPatternForwardPBR, ActorPatternGlintForwardPBR, ActorPatternGlintPrepass, ActorPatternPrepass, ActorPrepass, ActorTintForwardPBR, ActorTintPrepass.",
+                            "en": "Actor materials: ActorBannerForwardPBR, ActorBannerPrepass, ActorForwardPBR, ActorGlintForwardPBR, ActorGlintPrepass, ActorMultiTextureForwardPBR, ActorMultiTexturePrepass, ActorPatternForwardPBR, ActorPatternGlintForwardPBR, ActorPatternGlintPrepass, ActorPatternPrepass, ActorPrepass, ActorTintForwardPBR, ActorTintPrepass."
+                        },
+                        {
+                            "id": "Deferred dan post-processing: ColorPostProcessing, DeferredMixedResolutionCaustics, DeferredMixedResolutionLightingPrepass, DeferredMixedResolutionSurfaceRadiance, DeferredShading, DeferredShadingBase, DeferredTiledMixedRes, DeferredWater.",
+                            "en": "Deferred and post-processing: ColorPostProcessing, DeferredMixedResolutionCaustics, DeferredMixedResolutionLightingPrepass, DeferredMixedResolutionSurfaceRadiance, DeferredShading, DeferredShadingBase, DeferredTiledMixedRes, DeferredWater."
+                        },
+                        {
+                            "id": "Item dan mesh: ItemInHandForwardPBR, ItemInHandForwardPBRGlint, ItemInHandForwardPBRTextured, ItemInHandPrepass, ItemInHandPrepassGlint, ItemInHandPrepassTextured, MeshFallbackForwardPBR, MeshFallbackPrepass, SingleBlockForwardPBR, SingleBlockPrepass.",
+                            "en": "Items and meshes: ItemInHandForwardPBR, ItemInHandForwardPBRGlint, ItemInHandForwardPBRTextured, ItemInHandPrepass, ItemInHandPrepassGlint, ItemInHandPrepassTextured, MeshFallbackForwardPBR, MeshFallbackPrepass, SingleBlockForwardPBR, SingleBlockPrepass."
+                        },
+                        {
+                            "id": "Partikel, render chunk, dan efek lainnya: ParticleForwardPBR, ParticlePrepass, PopulateVolume, RenderChunkForwardPBR, RenderChunkPrepass, ScreenSpaceReflections, TextureShiftRenderChunkPrepass, Upscaling, VolumeScattering, VolumetricsShadows, WaterExtinction.",
+                            "en": "Particles, render chunks, and other effects: ParticleForwardPBR, ParticlePrepass, PopulateVolume, RenderChunkForwardPBR, RenderChunkPrepass, ScreenSpaceReflections, TextureShiftRenderChunkPrepass, Upscaling, VolumeScattering, VolumetricsShadows, WaterExtinction."
+                        }
+                    ]
+                },
+                {
+                    "heading": {
+                        "id": "Peningkatan Visual dan Performa",
+                        "en": "Visual and Performance Improvements"
+                    },
+                    "items": [
+                        {
+                            "id": "Motion Blur diubah menjadi Rotate Only.",
+                            "en": "Motion Blur is now Rotate Only."
+                        },
+                        {
+                            "id": "Hard Shadows kini 100% tanpa blur, bukan bayangan pixelated seperti versi vanilla.",
+                            "en": "Hard Shadows are now completely blur-free, rather than pixelated like vanilla shadows."
+                        },
+                        {
+                            "id": "Volumetric Fogs tetap terlihat di area belakang arah matahari.",
+                            "en": "Volumetric Fogs remain visible in areas behind the sun direction."
+                        },
+                        {
+                            "id": "Godrays dan Light Shaft dibuat jauh lebih panjang, tidak memudar, dan diperkuat 4x.",
+                            "en": "Godrays and Light Shafts are much longer, do not fade, and are 4x stronger."
+                        },
+                        {
+                            "id": "Refleksi dibuat lebih bersih, ringan, dan tajam tanpa artefak visual yang mengganggu.",
+                            "en": "Reflections are cleaner, lighter, and sharper, with fewer distracting visual artifacts."
+                        },
+                        {
+                            "id": "Air dibuat lebih transparan dan Caustics dioptimalkan.",
+                            "en": "Water is more transparent and Caustics have been optimized."
+                        },
+                        {
+                            "id": "Menambahkan efek terrain basah saat hujan atau badai serta efek genangan air.",
+                            "en": "Added wet terrain during rain or storms, along with puddle effects."
+                        },
+                        {
+                            "id": "Waving Grass dan Leaves dinonaktifkan sementara karena belum mendukung texture pack HD.",
+                            "en": "Waving Grass and Leaves are temporarily disabled because HD texture packs are not supported."
+                        },
+                        {
+                            "id": "Batas maksimal Render Chunk ditingkatkan menjadi 256.",
+                            "en": "The maximum Render Chunk limit has been increased to 256."
+                        },
+                        {
+                            "id": "Mode beta/preview dihapus dari subpack VIP+.",
+                            "en": "The beta/preview mode has been removed from the VIP+ subpack."
+                        },
+                        {
+                            "id": "Ray Marching SSR disamakan untuk Android dan Windows. Pengaturan bawaan dipilih agar perbandingan beban dengan Vibrant Visuals original lebih jelas.",
+                            "en": "Ray Marching SSR is now consistent on Android and Windows. The default setting is intended to make performance comparisons with original Vibrant Visuals clearer."
+                        },
+                        {
+                            "id": "Item, shield, dan armor yang memiliki enchant kini menyala dalam kegelapan.",
+                            "en": "Enchanted items, shields, and armor now glow in the dark."
+                        }
+                    ]
+                },
+                {
+                    "heading": {
+                        "id": "Masalah yang Diketahui",
+                        "en": "Known Issues"
+                    },
+                    "items": [
+                        {
+                            "id": "Teks tidak muncul pada sign.",
+                            "en": "Text does not appear on signs."
+                        },
+                        {
+                            "id": "Warden terlihat hitam dan mengilap.",
+                            "en": "The Warden appears black and shiny."
+                        },
+                        {
+                            "id": "Motion Blur tidak lagi mendeteksi perpindahan entity atau posisi kamera saat diam; hanya rotasi yang terdeteksi karena keterbatasan material upscaling.",
+                            "en": "Motion Blur no longer detects entity movement or camera position changes while stationary; only rotation is detected due to an upscaling material limitation."
+                        },
+                        {
+                            "id": "Dengan Action & Stuff, Motion Blur penuh dapat menampakkan masking di tepi terrain (misalnya pohon dan langit) serta membuat pemain third-person tetap buram saat diam.",
+                            "en": "With Action & Stuff, full Motion Blur can reveal masking at terrain edges (such as trees against the sky) and keep the third-person player blurred while stationary."
+                        },
+                        {
+                            "id": "Dapat muncul outline pada rumput atau texture transparan yang menghadap matahari, terutama saat sunset.",
+                            "en": "An outline may appear on grass or transparent textures facing the sun, especially at sunset."
+                        },
+                        {
+                            "id": "Pada sudut orbit tertentu, bayangan pada tanaman petals dapat terlihat belang.",
+                            "en": "At certain orbit angles, shadows on petal plants may appear uneven."
+                        },
+                        {
+                            "id": "Pada jarak render chunk yang lebih luas, terrain jauh dapat tertutup kabut dan tampilan air mungkin tidak sinkron dengan kabut karena keterbatasan Minecraft Bedrock.",
+                            "en": "At longer render chunk distances, distant terrain may be obscured by fog and water may not align with the fog due to Minecraft Bedrock limitations."
+                        },
+                        {
+                            "id": "HynisiOS tidak disarankan untuk versi ini.",
+                            "en": "HynisiOS is not recommended for this release."
+                        }
+                    ]
+                }
+            ],
+            "product": "vip-plus"
+        },
+        {
             "id": "vip-plus-v2-4-4",
             "version": "2.4.4",
             "image": "img/hdwm.webp",

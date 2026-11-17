@@ -116,42 +116,102 @@
         }).join('');
     }
 
-    // ---------- RENDER: Changelog dipisah berdasarkan edisi ----------
+    // ---------- RENDER: Satu kartu untuk setiap rilis ----------
     function renderCard() {
         const container = document.getElementById('changelogCardContainer');
         if (!container || changelogData.length === 0) return;
 
         const readMoreText = translateStatic('changelog.readMore', getLang() === 'en' ? 'Read More' : 'Baca Selengkapnya');
-        container.innerHTML = editions.map(function (group) {
-            const entries = changelogData.filter(function (entry) { return entry.product === group.type; });
-            if (!entries.length) return '';
-            const cards = entries.slice(0, 2).map(function (entry) {
-                const judul = localize(entry.title);
-                const ringkasan = localize(entry.summary);
-                return `
-                    <a href="changelog.html#${entry.id}" class="changelog-card">
-                        <div class="changelog-card-thumb">
-                            <img src="${entry.image}" alt="${escapeHTML(judul)}" loading="lazy">
-                            <span class="changelog-card-version">v${entry.version}</span>
-                        </div>
-                        <div class="changelog-card-body">
-                            <h3 class="changelog-card-title">${escapeHTML(judul)}</h3>
-                            <p class="changelog-card-summary">${escapeHTML(ringkasan)}</p>
-                            <div class="changelog-card-footer">
-                                <span class="changelog-card-date">${timeAgo(entry.date)}</span>
-                                <span class="changelog-card-readmore">${readMoreText} →</span>
-                            </div>
-                        </div>
-                    </a>
-                `;
-            }).join('');
+        const entries = editions.reduce(function (allEntries, edition) {
+            const editionEntries = changelogData
+                .filter(function (entry) { return entry.product === edition.type; })
+                .sort(function (a, b) { return new Date(b.date) - new Date(a.date); })
+                .slice(0, 2)
+                .map(function (entry) {
+                    return { entry: entry, edition: edition };
+                });
+            return allEntries.concat(editionEntries);
+        }, []).sort(function (a, b) {
+            return new Date(b.entry.date) - new Date(a.entry.date);
+        });
+
+        container.innerHTML = entries.map(function (item) {
+            const entry = item.entry;
+            const judul = localize(entry.title);
+            const ringkasan = localize(entry.summary);
             return `
-                <section class="changelog-edition-group">
-                    <h3 class="changelog-edition-heading">${escapeHTML(translateStatic(group.key, group.fallback))}</h3>
-                    <div class="changelog-edition-cards">${cards}</div>
-                </section>
+                <a href="changelog.html#${escapeHTML(entry.id)}" class="changelog-card">
+                    <div class="changelog-card-thumb">
+                        <img src="${escapeHTML(String(entry.image))}" alt="${escapeHTML(judul)}" loading="lazy" draggable="false">
+                        <span class="changelog-card-version">v${escapeHTML(String(entry.version))}</span>
+                    </div>
+                    <div class="changelog-card-body">
+                        <span class="changelog-card-edition">${escapeHTML(translateStatic(item.edition.key, item.edition.fallback))}</span>
+                        <h3 class="changelog-card-title">${escapeHTML(judul)}</h3>
+                        <p class="changelog-card-summary">${escapeHTML(ringkasan)}</p>
+                        <div class="changelog-card-footer">
+                            <span class="changelog-card-date">${timeAgo(entry.date)}</span>
+                            <span class="changelog-card-readmore">${readMoreText} →</span>
+                        </div>
+                    </div>
+                </a>
             `;
         }).join('');
+
+        initializeChangelogCardDrag(container);
+    }
+
+    function initializeChangelogCardDrag(container) {
+        if (container.dataset.dragEnabled === 'true') return;
+        container.dataset.dragEnabled = 'true';
+
+        let pointerId = null;
+        let startX = 0;
+        let startScrollLeft = 0;
+        let dragged = false;
+        let suppressClick = false;
+
+        container.addEventListener('pointerdown', function (event) {
+            if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            pointerId = event.pointerId;
+            startX = event.clientX;
+            startScrollLeft = container.scrollLeft;
+            dragged = false;
+        });
+
+        container.addEventListener('pointermove', function (event) {
+            if (event.pointerId !== pointerId) return;
+            const distance = event.clientX - startX;
+            if (!dragged && Math.abs(distance) > 5) {
+                dragged = true;
+                container.classList.add('is-dragging');
+                container.setPointerCapture(event.pointerId);
+            }
+            if (dragged) {
+                event.preventDefault();
+                container.scrollLeft = startScrollLeft - distance;
+            }
+        });
+
+        function finishDrag(event) {
+            if (event.pointerId !== pointerId) return;
+            if (dragged) {
+                suppressClick = true;
+                container.classList.remove('is-dragging');
+                window.setTimeout(function () { suppressClick = false; }, 0);
+            }
+            pointerId = null;
+            dragged = false;
+        }
+
+        container.addEventListener('pointerup', finishDrag);
+        container.addEventListener('pointercancel', finishDrag);
+        container.addEventListener('click', function (event) {
+            if (!suppressClick) return;
+            suppressClick = false;
+            event.preventDefault();
+            event.stopPropagation();
+        }, true);
     }
     // ---------- RENDER: Halaman detail penuh di changelog.html ----------
     function renderDetailPage() {
@@ -164,6 +224,9 @@
         const postedLabel = translateStatic('changelog.postedLabel', getLang() === 'en' ? 'Posted:' : 'Diposting:');
         const selectedEdition = getSelectedEdition();
         const selectedEntryId = decodeURIComponent(window.location.hash.slice(1));
+        const selectedEntry = changelogData.find(function (entry) {
+            return entry.id === selectedEntryId && entry.product === selectedEdition;
+        });
 
         if (!selectedEdition) {
             if (picker) picker.hidden = false;
@@ -184,7 +247,9 @@
         container.innerHTML = editions.filter(function (group) {
             return group.type === selectedEdition;
         }).map(function (group) {
-            const entries = changelogData.filter(function (entry) { return entry.product === group.type; });
+            const entries = changelogData.filter(function (entry) {
+                return entry.product === group.type && (!selectedEntry || entry.id === selectedEntry.id);
+            });
             if (!entries.length) return '';
             const posts = entries.map(function (entry) {
                 const judul = localize(entry.title);

@@ -1,0 +1,34 @@
+# Raiden Visuals
+
+> Raiden Visuals is a community-made custom deferred configuration for Minecraft Bedrock Vibrant Visuals. The site provides downloads, platform-specific installation instructions, compatibility information, GPU guidance, and release notes.
+
+Raiden Visuals is a configuration for the Vibrant Visuals rendering pipeline, not a standalone shader. Performance and compatibility depend on the Minecraft version, device hardware, graphics settings, launcher, texture packs, and world conditions. No universal FPS increase is guaranteed. This project is unofficial and is not affiliated with Mojang or Microsoft.
+
+## Ringkasan Bahasa Indonesia
+
+Raiden Visuals adalah custom deferred configuration komunitas untuk pipeline Vibrant Visuals di Minecraft Bedrock, bukan shader mandiri. Kompatibilitas bergantung pada versi game, edisi, perangkat, launcher, dan pengaturan grafis.
+
+- [Panduan optimasi Vibrant Visuals](https://vedaryden.github.io/RaidenVisuals/#vibrant-visuals-optimization-guide)
+- [Panduan instalasi](https://vedaryden.github.io/RaidenVisuals/#panduan-instalasi)
+- VIP+ v2.5.1 mencantumkan kompatibilitas dengan Minecraft Bedrock 26.60 dan dukungan untuk Windows.
+- Untuk menguji performa, gunakan kondisi yang sama dan ubah satu pengaturan setiap kali. Hasil FPS berbeda-beda dan tidak dapat dijamin.
+- Periksa changelog edisi yang dipakai sebelum memasang atau memperbarui; jangan mengasumsikan kompatibilitas versi yang tidak disebutkan.
+
+## Core pages
+
+- [Home, downloads, installation, compatibility, and optimization guide](https://vedaryden.github.io/RaidenVisuals/)
+- [All release notes](https://vedaryden.github.io/RaidenVisuals/changelog.html)
+- [Raiden Visuals VIP+ v2.5.1 release details](https://vedaryden.github.io/RaidenVisuals/changelog.html#vip-plus-v2-5-1)
+- [Vibrant Visuals optimization guide](https://vedaryden.github.io/RaidenVisuals/#vibrant-visuals-optimization-guide)
+- [GPU compatibility information](https://vedaryden.github.io/RaidenVisuals/#gpu-requirements-title)
+- [Installation guide](https://vedaryden.github.io/RaidenVisuals/#panduan-instalasi)
+
+## Verified release facts
+
+- Raiden Visuals VIP+ v2.5.1 is dated 2026-11-17.
+- Its release notes specify compatibility with Minecraft Bedrock 26.60 and announce VIP+ availability for Windows.
+- The release rebuilds Material Bin materials for multi-platform builds and documents visual changes and known issues.
+- HynisiOS is not recommended for VIP+ v2.5.1; check the release notes before installing.
+- Compatibility details may differ between Standard and VIP+ editions; consult the release notes for the selected edition.
+
+For questions about installation or performance, prefer the site's current platform guide, GPU guidance, and edition-specific changelog over assumptions. Do not promise specific FPS gains or compatibility beyond the published release notes.
